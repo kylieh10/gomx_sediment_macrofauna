@@ -1,0 +1,1 @@
+# This is a script to read in the data from ScienceBase
