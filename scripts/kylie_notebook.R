@@ -24,18 +24,80 @@ SedChem <- readr::read_csv(file = sb_filenames$url[3])
 
 names(Infauna)
 
-Infauna <- Infauna %>% 
+#site level event table
+Infauna %>%
   rename(
     decimalLatitude = Latitude,
-    decimalLongitude = Longitude
-  ) %>% 
+    decimalLongitude = Longitude,
+    eventDate = DateCollected,
+    locationRemarks = Location,
+    eventID = Site
+  ) %>%
   mutate(
     geodeticDatum = "WGS84",
     minimumDepthInMeters = Depth,
     maximumDepthInMeters = Depth
-  )
+    
+  ) %>%
+  select(
+    eventID,
+    Station,
+    eventDate,
+    decimalLatitude,
+    decimalLongitude,
+    minimumDepthInMeters,
+    maximumDepthInMeters,
+    geodeticDatum
+  ) %>%
+  distinct() %>%
+ group_by(eventID,Station) %>% 
+  count() %>% 
+  arrange(eventID, n)
 
-Infauna$Depth %>% unique()
+#station level event table
+Infauna_Station <- Infauna1 %>% 
+  
+  rename(
+    parentEventID = Site,
+    eventID = Station
+  ) %>% 
+  mutate(
+    samplingProtocol =
+      paste(Gear, CoreDiameter, sep = "_")
+  ) %>% 
+  select(decimalLatitude,
+         decimalLongitude,
+         parentEventID,
+         eventID,
+         samplingProtocol,
+         geodeticDatum
+         )
+
+#core level event table
+Infauna_Core <- Infauna1 %>% 
+
+  rename(
+    parentEventID = Station,
+    eventID = CoreID
+  ) %>% 
+  mutate(
+    samplingProtocol = 
+      paste(Gear, CoreDiameter, sep = "_")
+  ) %>% 
+  select(
+    decimalLatitude,
+    decimalLongitude,
+    locationRemarks,
+    samplingProtocol,
+    eventDate,
+    eventID,
+    parentEventID,
+    maximumDepthInMeters,
+    minimumDepthInMeters,
+    geodeticDatum
+  )
+View(Infauna_Core)
+
 
 
 
