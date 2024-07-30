@@ -4,7 +4,6 @@
 # Load libraries ----------------------------------------------------------
 
 library(dplyr)
-install.packages("sbtools")
 library(sbtools)
 
 # Read data from ScienceBase ----------------------------------------------
@@ -20,70 +19,62 @@ Infauna <- readr::read_csv(file = sb_filenames$url[2])
 SedChem <- readr::read_csv(file = sb_filenames$url[3])
 
 
-# Renaming columns to DwC -------------------------------------------------
+# Core/Station Level Event Table -------------------------------------------------
 
-names(Infauna)
+#events representing unique cores (coreID)
 
-#site level event table
-Infauna %>%
+Infauna_StationCore <- Infauna %>%
   rename(
-    decimalLatitude = Latitude,
-    decimalLongitude = Longitude,
-    eventDate = DateCollected,
     locationRemarks = Location,
-    eventID = Site
+    materialEntityID = CoreID,
+    locationID = Station,
+    decimalLatitude = Latitude,
+    decimalLongitude = Longitude
   ) %>%
   mutate(
     geodeticDatum = "WGS84",
+    eventDate = DateCollected %>% 
+      as.Date("%m/%d/%Y"),
+    eventID = paste(Site, eventDate %>% as.character(), locationID, materialEntityID,
+                    sep = "_") %>% stringr::str_remove_all(pattern = "-"),
+    # footprintWKT = NA, #get polygon from BOEM; not sure if we should include since event is lat/long specific?
     minimumDepthInMeters = Depth,
-    maximumDepthInMeters = Depth
-    
+    maximumDepthInMeters = Depth,
+    locality = paste("BOEM Lease Block", Site),
+    higherGeography = paste("Gulf of Mexico",
+                            paste("BOEM Lease Block", 
+                                  Site), sep = " | "),
+    samplingProtocol = paste(Gear, CoreDiameter, sep = "_")
   ) %>%
   select(
     eventID,
-    Station,
     eventDate,
+    materialEntityID,
+    locationID,
     decimalLatitude,
     decimalLongitude,
+    higherGeography,
+    locality,
+    geodeticDatum,
+    # footprintWKT,
     minimumDepthInMeters,
     maximumDepthInMeters,
-    geodeticDatum
-  ) %>%
-  distinct() %>%
- group_by(eventID,Station) %>% 
-  count() %>% 
-  arrange(eventID, n)
+    samplingProtocol,
+    locationRemarks
+  )
 
-#station level event table
-Infauna_Station <- Infauna1 %>% 
-  
+
+# Sample Level Event Table -------------------------------------------------
+
+## need to split fraction into upper and lower limit (maximumDistanceAboveSurface & minimum...)
+## not sure if there is a way to use dplyr for this, but the internet likes tidyr and stringr)
+
+Infauna_Sample <- Infauna_StationCore %>% 
   rename(
-    parentEventID = Site,
-    eventID = Station
+    parentEventID = eventID,
+    eventID = materialEntityID
   ) %>% 
-  mutate(
-    samplingProtocol =
-      paste(Gear, CoreDiameter, sep = "_")
-  ) %>% 
-  select(decimalLatitude,
-         decimalLongitude,
-         parentEventID,
-         eventID,
-         samplingProtocol,
-         geodeticDatum
-         )
-
-#core level event table
-Infauna_Core <- Infauna1 %>% 
-
-  rename(
-    parentEventID = Station,
-    eventID = CoreID
-  ) %>% 
-  mutate(
-    samplingProtocol = 
-      paste(Gear, CoreDiameter, sep = "_")
-  ) %>% 
+ 
   select(
     decimalLatitude,
     decimalLongitude,
@@ -95,10 +86,8 @@ Infauna_Core <- Infauna1 %>%
     maximumDepthInMeters,
     minimumDepthInMeters,
     geodeticDatum
+    #and fraction once it's split
   )
-View(Infauna_Core)
-
-
 
 
 
