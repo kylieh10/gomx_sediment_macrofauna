@@ -73,7 +73,7 @@ Infauna_StationCore <- Infauna %>%
 Infauna_Sample <- Infauna %>% 
   
   rename(
-    eventID = CoreID,
+    # eventID = CoreID,
     locationRemarks = Location,
     materialEntityID = SampleID,
     locationID = Station,
@@ -85,8 +85,11 @@ Infauna_Sample <- Infauna %>%
     geodeticDatum = "WGS84",
     eventDate = DateCollected %>% 
       as.Date("%m/%d/%Y"),
-    parentEventID = paste(Site, eventDate %>% as.character(), locationID, materialEntityID,
+    parentEventID = paste(Site, eventDate %>% as.character(), locationID, CoreID,
                     sep = "_") %>% stringr::str_remove_all(pattern = "-"),
+  #edited eventID, I originally had it as the coreID (which is represented by the parentEventID), rather than it representing the sample
+     eventID = paste(Site, eventDate %>% as.character(), locationID, materialEntityID,
+                     sep = "_") %>% stringr::str_remove_all(pattern = "-"),
     minimumDepthInMeters = Depth,
     maximumDepthInMeters = Depth,
     locality = paste("BOEM Lease Block", Site),
