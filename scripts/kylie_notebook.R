@@ -87,7 +87,7 @@ Infauna_Sample <- Infauna %>%
       as.Date("%m/%d/%Y"),
     parentEventID = paste(Site, eventDate %>% as.character(), locationID, CoreID,
                     sep = "_") %>% stringr::str_remove_all(pattern = "-"),
-  #edited eventID, I originally had it as the coreID (which is represented by the parentEventID), rather than it representing the sample
+  #edited eventID, I originally had it as the coreID (which is represented by the parent), rather than it representing the sample
      eventID = paste(Site, eventDate %>% as.character(), locationID, materialEntityID,
                      sep = "_") %>% stringr::str_remove_all(pattern = "-"),
     minimumDepthInMeters = Depth,
