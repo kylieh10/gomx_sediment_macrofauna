@@ -23,8 +23,6 @@ SedChem <- readr::read_csv(file = sb_filenames$url[3])
 
 Infauna_Occurrence <- Infauna %>% 
   
-  filter(!is.na(AphiaID)) %>% 
-  
   rename(
     materialEntityID = SampleID,
     locationID = Station
@@ -34,14 +32,14 @@ Infauna_Occurrence <- Infauna %>%
   mutate(
     eventDate = DateCollected %>% 
       as.Date("%m/%d/%Y"),
-    eventID = paste(Site, eventDate %>% as.character(), locationID, materialEntityID,
-                    sep = "_") %>% stringr::str_remove_all(pattern = "-"),
-    occurrenceStatus = "present",
+    eventID = paste(Site, eventDate %>% as.character(), materialEntityID,
+                    sep = "_") %>% str_remove_all(pattern = "-"),
+    # occurrenceStatus = "present",
+    occurrenceStatus = if_else(TaxaName == "No individuals", "absent", "present"),
     basisOfRecord = "HumanObservation",
     verbatimIdentification = TaxaName,
     individualCount = Abundance,
     associatedOccurrence = Coral,
-    # scientificNameID = paste("urn:lsid:marinespecies.org:taxname:", AphiaID, ", urn:lsid:itis.gov:itis_tsn::", TSN),
     taxonRank = NA
   ) %>% 
   
@@ -67,10 +65,10 @@ select(
 
 myAphiaID <- Infauna$AphiaID %>% na.omit() %>% unique()
 
-uniqueAphia <- lapply(myAphiaID, function(x) wm_record(id = x)) %>% 
+myAphiaID <- lapply(myAphiaID, function(x) wm_record(id = x)) %>% 
   data.table::rbindlist()
 
-uniqueAphiaSelectColumns <- select(.data = uniqueAphia,
+uniqueAphiaSelectColumns <- select(.data = myAphiaID,
 scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaID
 ) %>%
   rename(
@@ -81,9 +79,10 @@ scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaI
 
 
 #check separator for scientificNameID
-Occurrence <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>% 
+Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>% 
   mutate(
-    scientificNameID = paste(scientificNameID, "urn:lsid:itis.gov:itis_tsn::", TSN),
+    scientificNameID = paste(scientificNameID, "urn:lsid:itis.gov:itis_tsn:", TSN) %>% 
+      str_remove_all(pattern = " ")
     
   )
 

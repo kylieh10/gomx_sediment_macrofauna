@@ -21,7 +21,11 @@ Infauna <- readr::read_csv(file = sb_filenames$url[2])
 SedChem <- readr::read_csv(file = sb_filenames$url[3])
 
 # eMoF table ------------------
-       
+
+SedChem <- SedChem %>% 
+  mutate(
+    SampleID = CoreID
+  )
        
 Infauna_emof <- Infauna %>% 
   bind_rows(SedChem) %>%
@@ -34,24 +38,25 @@ Infauna_emof <- Infauna %>%
   mutate(
     eventDate = DateCollected %>%
       as.Date("%m/%d/%Y"),
-    #edit eventID, don't need station info (and make sure this works for sedchem cores)
-    #check NERC names
-    eventID = paste(Site, eventDate %>% as.character(), locationID, materialEntityID, sep = "_") %>%
+    eventID = paste(Site, eventDate %>% as.character(), materialEntityID, sep = "_") %>%
       stringr::str_remove_all(pattern = "-"),
-    maximumCoreDepth = str_split_i(Fraction, pattern = "-", i = 2) %>% readr::parse_number() %>% 
+    MAXCDIST = str_split_i(Fraction, pattern = "-", i = 2) %>% readr::parse_number() %>% 
       as.character(),
-    minimumCoreDepth = str_split_i(Fraction, pattern = "-", i = 1) %>% readr::parse_number() %>% 
+    MINCDIST = str_split_i(Fraction, pattern = "-", i = 1) %>% readr::parse_number() %>% 
       as.character(),
-    "proportionSand(63-2000um)" = as.character(Sand),
-    "proportionMud(<63um)" = as.character(Mud),
+    #proportion sand (63-2000um)
+    "PRPCL064" = as.character(Sand),
+   #proportion mud (<63um)
+    "PRPCL088" = as.character(Mud),
     "proportionGravel(>2000um)" = as.character(Gravel),
-    depthBelowSurface = as.character(Depth),
-    CoreWidth = as.character(CoreDiameter)
+    #depth below surface of water
+    ADEPZZ01 = as.character(Depth),
+    COREWDTH = as.character(CoreDiameter)
   ) %>% 
   
   pivot_longer(
-    cols = c("minimumCoreDepth", "maximumCoreDepth", "CoreWidth", "depthBelowSurface",
-             "proportionSand(63-2000um)", "proportionMud(<63um)", "proportionGravel(>2000um)"
+    cols = c("COREWDTH", "MINCDIST", "MAXCDIST", "ADEPZZ01",
+             "PRPCL064", "PRPCL088", "proportionGravel(>2000um)"
              ),
     names_to = "measurementType",
     values_to = "measurementValue",
@@ -59,28 +64,28 @@ Infauna_emof <- Infauna %>%
   ) %>% 
   
   mutate(
-    measurementTypeID = case_when(measurementType == "CoreWidth" ~ "http://vocab.nerc.ac.uk/collection/P01/current/COREWDTH/",
-                                  measurementType == "maximumCoreDepth" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/",
-                                  measurementType == "minimumCoreDepth" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/",
-                                  measurementType == "depthBelowSurface" ~ "http://vocab.nerc.ac.uk/collection/P01/current/ADEPZZ01/",
-                                  measurementType == "proportionSand(63-2000um)" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL064/",
-                                  measurementType == "proportionMud(<63um)" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL088/"
+    measurementTypeID = case_when(measurementType == "COREWDTH" ~ "http://vocab.nerc.ac.uk/collection/P01/current/COREWDTH/",
+                                  measurementType == "MAXCDIST" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/",
+                                  measurementType == "MINCDIST" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/",
+                                  measurementType == "ADEPZZ01" ~ "http://vocab.nerc.ac.uk/collection/P01/current/ADEPZZ01/",
+                                  measurementType == "PRPCL064" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL064/",
+                                  measurementType == "PRPCL088" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL088/"
                                   #measurementType == "proportionGravel(>2000um)" ~ "LINK"
     ),
-    measurementUnit = case_when(measurementType == "CoreWidth" ~ "cm",
-                                measurementType == "minimumCoreDepth" ~ "cm",
-                                measurementType == "maximumCoreDepth" ~ "cm",
-                                measurementType == "depthBelowSurface" ~ "m",
-                                measurementType == "proportionSand(63-2000um)" ~ "percent",
-                                measurementType == "proportionMud(<63um)" ~ "percent"
-                                #measurementType == "proportionGravel(>2000um)" ~ "percent"
+    measurementUnit = case_when(measurementType == "COREWDTH" ~ "ULCM",
+                                measurementType == "MINCDIST" ~ "ULCM",
+                                measurementType == "MAXCDIST" ~ "ULCM",
+                                measurementType == "ADEPZZ01" ~ "ULAA",
+                                measurementType == "PRPCL064" ~ "UPCT",
+                                measurementType == "PRPCL088" ~ "UPCT"
+                                #measurementType == "proportionGravel(>2000um)" ~ "UPCT"
     ),
-    measurementUnitID = case_when(measurementType == "CoreWidth" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
-                                  measurementType == "minimumCoreDepth" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
-                                  measurementType == "maximumCoreDepth" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
-                                  measurementType == "depthBelowSurface"~ "http://vocab.nerc.ac.uk/collection/P06/current/ULAA/",
-                                  measurementType == "proportionSand(63-2000um)" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
-                                  measurementType == "proportionMud(<63um)" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
+    measurementUnitID = case_when(measurementType == "COREWDTH" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
+                                  measurementType == "MINCDIST" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
+                                  measurementType == "MAXCDIST" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
+                                  measurementType == "ADEPZZ01"~ "http://vocab.nerc.ac.uk/collection/P06/current/ULAA/",
+                                  measurementType == "PRPCL064" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
+                                  measurementType == "PRPCL088" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
                                   #measurementType == "proportionGravel(>2000um)" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
     )
   ) %>% 

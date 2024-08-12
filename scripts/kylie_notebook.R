@@ -24,7 +24,7 @@ SedChem <- readr::read_csv(file = sb_filenames$url[3])
 
 #events representing unique cores (coreID)
 
-Infauna_StationCore <- Infauna %>%
+Core_Events <- Infauna %>%
   
   rename(
     locationRemarks = Location,
@@ -70,10 +70,9 @@ Infauna_StationCore <- Infauna %>%
 # Sample Level Event Table -------------------------------------------------
 
 
-Infauna_Sample <- Infauna %>% 
+Sample_Events <- Infauna %>% 
   
   rename(
-    # eventID = CoreID,
     locationRemarks = Location,
     materialEntityID = SampleID,
     locationID = Station,
