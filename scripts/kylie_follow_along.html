@@ -7,10 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kylie Hollis">
-<meta name="author" content="Stephen Formel">
 <meta name="dcterms.date" content="2024-08-12">
 
-<title>Demopoulos Lab OBIS Mobilization Workflow</title>
+<title>Kylie’s OBIS Mobilization Follow Along</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,53 +22,19 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="demopoulos_obis_mobilization_workflow_files/libs/clipboard/clipboard.min.js"></script>
-<script src="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/quarto.js"></script>
-<script src="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/popper.min.js"></script>
-<script src="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/anchor.min.js"></script>
-<link href="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="demopoulos_obis_mobilization_workflow_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="demopoulos_obis_mobilization_workflow_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="demopoulos_obis_mobilization_workflow_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="kylie_follow_along_files/libs/clipboard/clipboard.min.js"></script>
+<script src="kylie_follow_along_files/libs/quarto-html/quarto.js"></script>
+<script src="kylie_follow_along_files/libs/quarto-html/popper.min.js"></script>
+<script src="kylie_follow_along_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="kylie_follow_along_files/libs/quarto-html/anchor.min.js"></script>
+<link href="kylie_follow_along_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="kylie_follow_along_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="kylie_follow_along_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="kylie_follow_along_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="kylie_follow_along_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -82,42 +47,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose">Purpose</a>
+  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose">purpose</a>
   <ul class="collapse">
-  <li><a href="#obis-gbif-and-open-science" id="toc-obis-gbif-and-open-science" class="nav-link" data-scroll-target="#obis-gbif-and-open-science">OBIS, GBIF and Open Science</a></li>
-  <li><a href="#what-is-darwin-core" id="toc-what-is-darwin-core" class="nav-link" data-scroll-target="#what-is-darwin-core">What is Darwin Core?</a></li>
-  <li><a href="#what-is-eml" id="toc-what-is-eml" class="nav-link" data-scroll-target="#what-is-eml">What is EML?</a></li>
+  <li><a href="#obis-gbif-open-science" id="toc-obis-gbif-open-science" class="nav-link" data-scroll-target="#obis-gbif-open-science">OBIS, GBIF, Open Science</a></li>
+  <li><a href="#what-is-dwc" id="toc-what-is-dwc" class="nav-link" data-scroll-target="#what-is-dwc">what is DwC</a></li>
+  <li><a href="#what-is-eml" id="toc-what-is-eml" class="nav-link" data-scroll-target="#what-is-eml">what is eml</a></li>
   </ul></li>
-  <li><a href="#intended-user" id="toc-intended-user" class="nav-link" data-scroll-target="#intended-user">Intended User</a></li>
-  <li><a href="#dataset-background" id="toc-dataset-background" class="nav-link" data-scroll-target="#dataset-background">Dataset Background</a>
+  <li><a href="#intended-user" id="toc-intended-user" class="nav-link" data-scroll-target="#intended-user">intended user</a></li>
+  <li><a href="#dataset-background" id="toc-dataset-background" class="nav-link" data-scroll-target="#dataset-background">dataset background</a>
   <ul class="collapse">
-  <li><a href="#what-data-are-we-using-in-this-notebook" id="toc-what-data-are-we-using-in-this-notebook" class="nav-link" data-scroll-target="#what-data-are-we-using-in-this-notebook">What data are we using in this notebook?</a></li>
+  <li><a href="#what-data-are-we-using-in-this-notebook" id="toc-what-data-are-we-using-in-this-notebook" class="nav-link" data-scroll-target="#what-data-are-we-using-in-this-notebook">what data are we using in this notebook</a></li>
   </ul></li>
-  <li><a href="#getting-a-feel-for-the-data" id="toc-getting-a-feel-for-the-data" class="nav-link" data-scroll-target="#getting-a-feel-for-the-data">Getting a feel for the data</a>
+  <li><a href="#getting-a-feel-for-the-data" id="toc-getting-a-feel-for-the-data" class="nav-link" data-scroll-target="#getting-a-feel-for-the-data">getting a feel for the data</a>
   <ul class="collapse">
-  <li><a href="#modeling-the-data" id="toc-modeling-the-data" class="nav-link" data-scroll-target="#modeling-the-data">Modeling the Data</a></li>
-  <li><a href="#mapping-to-darwin-core" id="toc-mapping-to-darwin-core" class="nav-link" data-scroll-target="#mapping-to-darwin-core">Mapping to Darwin Core</a></li>
+  <li><a href="#modeling-the-data" id="toc-modeling-the-data" class="nav-link" data-scroll-target="#modeling-the-data">modeling the data</a></li>
+  <li><a href="#mapping-to-darwin-core" id="toc-mapping-to-darwin-core" class="nav-link" data-scroll-target="#mapping-to-darwin-core">mapping to darwin core</a></li>
   </ul></li>
-  <li><a href="#version-control-with-git" id="toc-version-control-with-git" class="nav-link" data-scroll-target="#version-control-with-git">Version Control with Git</a>
+  <li><a href="#version-control-with-git" id="toc-version-control-with-git" class="nav-link" data-scroll-target="#version-control-with-git">Version control with Git</a>
   <ul class="collapse">
   <li><a href="#gitlab-vs-github" id="toc-gitlab-vs-github" class="nav-link" data-scroll-target="#gitlab-vs-github">Gitlab vs Github</a></li>
   </ul></li>
-  <li><a href="#wrangling-the-data" id="toc-wrangling-the-data" class="nav-link" data-scroll-target="#wrangling-the-data">Wrangling the Data</a>
+  <li><a href="#wrangling-the-data" id="toc-wrangling-the-data" class="nav-link" data-scroll-target="#wrangling-the-data">wrangling the data</a>
   <ul class="collapse">
-  <li><a href="#using-r-to-get-the-data-from-sciencebase" id="toc-using-r-to-get-the-data-from-sciencebase" class="nav-link" data-scroll-target="#using-r-to-get-the-data-from-sciencebase">Using R to get the data from ScienceBase</a></li>
-  <li><a href="#using-r-to-transform-the-data" id="toc-using-r-to-transform-the-data" class="nav-link" data-scroll-target="#using-r-to-transform-the-data">Using R to transform the data</a>
+  <li><a href="#using-r-to-get-data-from-sciencebase" id="toc-using-r-to-get-data-from-sciencebase" class="nav-link" data-scroll-target="#using-r-to-get-data-from-sciencebase">using R to get data from ScienceBase</a></li>
+  <li><a href="#using-r-to-transform-data" id="toc-using-r-to-transform-data" class="nav-link" data-scroll-target="#using-r-to-transform-data">using R to transform data</a>
   <ul class="collapse">
-  <li><a href="#renaming-columns" id="toc-renaming-columns" class="nav-link" data-scroll-target="#renaming-columns">Renaming Columns</a></li>
-  <li><a href="#mutating-columns" id="toc-mutating-columns" class="nav-link" data-scroll-target="#mutating-columns">Mutating Columns</a></li>
-  <li><a href="#adding-new-metadata" id="toc-adding-new-metadata" class="nav-link" data-scroll-target="#adding-new-metadata">Adding new metadata</a></li>
-  <li><a href="#reconfiguring-tables" id="toc-reconfiguring-tables" class="nav-link" data-scroll-target="#reconfiguring-tables">Reconfiguring Tables</a></li>
-  <li><a href="#writing-data" id="toc-writing-data" class="nav-link" data-scroll-target="#writing-data">Writing Data</a></li>
+  <li><a href="#renaming-columns" id="toc-renaming-columns" class="nav-link" data-scroll-target="#renaming-columns">renaming columns</a></li>
+  <li><a href="#mutating-columns" id="toc-mutating-columns" class="nav-link" data-scroll-target="#mutating-columns">mutating columns</a></li>
+  <li><a href="#adding-new-metadata" id="toc-adding-new-metadata" class="nav-link" data-scroll-target="#adding-new-metadata">adding new metadata</a></li>
+  <li><a href="#reconfiguring-tables" id="toc-reconfiguring-tables" class="nav-link" data-scroll-target="#reconfiguring-tables">reconfiguring tables</a></li>
+  <li><a href="#writing-data" id="toc-writing-data" class="nav-link" data-scroll-target="#writing-data">writing data</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#uploading-to-the-ipt" id="toc-uploading-to-the-ipt" class="nav-link" data-scroll-target="#uploading-to-the-ipt">Uploading to the IPT</a></li>
   <li><a href="#creating-eml-metadata" id="toc-creating-eml-metadata" class="nav-link" data-scroll-target="#creating-eml-metadata">Creating EML Metadata</a></li>
   <li><a href="#publishing-to-obis-and-gbif" id="toc-publishing-to-obis-and-gbif" class="nav-link" data-scroll-target="#publishing-to-obis-and-gbif">Publishing to OBIS and GBIF</a></li>
-  <li><a href="#understanding-dataset-use-statistics" id="toc-understanding-dataset-use-statistics" class="nav-link" data-scroll-target="#understanding-dataset-use-statistics">Understanding Dataset Use Statistics</a></li>
+  <li><a href="#understanding-dataset-use-statistics" id="toc-understanding-dataset-use-statistics" class="nav-link" data-scroll-target="#understanding-dataset-use-statistics">Understanding dataset use statistics</a></li>
   </ul>
 </nav>
 </div>
@@ -125,8 +90,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Demopoulos Lab OBIS Mobilization Workflow</h1>
-<p class="subtitle lead">An elegant guide to mobilizing data to OBIS for the discerning member of the Demopoulos lab.</p>
+<h1 class="title">Kylie’s OBIS Mobilization Follow Along</h1>
+<p class="subtitle lead">An elegant guide to mobilizing data to OBIS for the discerning member of the Demopoulos Lab</p>
 </div>
 
 
@@ -134,10 +99,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
              <p>Kylie Hollis <a href="mailto:khollis@usgs.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/NA" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-             <p>Stephen Formel <a href="mailto:sformel@usgs.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-7418-1244" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
           </div>
   </div>
     
@@ -157,77 +121,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="purpose" class="level1">
-<h1>Purpose</h1>
-<section id="obis-gbif-and-open-science" class="level2">
-<h2 class="anchored" data-anchor-id="obis-gbif-and-open-science">OBIS, GBIF and Open Science</h2>
+<h1>purpose</h1>
+<section id="obis-gbif-open-science" class="level2">
+<h2 class="anchored" data-anchor-id="obis-gbif-open-science">OBIS, GBIF, Open Science</h2>
 </section>
-<section id="what-is-darwin-core" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-darwin-core">What is Darwin Core?</h2>
+<section id="what-is-dwc" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-dwc">what is DwC</h2>
 </section>
 <section id="what-is-eml" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-eml">What is EML?</h2>
+<h2 class="anchored" data-anchor-id="what-is-eml">what is eml</h2>
 </section>
 </section>
 <section id="intended-user" class="level1">
-<h1>Intended User</h1>
+<h1>intended user</h1>
 </section>
 <section id="dataset-background" class="level1">
-<h1>Dataset Background</h1>
+<h1>dataset background</h1>
 <section id="what-data-are-we-using-in-this-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="what-data-are-we-using-in-this-notebook">What data are we using in this notebook?</h2>
+<h2 class="anchored" data-anchor-id="what-data-are-we-using-in-this-notebook">what data are we using in this notebook</h2>
 </section>
 </section>
 <section id="getting-a-feel-for-the-data" class="level1">
-<h1>Getting a feel for the data</h1>
-<p>Does not need to be done on a computer.</p>
+<h1>getting a feel for the data</h1>
+<p>doesn’t need to be done on a computer</p>
 <section id="modeling-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="modeling-the-data">Modeling the Data</h2>
+<h2 class="anchored" data-anchor-id="modeling-the-data">modeling the data</h2>
 </section>
 <section id="mapping-to-darwin-core" class="level2">
-<h2 class="anchored" data-anchor-id="mapping-to-darwin-core">Mapping to Darwin Core</h2>
+<h2 class="anchored" data-anchor-id="mapping-to-darwin-core">mapping to darwin core</h2>
 </section>
 </section>
 <section id="version-control-with-git" class="level1">
-<h1>Version Control with Git</h1>
+<h1>Version control with Git</h1>
 <section id="gitlab-vs-github" class="level2">
 <h2 class="anchored" data-anchor-id="gitlab-vs-github">Gitlab vs Github</h2>
 </section>
 </section>
 <section id="wrangling-the-data" class="level1">
-<h1>Wrangling the Data</h1>
-<section id="using-r-to-get-the-data-from-sciencebase" class="level2">
-<h2 class="anchored" data-anchor-id="using-r-to-get-the-data-from-sciencebase">Using R to get the data from ScienceBase</h2>
-<p>To retrieve and use the data from ScienceBase, R packages <code>dplyr</code>, <code>sbtools</code>, and <code>stringr</code> will need to be loaded. After loading these packages, we will read the data in from ScienceBase.</p>
-<p>The ScienceBase dataset ID can be found at the end of the ScienceBase link for the dataset. If the full link to the data is “https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e”, then the identifier is <code>5a709594e4b0a9a2e9d88e4e</code>.</p>
-<p>Using the ScienceBase ID, we will get information about the data files using <code>item_list_files(sb_id = sb_id)</code> and assign it to an object <code>sb_filenames</code>.</p>
-<p>From the object <code>sb_filenames</code>, we will pull the column <code>url</code>. This column contains the url needed to download the data file from ScienceBase. Rather than download a local copy of the files, we will read it directly into the memory of our computer with <code>read_csv(file = sb_filenames$url[n])</code>, with n being the row number of the file we are reading.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sbtools)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sb_id <span class="ot">&lt;-</span> <span class="st">'5a709594e4b0a9a2e9d88e4e'</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sb_filenames <span class="ot">&lt;-</span> <span class="fu">item_list_files</span>(<span class="at">sb_id =</span> sb_id)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>BTA <span class="ot">&lt;-</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> sb_filenames<span class="sc">$</span>url[<span class="dv">1</span>])</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Infauna <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> sb_filenames<span class="sc">$</span>url[<span class="dv">2</span>])</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>SedChem <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> sb_filenames<span class="sc">$</span>url[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<h1>wrangling the data</h1>
+<section id="using-r-to-get-data-from-sciencebase" class="level2">
+<h2 class="anchored" data-anchor-id="using-r-to-get-data-from-sciencebase">using R to get data from ScienceBase</h2>
 </section>
-<section id="using-r-to-transform-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="using-r-to-transform-the-data">Using R to transform the data</h2>
+<section id="using-r-to-transform-data" class="level2">
+<h2 class="anchored" data-anchor-id="using-r-to-transform-data">using R to transform data</h2>
 <section id="renaming-columns" class="level3">
-<h3 class="anchored" data-anchor-id="renaming-columns">Renaming Columns</h3>
+<h3 class="anchored" data-anchor-id="renaming-columns">renaming columns</h3>
 </section>
 <section id="mutating-columns" class="level3">
-<h3 class="anchored" data-anchor-id="mutating-columns">Mutating Columns</h3>
+<h3 class="anchored" data-anchor-id="mutating-columns">mutating columns</h3>
 </section>
 <section id="adding-new-metadata" class="level3">
-<h3 class="anchored" data-anchor-id="adding-new-metadata">Adding new metadata</h3>
+<h3 class="anchored" data-anchor-id="adding-new-metadata">adding new metadata</h3>
 </section>
 <section id="reconfiguring-tables" class="level3">
-<h3 class="anchored" data-anchor-id="reconfiguring-tables">Reconfiguring Tables</h3>
+<h3 class="anchored" data-anchor-id="reconfiguring-tables">reconfiguring tables</h3>
 <section id="pivoting" class="level4">
 <h4 class="anchored" data-anchor-id="pivoting">Pivoting</h4>
 </section>
@@ -236,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="writing-data" class="level3">
-<h3 class="anchored" data-anchor-id="writing-data">Writing Data</h3>
+<h3 class="anchored" data-anchor-id="writing-data">writing data</h3>
 </section>
 </section>
 </section>
@@ -250,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Publishing to OBIS and GBIF</h1>
 </section>
 <section id="understanding-dataset-use-statistics" class="level1">
-<h1>Understanding Dataset Use Statistics</h1>
+<h1>Understanding dataset use statistics</h1>
 </section>
 
 </main>

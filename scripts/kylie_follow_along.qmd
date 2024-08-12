@@ -1,0 +1,48 @@
+---
+title: "Kylie's OBIS Mobilization Follow Along"
+subtitle: 'An elegant guide to mobilizing data to OBIS for the discerning member of the Demopoulos Lab'
+date: today
+author: 
+  name: "Kylie Hollis"
+  orcid: NA
+  email: "khollis@usgs.gov"
+format: 
+  html:
+    toc: true
+---
+
+# purpose
+## OBIS, GBIF, Open Science
+## what is DwC
+## what is eml
+
+# intended user
+
+# dataset background
+## what data are we using in this notebook
+
+# getting a feel for the data
+
+doesn't need to be done on a computer
+
+## modeling the data
+## mapping to darwin core
+
+# Version control with Git
+## Gitlab vs Github
+
+# wrangling the data
+## using R to get data from ScienceBase
+## using R to transform data
+### renaming columns
+### mutating columns
+### adding new metadata
+### reconfiguring tables
+#### Pivoting
+#### Joins
+### writing data
+
+# Uploading to the IPT
+# Creating EML Metadata
+# Publishing to OBIS and GBIF
+# Understanding dataset use statistics

@@ -36,6 +36,33 @@ format:
 
 # Wrangling the Data
 ## Using R to get the data from ScienceBase
+
+To retrieve and use the data from ScienceBase, R packages `dplyr`, `sbtools`, and `stringr` will need to be loaded. After loading these packages, we will read the data in from ScienceBase.
+
+The ScienceBase dataset ID can be found at the end of the ScienceBase link for the dataset. If the full link to the data is "https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e", then the identifier is `5a709594e4b0a9a2e9d88e4e`.
+
+Using the ScienceBase ID, we will get information about the data files using `item_list_files(sb_id = sb_id)` and assign it to an object `sb_filenames`.
+
+From the object `sb_filenames`, we will pull the column `url`. This column contains the url needed to download the data file from ScienceBase. Rather than download a local copy of the files, we will read it directly into the memory of our computer with `read_csv(file = sb_filenames$url[n])`, with n being the row number of the file we are reading.
+
+
+```{r}
+#| warning: false
+#| message: false
+
+library(dplyr)
+library(sbtools)
+library(stringr)
+
+sb_id <- '5a709594e4b0a9a2e9d88e4e'
+
+sb_filenames <- item_list_files(sb_id = sb_id)
+
+BTA <-readr::read_csv(file = sb_filenames$url[1])
+Infauna <- readr::read_csv(file = sb_filenames$url[2])
+SedChem <- readr::read_csv(file = sb_filenames$url[3])
+```
+
 ## Using R to transform the data
 ### Renaming Columns
 ### Mutating Columns
