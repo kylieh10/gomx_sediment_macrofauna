@@ -44,3 +44,8 @@ format:
 #### Pivoting
 #### Joins
 ### Writing Data
+
+# Uploading to the IPT
+# Creating EML Metadata
+# Publishing to OBIS and GBIF
+# Understanding Dataset Use Statistics
