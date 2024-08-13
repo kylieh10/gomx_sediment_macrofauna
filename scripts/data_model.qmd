@@ -1,0 +1,12 @@
+---
+title: "Data Model"
+author: "Stephen Formel"
+---
+
+## Use mermaid to make a diagram of the data model
+
+```{mermaid}
+
+
+
+```

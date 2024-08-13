@@ -1,0 +1,6 @@
+project:
+  output-dir: docs
+  
+format:
+  html:
+    toc: true
