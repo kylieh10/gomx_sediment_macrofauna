@@ -78,13 +78,13 @@ scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaI
   )
 
 
-#check separator for scientificNameID
+# in this case, TSN was provided, however it is not required to have both AphiaID and LSID
 Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>% 
   mutate(
-    scientificNameID = paste(scientificNameID, "urn:lsid:itis.gov:itis_tsn:", TSN) %>% 
-      str_remove_all(pattern = " ")
-    
+    TSN = paste("urn:lsid:itis.gov:itis_tsn:", TSN),
+    scientificNameID = paste(scientificNameID, TSN, sep = ", ")
   )
+
 
   
   
