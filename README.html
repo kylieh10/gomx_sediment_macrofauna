@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Stephen Formel">
 
-<title>Data Model</title>
+<title>readme</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,113 +23,33 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="data_model_files/libs/clipboard/clipboard.min.js"></script>
-<script src="data_model_files/libs/quarto-html/quarto.js"></script>
-<script src="data_model_files/libs/quarto-html/popper.min.js"></script>
-<script src="data_model_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="data_model_files/libs/quarto-html/anchor.min.js"></script>
-<link href="data_model_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="data_model_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="data_model_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="data_model_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="data_model_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<meta name="mermaid-theme" content="forest">
-<script src="data_model_files/libs/quarto-diagram/mermaid.min.js"></script>
-<script src="data_model_files/libs/quarto-diagram/mermaid-init.js"></script>
-<link href="data_model_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<script src="README_files/libs/clipboard/clipboard.min.js"></script>
+<script src="README_files/libs/quarto-html/quarto.js"></script>
+<script src="README_files/libs/quarto-html/popper.min.js"></script>
+<script src="README_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="README_files/libs/quarto-html/anchor.min.js"></script>
+<link href="README_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="README_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="README_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="README_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="README_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
 
-<body>
+<body class="fullcontent">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#use-mermaid-to-make-a-diagram-of-the-data-model" id="toc-use-mermaid-to-make-a-diagram-of-the-data-model" class="nav-link active" data-scroll-target="#use-mermaid-to-make-a-diagram-of-the-data-model">Use mermaid to make a diagram of the data model</a></li>
-  </ul>
-</nav>
-</div>
+
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Data Model</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Stephen Formel </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="use-mermaid-to-make-a-diagram-of-the-data-model" class="level2">
-<h2 class="anchored" data-anchor-id="use-mermaid-to-make-a-diagram-of-the-data-model">Use mermaid to make a diagram of the data model</h2>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">%%{init: {'theme':'base'}}%%
-
-graph RL
-
-    %% build event core box
-    subgraph Event Core
-        direction TB
-        subgraph core["eventID"]
-            direction TB
-            Site--&gt;Station--&gt;Core
-        end
-        subgraph sample["eventID"]
-            direction TB
-            Sample("Sample (Fraction)")
-        end
-        sample---|"parentEventID"|core
-        end
-    
-    %% build occurrence box
-    subgraph Occurrence["Occurrence Extension"]
-        direction TB    
-        taxonomy
-        occ1["occurrenceID - coral"]
-        occ2["occurrenceID - meiofauna"]
-
-        taxonomy--- occ1 &amp; occ2
-    end
-
-    Occurrence---|"eventID"| Sample
-    %% build eMOF box
-    subgraph eMOF["Extended Measurement Or Fact Extension"]
-    Fraction["Sediment Composition"]
-    end
-
-%% connect fraction to sample
-Fraction---|eventID| Sample
-  
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<section id="gomx_sediment_macrofauna" class="level1">
+<h1>gomx_sediment_macrofauna</h1>
+<p>This repository is to clean and standardize data on macrofaunal composition and behavior in the Gulf of Mexico, as well as the grain size of the sediment they live in. The data will be standardized to Darwin Core standards for publication to OBIS and GBIF. Original Data: https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e</p>
+<p>To see a rendered version of the current working notebook go to: <a href="https://kylieh10.github.io/gomx_sediment_macrofauna/demopoulos_obis_mobilization_workflow.html">https://kylieh10.github.io/gomx_sediment_macrofauna/demopoulos_obis_mobilization_workflow.html</a></p>
 </section>
 
 </main>

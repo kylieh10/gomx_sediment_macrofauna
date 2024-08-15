@@ -162,7 +162,71 @@ For some extensions, like the `extendedMeasurementOrFact` extension, imported da
 
 After renaming and mutating column names, we may have to pivot the table from wide to long format. For `extendedMeasurementOrFact` tables, all columns in wide format need to be pivoted into long format. 
 
-(maybe provide a visual for wide vs long?)
+Example of Wide Format
+
+```{r}
+#| label: tbl-tidyformat wide
+#| echo: false
+
+
+
+library(dplyr)
+library(flextable)
+#library(gt)
+
+example_df <- data.frame(species = c("Tilia americana",
+                                     "Pinus strobus"),
+                         site_01 = sample(0:5, size = 2),
+                         site_02 = sample(0:5, size = 2),
+                         site_03 = sample(0:5, size = 2))
+
+long_example <- tidyr::pivot_longer(data = example_df, cols = site_01:site_03, names_to = "site", values_to = "count")
+
+# flextable is awesome, but captions aren't working yet: <https://github.com/quarto-dev/quarto-cli/issues/1556
+# for now, just add print lines and maybe switch back in the future
+
+  flextable(example_df) %>%
+  set_caption(caption = "Wide Format") %>% 
+  fontsize(size = 9) %>% 
+  autofit() %>% 
+  theme_zebra()
+
+```
+
+Example of Long Format
+
+```{r}
+#| label: tbl-tidyformat long
+#| echo: false
+
+
+library(dplyr)
+library(flextable)
+#library(gt)
+
+example_df <- data.frame(species = c("Tilia americana",
+                                     "Pinus strobus"),
+                         site_01 = sample(0:5, size = 2),
+                         site_02 = sample(0:5, size = 2),
+                         site_03 = sample(0:5, size = 2))
+
+long_example <- tidyr::pivot_longer(data = example_df, cols = site_01:site_03, names_to = "site", values_to = "count")
+
+# flextable is awesome, but captions aren't working yet: <https://github.com/quarto-dev/quarto-cli/issues/1556
+# for now, just add print lines and maybe switch back in the future
+
+flextable(long_example) %>%
+  set_caption(caption = "Long Format") %>%
+  fontsize(size = 9) %>% 
+  autofit() %>%  theme_zebra()
+
+# example_df %>% 
+#   gt(caption = "Wide Format")
+# 
+# long_example %>% 
+#   gt(caption = "Long Format")
+
+```
 
 This is done using the `pivot_longer` function. We will specify what columns to include in the pivot with `cols = c(columnsToBeIncluded)`. All column names included in the `cols` function will now be under the new column  `measurementType`, named using `names_to` and the old columns' values under the new column `measurementValue`, named with `values_to`.
 

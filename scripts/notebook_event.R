@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# this is a fun little workspace :)
-
-
 # Load libraries ----------------------------------------------------------
 
 library(dplyr)
@@ -25,48 +21,48 @@ SedChem <- readr::read_csv(file = sb_filenames$url[3])
 
 #events representing unique cores (coreID)
 
-# Infauna_StationCore <- Infauna %>%
-#   
-#   rename(
-#     locationRemarks = Location,
-#     materialEntityID = CoreID,
-#     locationID = Station,
-#     decimalLatitude = Latitude,
-#     decimalLongitude = Longitude
-#   ) %>%
-#   
-#   mutate(
-#     geodeticDatum = "WGS84",
-#     eventDate = DateCollected %>% 
-#       as.Date("%m/%d/%Y"),
-#     eventID = paste(Site, eventDate %>% as.character(), locationID, materialEntityID,
-#                     sep = "_") %>% stringr::str_remove_all(pattern = "-"),
-#     minimumDepthInMeters = Depth,
-#     maximumDepthInMeters = Depth,
-#     locality = paste("BOEM Lease Block", Site),
-#     higherGeography = paste("Gulf of Mexico",
-#                             paste("BOEM Lease Block", 
-#                                   Site), sep = " | "),
-#     samplingProtocol = paste(Gear, CoreDiameter, sep = "_")
-#   ) %>%
-#   
-#   select(
-#     eventID,
-#     eventDate,
-#     materialEntityID,
-#     locationID,
-#     decimalLatitude,
-#     decimalLongitude,
-#     higherGeography,
-#     locality,
-#     geodeticDatum,
-#     minimumDepthInMeters,
-#     maximumDepthInMeters,
-#     samplingProtocol,
-#     locationRemarks
-#   ) %>%
-# 
-#   distinct()
+Infauna_StationCore <- Infauna %>%
+
+  rename(
+    locationRemarks = Location,
+    materialEntityID = CoreID,
+    locationID = Station,
+    decimalLatitude = Latitude,
+    decimalLongitude = Longitude
+  ) %>%
+
+  mutate(
+    geodeticDatum = "WGS84",
+    eventDate = DateCollected %>%
+      as.Date("%m/%d/%Y"),
+    eventID = paste(Site, eventDate %>% as.character(), locationID, materialEntityID,
+                    sep = "_") %>% stringr::str_remove_all(pattern = "-"),
+    minimumDepthInMeters = Depth,
+    maximumDepthInMeters = Depth,
+    locality = paste("BOEM Lease Block", Site),
+    higherGeography = paste("Gulf of Mexico",
+                            paste("BOEM Lease Block",
+                                  Site), sep = " | "),
+    samplingProtocol = paste(Gear, CoreDiameter, sep = "_")
+  ) %>%
+
+  select(
+    eventID,
+    eventDate,
+    materialEntityID,
+    locationID,
+    decimalLatitude,
+    decimalLongitude,
+    higherGeography,
+    locality,
+    geodeticDatum,
+    minimumDepthInMeters,
+    maximumDepthInMeters,
+    samplingProtocol,
+    locationRemarks
+  ) %>%
+
+  distinct()
 
 # Sample Level Event Table -------------------------------------------------
 
@@ -100,7 +96,7 @@ Infauna_Sample <- Infauna %>%
     higherGeography = paste("Gulf of Mexico",
                             paste("BOEM Lease Block", 
                                   Site), sep = " | "),
-    samplingProtocol = paste(Gear, CoreDiameter, sep = "_"),
+    samplingProtocol = Gear, #paste(Gear, CoreDiameter, sep = "_"),
     Fraction=str_extract(Fraction, pattern= ".*\\d"),
     #splitting fraction into new columns for upper limit and lower limit
     maximumDistancesAboveSurfaceInMeters = str_split_i(
@@ -129,4 +125,11 @@ Infauna_Sample <- Infauna %>%
   ) %>% 
   distinct()
 
-readr::write_csv(Infauna_Sample, "gomx_sediment_macrofauna_event.csv", na = "NA")
+
+# Bind tables and write out to csv ----------------------------------------
+
+bind_rows(Infauna_StationCore, Infauna_Sample) %>% 
+  select(parentEventID, eventID, everything()) %>% 
+  filter(parentEventID == "MC885_20140501_AT26144705046" | eventID == "MC885_20140501_AT26144705046") %>% 
+  slice(1:10) %>% 
+  readr::write_csv(paste0("gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"), na = "NA")
