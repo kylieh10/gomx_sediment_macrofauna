@@ -8,7 +8,7 @@
 
 <meta name="author" content="Kylie Hollis">
 <meta name="author" content="Stephen Formel">
-<meta name="dcterms.date" content="2024-08-14">
+<meta name="dcterms.date" content="2024-08-15">
 
 <title>DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow</title>
 <style>
@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 14, 2024</p>
+      <p class="date">August 15, 2024</p>
     </div>
   </div>
   
@@ -376,8 +376,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="joins" class="level4">
 <h4 class="anchored" data-anchor-id="joins">Joins</h4>
 <p>Joins are useful if data from multiple tables need to be included in the final table, like when we make a new table with WoRMS data. <code>left_join</code> will join table <code>x</code> to table <code>y</code> by values in the specified columns, so this function will join the tables <code>Infauna_Occurrence</code> and <code>uniqueAphiaSelectColumns</code> by matching <code>AphiaID</code> from both.</p>
+<p>After combining these tables and mutating our final iteration of <code>scientificNameID</code>, we have finished our <code>occurrence</code> table!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Occurrence_Ext <span class="ot">&lt;-</span> <span class="fu">left_join</span>(Infauna_Occurrence, uniqueAphiaSelectColumns, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"AphiaID"</span> <span class="ot">=</span> <span class="st">"AphiaID"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in this case, TSN was provided because it was listed in the original dataset, however it is not required to have both AphiaID and TSN</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Occurrence_Ext <span class="ot">&lt;-</span> <span class="fu">left_join</span>(Infauna_Occurrence, uniqueAphiaSelectColumns, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"AphiaID"</span> <span class="ot">=</span> <span class="st">"AphiaID"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">TSN =</span> <span class="fu">paste</span>(<span class="st">"urn:lsid:itis.gov:itis_tsn:"</span>, TSN),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">scientificNameID =</span> <span class="fu">paste</span>(scientificNameID, TSN, <span class="at">sep =</span> <span class="st">", "</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

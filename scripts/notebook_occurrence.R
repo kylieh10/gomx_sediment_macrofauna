@@ -24,9 +24,7 @@ SedChem <- readr::read_csv(file = sb_filenames$url[3])
 Infauna_Occurrence <- Infauna %>% 
   
   rename(
-    materialEntityID = SampleID,
-    locationID = Station
-    
+    materialEntityID = SampleID
   ) %>% 
   
   mutate(
@@ -34,7 +32,6 @@ Infauna_Occurrence <- Infauna %>%
       as.Date("%m/%d/%Y"),
     eventID = paste(Site, eventDate %>% as.character(), materialEntityID,
                     sep = "_") %>% str_remove_all(pattern = "-"),
-    # occurrenceStatus = "present",
     occurrenceStatus = if_else(TaxaName == "No individuals", "absent", "present"),
     basisOfRecord = "HumanObservation",
     verbatimIdentification = TaxaName,
@@ -78,13 +75,14 @@ scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaI
   )
 
 
-# in this case, TSN was provided, however it is not required to have both AphiaID and LSID
-Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>% 
+Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>%
   mutate(
     TSN = paste("urn:lsid:itis.gov:itis_tsn:", TSN),
     scientificNameID = paste(scientificNameID, TSN, sep = ", ")
-  )
+  ) %>% 
+  subset(select = -c(AphiaID,TSN))
 
+readr::write_csv(Occurrence_Ext, "gomx_sediment_macrofauna_occurrence.csv", na = "NA")
 
   
   

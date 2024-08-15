@@ -32,7 +32,6 @@ Infauna_emof <- Infauna %>%
   
   rename(
     materialEntityID = SampleID,
-    locationID = Station
   ) %>% 
   
   mutate(
@@ -100,8 +99,10 @@ Infauna_emof <- Infauna %>%
   ) %>% 
   
   distinct()
-                                  
-   
+
+
+# commented out until I confirm measurementTypeID and depth neccessity. 
+# readr::write_csv(Infauna_emof, "gomx_sediment_macrofauna_emof.csv", na = "NA")   
 
                                  
                                 
