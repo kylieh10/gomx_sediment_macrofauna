@@ -25,7 +25,6 @@ Infauna_StationCore <- Infauna %>%
   bind_rows(SedChem) %>% 
   
   rename(
-    locationRemarks = Location,
     materialEntityID = CoreID,
     locationID = Station,
     decimalLatitude = Latitude,
@@ -33,6 +32,7 @@ Infauna_StationCore <- Infauna %>%
   ) %>%
 
   mutate(
+    locationRemarks = paste(Location, "coral"),
     geodeticDatum = "WGS84",
     eventDate = DateCollected %>%
       as.Date("%m/%d/%Y"),
@@ -44,6 +44,12 @@ Infauna_StationCore <- Infauna %>%
     higherGeography = paste("Gulf of Mexico",
                             paste("BOEM Lease Block",
                                   Site), sep = " | "),
+    Fraction=str_extract(Fraction, pattern= ".*\\d"),
+    maximumDistancesAboveSurfaceInMeters = str_split_i(
+      Fraction, pattern = "-", i = 2) %>% 
+      as.numeric()/-100,
+    minimumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 1) %>% 
+      as.numeric()/-100,
     samplingProtocol = Gear
   ) %>%
 
@@ -70,7 +76,6 @@ Infauna_StationCore <- Infauna %>%
 Infauna_Sample <- Infauna %>% 
 
   rename(
-    locationRemarks = Location,
     materialEntityID = SampleID,
     locationID = Station,
     decimalLatitude = Latitude,
@@ -78,6 +83,7 @@ Infauna_Sample <- Infauna %>%
   ) %>%
   
   mutate(
+    locationRemarks = paste(Location, "coral"),
     geodeticDatum = "WGS84",
     eventDate = DateCollected %>% 
       as.Date("%m/%d/%Y"),
@@ -93,7 +99,6 @@ Infauna_Sample <- Infauna %>%
                                   Site), sep = " | "),
     samplingProtocol = Gear,
     Fraction=str_extract(Fraction, pattern= ".*\\d"),
-    #splitting fraction into new columns for upper limit and lower limit
     maximumDistancesAboveSurfaceInMeters = str_split_i(
         Fraction, pattern = "-", i = 2) %>% 
       as.numeric()/-100,
