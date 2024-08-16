@@ -1,5 +1,3 @@
-#this is my eMoF table :)
-## there's only events here, and no occurrence-associated measurements exist
 
 # Load libraries ----------------------------------------------------------
 
@@ -48,14 +46,11 @@ Infauna_emof <- Infauna %>%
    #proportion mud (<63um)
     "PRPCL088" = as.character(Mud),
     "proportionGravel(>2000um)" = as.character(Gravel),
-    #depth below surface of water
-    ADEPZZ01 = as.character(Depth),
     COREWDTH = as.character(CoreDiameter)
   ) %>% 
   
   pivot_longer(
-    cols = c("COREWDTH", "MINCDIST", "MAXCDIST", "ADEPZZ01",
-             "PRPCL064", "PRPCL088", "proportionGravel(>2000um)"
+    cols = c("COREWDTH", "MINCDIST", "MAXCDIST", "PRPCL064", "PRPCL088", "proportionGravel(>2000um)"
              ),
     names_to = "measurementType",
     values_to = "measurementValue",
@@ -66,7 +61,6 @@ Infauna_emof <- Infauna %>%
     measurementTypeID = case_when(measurementType == "COREWDTH" ~ "http://vocab.nerc.ac.uk/collection/P01/current/COREWDTH/",
                                   measurementType == "MAXCDIST" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/",
                                   measurementType == "MINCDIST" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/",
-                                  measurementType == "ADEPZZ01" ~ "http://vocab.nerc.ac.uk/collection/P01/current/ADEPZZ01/",
                                   measurementType == "PRPCL064" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL064/",
                                   measurementType == "PRPCL088" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL088/"
                                   #measurementType == "proportionGravel(>2000um)" ~ "LINK"
@@ -74,7 +68,6 @@ Infauna_emof <- Infauna %>%
     measurementUnit = case_when(measurementType == "COREWDTH" ~ "ULCM",
                                 measurementType == "MINCDIST" ~ "ULCM",
                                 measurementType == "MAXCDIST" ~ "ULCM",
-                                measurementType == "ADEPZZ01" ~ "ULAA",
                                 measurementType == "PRPCL064" ~ "UPCT",
                                 measurementType == "PRPCL088" ~ "UPCT"
                                 #measurementType == "proportionGravel(>2000um)" ~ "UPCT"
@@ -82,7 +75,6 @@ Infauna_emof <- Infauna %>%
     measurementUnitID = case_when(measurementType == "COREWDTH" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
                                   measurementType == "MINCDIST" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
                                   measurementType == "MAXCDIST" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
-                                  measurementType == "ADEPZZ01"~ "http://vocab.nerc.ac.uk/collection/P06/current/ULAA/",
                                   measurementType == "PRPCL064" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
                                   measurementType == "PRPCL088" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
                                   #measurementType == "proportionGravel(>2000um)" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
@@ -98,11 +90,8 @@ Infauna_emof <- Infauna %>%
     measurementUnitID
   ) %>% 
   
-  distinct()
-
-
-# commented out until I confirm measurementTypeID and depth neccessity. 
-# readr::write_csv(Infauna_emof, "gomx_sediment_macrofauna_emof.csv", na = "NA")   
-
+  distinct() %>% 
+  slice(1:6, 899:908) %>% 
+  readr::write_csv(paste0("gomx_sediment_macrofauna_emof_", Sys.Date(), ".csv"), na = "NA")   
                                  
                                 

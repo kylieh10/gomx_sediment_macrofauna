@@ -167,7 +167,7 @@ Example of Wide Format
 ```{r}
 #| label: tbl-tidyformat wide
 #| echo: false
-
+#| warning: false
 
 
 library(dplyr)
@@ -198,6 +198,7 @@ Example of Long Format
 ```{r}
 #| label: tbl-tidyformat long
 #| echo: false
+#| warning: false
 
 
 library(dplyr)

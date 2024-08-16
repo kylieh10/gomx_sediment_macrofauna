@@ -1,0 +1,17 @@
+eventID,measurementType,measurementTypeID,measurementValue,measurementUnit,measurementUnitID
+MC885_20140501_AT26144705046A,COREWDTH,http://vocab.nerc.ac.uk/collection/P01/current/COREWDTH/,6.349999905,ULCM,http://vocab.nerc.ac.uk/collection/P06/current/ULCM/
+MC885_20140501_AT26144705046A,MINCDIST,http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/,0,ULCM,http://vocab.nerc.ac.uk/collection/P06/current/ULCM/
+MC885_20140501_AT26144705046A,MAXCDIST,http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/,2,ULCM,http://vocab.nerc.ac.uk/collection/P06/current/ULCM/
+MC885_20140501_AT26144705046B,COREWDTH,http://vocab.nerc.ac.uk/collection/P01/current/COREWDTH/,6.349999905,ULCM,http://vocab.nerc.ac.uk/collection/P06/current/ULCM/
+MC885_20140501_AT26144705046B,MINCDIST,http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/,2,ULCM,http://vocab.nerc.ac.uk/collection/P06/current/ULCM/
+MC885_20140501_AT26144705046B,MAXCDIST,http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/,5,ULCM,http://vocab.nerc.ac.uk/collection/P06/current/ULCM/
+AT357_20130629_NA028107PC3,MINCDIST,http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/,0,ULCM,http://vocab.nerc.ac.uk/collection/P06/current/ULCM/
+AT357_20130629_NA028107PC3,MAXCDIST,http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/,10,ULCM,http://vocab.nerc.ac.uk/collection/P06/current/ULCM/
+AT357_20130629_NA028107PC3,PRPCL064,http://vocab.nerc.ac.uk/collection/P01/current/PRPCL064/,13.91563698,UPCT,http://vocab.nerc.ac.uk/collection/P06/current/UPCT/
+AT357_20130629_NA028107PC3,PRPCL088,http://vocab.nerc.ac.uk/collection/P01/current/PRPCL088/,69.17922299,UPCT,http://vocab.nerc.ac.uk/collection/P06/current/UPCT/
+AT357_20130629_NA028107PC3,proportionGravel(>2000um),NA,16.90514002,NA,NA
+MC885_20140501_AT26144705044,MINCDIST,http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/,0,ULCM,http://vocab.nerc.ac.uk/collection/P06/current/ULCM/
+MC885_20140501_AT26144705044,MAXCDIST,http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/,10,ULCM,http://vocab.nerc.ac.uk/collection/P06/current/ULCM/
+MC885_20140501_AT26144705044,PRPCL064,http://vocab.nerc.ac.uk/collection/P01/current/PRPCL064/,4.813931653,UPCT,http://vocab.nerc.ac.uk/collection/P06/current/UPCT/
+MC885_20140501_AT26144705044,PRPCL088,http://vocab.nerc.ac.uk/collection/P01/current/PRPCL088/,85.35796488,UPCT,http://vocab.nerc.ac.uk/collection/P06/current/UPCT/
+MC885_20140501_AT26144705044,proportionGravel(>2000um),NA,9.828103462,NA,NA

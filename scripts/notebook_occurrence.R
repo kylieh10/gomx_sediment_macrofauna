@@ -1,4 +1,3 @@
-# starting the occurrence extension table
 
 # Load libraries ----------------------------------------------------------
 
@@ -69,7 +68,7 @@ uniqueAphiaSelectColumns <- select(.data = myAphiaID,
 scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaID
 ) %>%
   rename(
-    scientficName = scientificname,
+    scientificName = scientificname,
     taxonRank = rank,
     scientificNameID = lsid
   )
@@ -80,11 +79,15 @@ Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c
     TSN = paste("urn:lsid:itis.gov:itis_tsn:", TSN),
     scientificNameID = paste(scientificNameID, TSN, sep = ", ")
   ) %>% 
-  subset(select = -c(AphiaID,TSN))
-
-readr::write_csv(Occurrence_Ext, "gomx_sediment_macrofauna_occurrence.csv", na = "NA")
-
-  
+  subset(select = -c(AphiaID,TSN)) %>% 
+  select(eventID,
+         occurrenceID,
+         eventDate,
+         scientificName,
+         scientificNameID,
+         everything()) %>%
+  slice(1:10) %>% 
+  readr::write_csv(paste0("gomx_sediment_macrofauna_occurrence_", Sys.Date(), ".csv"), na = "NA")
   
   
   
