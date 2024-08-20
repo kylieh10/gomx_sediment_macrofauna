@@ -27,7 +27,6 @@ SedChem <- SedChem %>%
        
 Infauna_emof <- Infauna %>% 
   bind_rows(SedChem) %>%
-  
   rename(
     materialEntityID = SampleID,
   ) %>% 
@@ -78,6 +77,13 @@ Infauna_emof <- Infauna %>%
                                   measurementType == "Proportion by volume of particles (63-2000um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
                                   measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
                                   #measurementType == "proportionGravel(>2000um)" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
+    ), 
+    measurementRemarks = case_when(measurementType == 'Thickness (transverse) of core' ~ '"CoreDiameter"',
+                                   measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ 'lower value of "Fraction"',
+                                   measurementType == 'Depth (spatial coordinate) maximum relative to bed surface in the bed' ~ 'upper value of "Fraction"',
+                                   measurementType == 'Proportion by volume of particles (63-2000um) in the sediment' ~ '"Sand"',
+                                   measurementType == 'Proportion by volume of particles (0-63um) in the sediment' ~ '"Mud"'
+                                   # measurementType == 'proportionGravel(>2000um)' ~ '"Gravel"')
     )
   ) %>% 
   
@@ -87,7 +93,8 @@ Infauna_emof <- Infauna %>%
     measurementTypeID,
     measurementValue,
     measurementUnit,
-    measurementUnitID
+    measurementUnitID,
+    measurementRemarks
   ) %>% 
   
   distinct() %>% 

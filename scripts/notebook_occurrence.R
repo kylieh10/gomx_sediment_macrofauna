@@ -35,8 +35,11 @@ Infauna_Occurrence <- Infauna %>%
     basisOfRecord = "HumanObservation",
     verbatimIdentification = TaxaName,
     individualCount = Abundance,
-    associatedOccurrence = Coral,
-    taxonRank = NA
+    associatedTaxa = paste("livesNear:", Coral),
+    taxonRank = NA,
+    occurrenceRemarks = case_when(Location == "Near" ~ paste("within 1 meter of", Coral),
+                                  Location == "Background" ~ paste("14 to 1000 meters away from", Coral)
+    )
   ) %>% 
   
   group_by(materialEntityID) %>% 
@@ -54,7 +57,8 @@ select(
   occurrenceStatus,
   basisOfRecord,
   individualCount,
-  associatedOccurrence,
+  associatedTaxa,
+  occurrenceRemarks,
   AphiaID,
   TSN
 )
@@ -86,7 +90,6 @@ Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c
          scientificName,
          scientificNameID,
          everything()) %>%
-  slice(1:10) %>% 
   readr::write_csv(paste0("gomx_sediment_macrofauna_occurrence_", Sys.Date(), ".csv"), na = "NA")
   
   

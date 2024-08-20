@@ -28,7 +28,8 @@ Infauna_StationCore <- Infauna %>%
     materialEntityID = CoreID,
     locationID = Station,
     decimalLatitude = Latitude,
-    decimalLongitude = Longitude
+    decimalLongitude = Longitude,
+    eventRemarks = EnvironmentalGroup
   ) %>%
 
   mutate(
@@ -101,9 +102,9 @@ Infauna_Sample <- Infauna %>%
     Fraction=str_extract(Fraction, pattern= ".*\\d"),
     maximumDistancesAboveSurfaceInMeters = str_split_i(
         Fraction, pattern = "-", i = 2) %>% 
-      as.numeric()/-100,
+      as.integer()/-100,
     minimumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 1) %>% 
-      as.numeric()/-100
+      as.integer()/-100
       ) %>% 
   
   select(
@@ -130,7 +131,4 @@ Infauna_Sample <- Infauna %>%
 # Bind tables and write out to csv ----------------------------------------
 
 Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>% 
-  select(parentEventID, eventID, everything()) %>% 
-  filter(eventID == "MC885_20140501_AT26144705046"|eventID == "VK826_20090903_RB13D466PC03"|parentEventID == "MC885_20140501_AT26144705046"|parentEventID == "VK826_20090903_RB13D466PC03") %>%
-  slice(1:10) %>%
   readr::write_csv(paste0("gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"), na = "NA")
