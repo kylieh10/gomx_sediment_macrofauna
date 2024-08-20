@@ -37,20 +37,20 @@ Infauna_emof <- Infauna %>%
       as.Date("%m/%d/%Y"),
     eventID = paste(Site, eventDate %>% as.character(), materialEntityID, sep = "_") %>%
       stringr::str_remove_all(pattern = "-"),
-    MAXCDIST = str_split_i(Fraction, pattern = "-", i = 2) %>% readr::parse_number() %>% 
+    "Depth (spatial coordinate) maximum relative to bed surface in the bed" = str_split_i(Fraction, pattern = "-", i = 2) %>% readr::parse_number() %>% 
       as.character(),
-    MINCDIST = str_split_i(Fraction, pattern = "-", i = 1) %>% readr::parse_number() %>% 
+    "Depth (spatial coordinate) minimum relative to bed surface in the bed" = str_split_i(Fraction, pattern = "-", i = 1) %>% readr::parse_number() %>% 
       as.character(),
     #proportion sand (63-2000um)
-    "PRPCL064" = as.character(Sand),
+    "Proportion by volume of particles (63-2000um) in the sediment" = as.character(Sand),
    #proportion mud (<63um)
-    "PRPCL088" = as.character(Mud),
+    "Proportion by volume of particles (0-63um) in the sediment" = as.character(Mud),
     "proportionGravel(>2000um)" = as.character(Gravel),
-    COREWDTH = as.character(CoreDiameter)
+   "Thickness (transverse) of core" = as.character(CoreDiameter)
   ) %>% 
   
   pivot_longer(
-    cols = c("COREWDTH", "MINCDIST", "MAXCDIST", "PRPCL064", "PRPCL088", "proportionGravel(>2000um)"
+    cols = c("Thickness (transverse) of core", "Depth (spatial coordinate) minimum relative to bed surface in the bed", "Depth (spatial coordinate) maximum relative to bed surface in the bed", "Proportion by volume of particles (63-2000um) in the sediment", "Proportion by volume of particles (0-63um) in the sediment", "proportionGravel(>2000um)"
              ),
     names_to = "measurementType",
     values_to = "measurementValue",
@@ -58,25 +58,25 @@ Infauna_emof <- Infauna %>%
   ) %>% 
   
   mutate(
-    measurementTypeID = case_when(measurementType == "COREWDTH" ~ "http://vocab.nerc.ac.uk/collection/P01/current/COREWDTH/",
-                                  measurementType == "MAXCDIST" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/",
-                                  measurementType == "MINCDIST" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/",
-                                  measurementType == "PRPCL064" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL064/",
-                                  measurementType == "PRPCL088" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL088/"
+    measurementTypeID = case_when(measurementType == "Thickness (transverse) of core" ~ "http://vocab.nerc.ac.uk/collection/P01/current/COREWDTH/",
+                                  measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/",
+                                  measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/",
+                                  measurementType == "Proportion by volume of particles (63-2000um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL064/",
+                                  measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL088/"
                                   #measurementType == "proportionGravel(>2000um)" ~ "LINK"
     ),
-    measurementUnit = case_when(measurementType == "COREWDTH" ~ "ULCM",
-                                measurementType == "MINCDIST" ~ "ULCM",
-                                measurementType == "MAXCDIST" ~ "ULCM",
-                                measurementType == "PRPCL064" ~ "UPCT",
-                                measurementType == "PRPCL088" ~ "UPCT"
+    measurementUnit = case_when(measurementType == "Thickness (transverse) of core" ~ "ULCM",
+                                measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "ULCM",
+                                measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "ULCM",
+                                measurementType == "Proportion by volume of particles (63-2000um) in the sediment" ~ "UPCT",
+                                measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "UPCT"
                                 #measurementType == "proportionGravel(>2000um)" ~ "UPCT"
     ),
-    measurementUnitID = case_when(measurementType == "COREWDTH" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
-                                  measurementType == "MINCDIST" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
-                                  measurementType == "MAXCDIST" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
-                                  measurementType == "PRPCL064" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
-                                  measurementType == "PRPCL088" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
+    measurementUnitID = case_when(measurementType == "Thickness (transverse) of core" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
+                                  measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
+                                  measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
+                                  measurementType == "Proportion by volume of particles (63-2000um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
+                                  measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
                                   #measurementType == "proportionGravel(>2000um)" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
     )
   ) %>% 
