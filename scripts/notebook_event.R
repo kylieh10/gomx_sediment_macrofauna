@@ -130,6 +130,7 @@ Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>%
     maximumDistancesAboveSurfaceInMeters,
     materialEntityID
   ) %>% 
-  distinct() %>% 
+  distinct()
+
+Infauna_Event %>% 
   write.csv(paste0("gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"))
-  # readr::write_csv(paste0("gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"), na = "NA")
