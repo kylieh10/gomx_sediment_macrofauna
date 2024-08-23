@@ -16,3 +16,21 @@ website:
         text: Main Notebook
       - href: data_model.qmd
         text: Data Model
+      - href: purpose_page.qmd
+        text: Why are we doing this?
+      - href: intended_user_page.qmd
+        text: Intended User
+      - href: dataset_background_page.qmd
+        text: Dataset Background
+      - href: getting_a_feel_for_the_data.qmd
+        text: Getting a Feel for the Data
+      - href: version_control.qmd
+        text: Version Control with Git
+      - href: wrangling_data_page.qmd
+        text: Wrangling the Data
+      - href: 
+      
+      
+      
+      
+      
