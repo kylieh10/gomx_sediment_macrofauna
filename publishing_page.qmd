@@ -1,0 +1,5 @@
+---
+title: "Publishing to GBIF and OBIS"
+format: html
+editor: visual
+---
