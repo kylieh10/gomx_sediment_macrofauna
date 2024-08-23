@@ -1,6 +1,18 @@
 project:
+  type: website
   output-dir: docs
   
 format:
   html:
     toc: true
+
+website:
+  sidebar:
+    style: "docked"
+    background: green
+    search: true    
+    contents:
+      - href: demopoulos_obis_mobilization_workflow.qmd
+        text: Main Notebook
+      - href: data_model.qmd
+        text: Data Model

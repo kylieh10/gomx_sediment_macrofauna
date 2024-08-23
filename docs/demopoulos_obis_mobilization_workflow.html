@@ -8,7 +8,7 @@
 
 <meta name="author" content="Kylie Hollis">
 <meta name="author" content="Stephen Formel">
-<meta name="dcterms.date" content="2024-08-16">
+<meta name="dcterms.date" content="2024-08-23">
 
 <title>DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow</title>
 <style>
@@ -60,28 +60,106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="demopoulos_obis_mobilization_workflow_files/libs/clipboard/clipboard.min.js"></script>
-<script src="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/quarto.js"></script>
-<script src="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/popper.min.js"></script>
-<script src="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/anchor.min.js"></script>
-<link href="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="demopoulos_obis_mobilization_workflow_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="demopoulos_obis_mobilization_workflow_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="demopoulos_obis_mobilization_workflow_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="demopoulos_obis_mobilization_workflow_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="demopoulos_obis_mobilization_workflow_files/libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
-<script src="demopoulos_obis_mobilization_workflow_files/libs/tabwid-1.1.3/tabwid.js"></script>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
+
 
 
 </head>
 
-<body>
+<body class="nav-sidebar docked">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./demopoulos_obis_mobilization_workflow.html">Main Notebook</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./demopoulos_obis_mobilization_workflow.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Main Notebook</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Model</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
   <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose">Purpose</a>
@@ -126,7 +204,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#understanding-dataset-use-statistics" id="toc-understanding-dataset-use-statistics" class="nav-link" data-scroll-target="#understanding-dataset-use-statistics">Understanding Dataset Use Statistics</a></li>
   </ul>
 </nav>
-</div>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -150,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 16, 2024</p>
+      <p class="date">August 23, 2024</p>
     </div>
   </div>
   
@@ -304,11 +383,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>After renaming and mutating column names, we may have to pivot the table from wide to long format. For <code>extendedMeasurementOrFact</code> tables, all columns in wide format need to be pivoted into long format.</p>
 <p>Example of Wide Format</p>
 <p>::: {#tbl-tidyformat wide .cell} ::: {.cell-output-display}</p>
-<div class="tabwid"><style>.cl-712569de{}.cl-7116a372{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7116a390{font-family:'Helvetica';font-size:9pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-711d1ab8{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-711d1acc{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-711d3b88{width:1.133in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-711d3b9c{width:0.778in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-711d3b9d{width:1.133in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-711d3ba6{width:0.778in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-711d3ba7{width:1.133in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-711d3bb0{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-712569de"><thead><tr style="overflow-wrap:break-word;"><th class="cl-711d3b88"><p class="cl-711d1ab8"><span class="cl-7116a372">species</span></p></th><th class="cl-711d3b9c"><p class="cl-711d1acc"><span class="cl-7116a372">site_01</span></p></th><th class="cl-711d3b9c"><p class="cl-711d1acc"><span class="cl-7116a372">site_02</span></p></th><th class="cl-711d3b9c"><p class="cl-711d1acc"><span class="cl-7116a372">site_03</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-711d3b9d"><p class="cl-711d1ab8"><span class="cl-7116a390">Tilia americana</span></p></td><td class="cl-711d3ba6"><p class="cl-711d1acc"><span class="cl-7116a390">5</span></p></td><td class="cl-711d3ba6"><p class="cl-711d1acc"><span class="cl-7116a390">0</span></p></td><td class="cl-711d3ba6"><p class="cl-711d1acc"><span class="cl-7116a390">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-711d3ba7"><p class="cl-711d1ab8"><span class="cl-7116a390">Pinus strobus</span></p></td><td class="cl-711d3bb0"><p class="cl-711d1acc"><span class="cl-7116a390">4</span></p></td><td class="cl-711d3bb0"><p class="cl-711d1acc"><span class="cl-7116a390">3</span></p></td><td class="cl-711d3bb0"><p class="cl-711d1acc"><span class="cl-7116a390">1</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-6ec7c926{}.cl-6ebbaaec{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6ebbab0a{font-family:'Arial';font-size:9pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6ec04016{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6ec04020{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6ec05d12{width:1.133in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ec05d1c{width:0.778in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ec05d26{width:1.133in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ec05d27{width:0.778in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ec05d30{width:1.133in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ec05d31{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-6ec7c926"><thead><tr style="overflow-wrap:break-word;"><th class="cl-6ec05d12"><p class="cl-6ec04016"><span class="cl-6ebbaaec">species</span></p></th><th class="cl-6ec05d1c"><p class="cl-6ec04020"><span class="cl-6ebbaaec">site_01</span></p></th><th class="cl-6ec05d1c"><p class="cl-6ec04020"><span class="cl-6ebbaaec">site_02</span></p></th><th class="cl-6ec05d1c"><p class="cl-6ec04020"><span class="cl-6ebbaaec">site_03</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-6ec05d26"><p class="cl-6ec04016"><span class="cl-6ebbab0a">Tilia americana</span></p></td><td class="cl-6ec05d27"><p class="cl-6ec04020"><span class="cl-6ebbab0a">4</span></p></td><td class="cl-6ec05d27"><p class="cl-6ec04020"><span class="cl-6ebbab0a">4</span></p></td><td class="cl-6ec05d27"><p class="cl-6ec04020"><span class="cl-6ebbab0a">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6ec05d30"><p class="cl-6ec04016"><span class="cl-6ebbab0a">Pinus strobus</span></p></td><td class="cl-6ec05d31"><p class="cl-6ec04020"><span class="cl-6ebbab0a">2</span></p></td><td class="cl-6ec05d31"><p class="cl-6ec04020"><span class="cl-6ebbab0a">1</span></p></td><td class="cl-6ec05d31"><p class="cl-6ec04020"><span class="cl-6ebbab0a">4</span></p></td></tr></tbody></table></div>
 <p>::: :::</p>
 <p>Example of Long Format</p>
 <p>::: {#tbl-tidyformat long .cell} ::: {.cell-output-display}</p>
-<div class="tabwid"><style>.cl-715b4e50{}.cl-715294c2{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-715294cc{font-family:'Helvetica';font-size:9pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-71567fba{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-71567fc4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-71569496{width:1.133in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-715694a0{width:0.688in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-715694aa{width:0.659in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-715694ab{width:1.133in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-715694b4{width:0.688in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-715694b5{width:0.659in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-715694be{width:1.133in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-715694bf{width:0.688in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-715694c8{width:0.659in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-715b4e50"><thead><tr style="overflow-wrap:break-word;"><th class="cl-71569496"><p class="cl-71567fba"><span class="cl-715294c2">species</span></p></th><th class="cl-715694a0"><p class="cl-71567fba"><span class="cl-715294c2">site</span></p></th><th class="cl-715694aa"><p class="cl-71567fc4"><span class="cl-715294c2">count</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-715694ab"><p class="cl-71567fba"><span class="cl-715294cc">Tilia americana</span></p></td><td class="cl-715694b4"><p class="cl-71567fba"><span class="cl-715294cc">site_01</span></p></td><td class="cl-715694b5"><p class="cl-71567fc4"><span class="cl-715294cc">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-715694be"><p class="cl-71567fba"><span class="cl-715294cc">Tilia americana</span></p></td><td class="cl-715694bf"><p class="cl-71567fba"><span class="cl-715294cc">site_02</span></p></td><td class="cl-715694c8"><p class="cl-71567fc4"><span class="cl-715294cc">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-715694ab"><p class="cl-71567fba"><span class="cl-715294cc">Tilia americana</span></p></td><td class="cl-715694b4"><p class="cl-71567fba"><span class="cl-715294cc">site_03</span></p></td><td class="cl-715694b5"><p class="cl-71567fc4"><span class="cl-715294cc">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-715694be"><p class="cl-71567fba"><span class="cl-715294cc">Pinus strobus</span></p></td><td class="cl-715694bf"><p class="cl-71567fba"><span class="cl-715294cc">site_01</span></p></td><td class="cl-715694c8"><p class="cl-71567fc4"><span class="cl-715294cc">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-715694ab"><p class="cl-71567fba"><span class="cl-715294cc">Pinus strobus</span></p></td><td class="cl-715694b4"><p class="cl-71567fba"><span class="cl-715294cc">site_02</span></p></td><td class="cl-715694b5"><p class="cl-71567fc4"><span class="cl-715294cc">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-715694be"><p class="cl-71567fba"><span class="cl-715294cc">Pinus strobus</span></p></td><td class="cl-715694bf"><p class="cl-71567fba"><span class="cl-715294cc">site_03</span></p></td><td class="cl-715694c8"><p class="cl-71567fc4"><span class="cl-715294cc">0</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-6eeb82ee{}.cl-6ee1c60a{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6ee1c61e{font-family:'Arial';font-size:9pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6ee58d26{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6ee58d30{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6ee5a482{width:1.133in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ee5a48c{width:0.688in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ee5a496{width:0.659in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ee5a4a0{width:1.133in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ee5a4a1{width:0.688in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ee5a4a2{width:0.659in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ee5a4aa{width:1.133in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ee5a4ab{width:0.688in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6ee5a4b4{width:0.659in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-6eeb82ee"><thead><tr style="overflow-wrap:break-word;"><th class="cl-6ee5a482"><p class="cl-6ee58d26"><span class="cl-6ee1c60a">species</span></p></th><th class="cl-6ee5a48c"><p class="cl-6ee58d26"><span class="cl-6ee1c60a">site</span></p></th><th class="cl-6ee5a496"><p class="cl-6ee58d30"><span class="cl-6ee1c60a">count</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-6ee5a4a0"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">Tilia americana</span></p></td><td class="cl-6ee5a4a1"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">site_01</span></p></td><td class="cl-6ee5a4a2"><p class="cl-6ee58d30"><span class="cl-6ee1c61e">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6ee5a4aa"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">Tilia americana</span></p></td><td class="cl-6ee5a4ab"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">site_02</span></p></td><td class="cl-6ee5a4b4"><p class="cl-6ee58d30"><span class="cl-6ee1c61e">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6ee5a4a0"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">Tilia americana</span></p></td><td class="cl-6ee5a4a1"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">site_03</span></p></td><td class="cl-6ee5a4a2"><p class="cl-6ee58d30"><span class="cl-6ee1c61e">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6ee5a4aa"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">Pinus strobus</span></p></td><td class="cl-6ee5a4ab"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">site_01</span></p></td><td class="cl-6ee5a4b4"><p class="cl-6ee58d30"><span class="cl-6ee1c61e">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6ee5a4a0"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">Pinus strobus</span></p></td><td class="cl-6ee5a4a1"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">site_02</span></p></td><td class="cl-6ee5a4a2"><p class="cl-6ee58d30"><span class="cl-6ee1c61e">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6ee5a4aa"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">Pinus strobus</span></p></td><td class="cl-6ee5a4ab"><p class="cl-6ee58d26"><span class="cl-6ee1c61e">site_03</span></p></td><td class="cl-6ee5a4b4"><p class="cl-6ee58d30"><span class="cl-6ee1c61e">2</span></p></td></tr></tbody></table></div>
 <p>::: :::</p>
 <p>This is done using the <code>pivot_longer</code> function. We will specify what columns to include in the pivot with <code>cols = c(columnsToBeIncluded)</code>. All column names included in the <code>cols</code> function will now be under the new column <code>measurementType</code>, named using <code>names_to</code> and the old columns’ values under the new column <code>measurementValue</code>, named with <code>values_to</code>.</p>
 <p>We use pivot to wrangle the eMoF table, and the pertinent chunk of code looks something like this:</p>
@@ -412,10 +491,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="understanding-dataset-use-statistics" class="level1">
 <h1>Understanding Dataset Use Statistics</h1>
+
+
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
