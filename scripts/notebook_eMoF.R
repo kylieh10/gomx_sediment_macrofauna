@@ -21,7 +21,7 @@ SedChem <- readr::read_csv(file = sb_filenames$url[3])
 # eMoF table ------------------
 
 SedChem <- SedChem %>% 
-  mutate(
+  rename(
     SampleID = CoreID
   )
        
@@ -42,7 +42,7 @@ Infauna_emof <- Infauna %>%
       as.character(),
     #proportion sand (63-2000um)
     "Proportion by volume of particles (63-2000um) in the sediment" = as.character(Sand),
-   #proportion mud (<63um)
+    #proportion mud (<63um)
     "Proportion by volume of particles (0-63um) in the sediment" = as.character(Mud),
     "proportionGravel(>2000um)" = as.character(Gravel),
    "Thickness (transverse) of core" = as.character(CoreDiameter)
@@ -99,6 +99,6 @@ Infauna_emof <- Infauna %>%
   
   distinct() %>% 
   slice(1:6, 899:908) %>% 
-  readr::write_csv(paste0("gomx_sediment_macrofauna_emof_", Sys.Date(), ".csv"), na = "NA")   
+  write.csv(paste0("gomx_sediment_macrofauna_emof_", Sys.Date(), ".csv"))
                                  
                                 

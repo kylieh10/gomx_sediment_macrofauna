@@ -45,9 +45,8 @@ Infauna_StationCore <- Infauna %>%
     higherGeography = paste("Gulf of Mexico",
                             paste("BOEM Lease Block",
                                   Site), sep = " | "),
-    Fraction=str_extract(Fraction, pattern= ".*\\d"),
-    maximumDistancesAboveSurfaceInMeters = str_split_i(
-      Fraction, pattern = "-", i = 2) %>% 
+    Fraction = str_extract(Fraction, pattern= ".*\\d"),
+    maximumDistancesAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 2) %>% 
       as.numeric()/-100,
     minimumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 1) %>% 
       as.numeric()/-100,
@@ -67,7 +66,9 @@ Infauna_StationCore <- Infauna %>%
     minimumDepthInMeters,
     maximumDepthInMeters,
     samplingProtocol,
-    locationRemarks
+    locationRemarks,
+    maximumDistancesAboveSurfaceInMeters,
+    minimumDistanceAboveSurfaceInMeters
   ) %>%
 
   distinct()
@@ -105,8 +106,12 @@ Infauna_Sample <- Infauna %>%
       as.integer()/-100,
     minimumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 1) %>% 
       as.integer()/-100
-      ) %>% 
-  
+      )
+
+
+# Bind tables and write out to csv ----------------------------------------
+
+Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>% 
   select(
     eventID,
     parentEventID,
@@ -125,10 +130,6 @@ Infauna_Sample <- Infauna %>%
     maximumDistancesAboveSurfaceInMeters,
     materialEntityID
   ) %>% 
-  distinct()
-
-
-# Bind tables and write out to csv ----------------------------------------
-
-Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>% 
-  readr::write_csv(paste0("gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"), na = "NA")
+  distinct() %>% 
+  write.csv(paste0("gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"))
+  # readr::write_csv(paste0("gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"), na = "NA")
