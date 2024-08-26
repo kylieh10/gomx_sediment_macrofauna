@@ -3,21 +3,20 @@ title: "Getting a Feel for the Data"
 editor: visual
 ---
 
-
 Starting to understand the data we are working with may not require a computer. Simple diagrams and maps can be very useful in this stage to understand the relationships and information provided in a dataset. To get started, it's valuable to model the data and begin the process of mapping terms to DwC vocabulary.
-  
+
 # Modeling the Data
 
 Modeling the data and the relationships may be essential in understanding more complex datasets or those with multiple, related tables. This can be done with simple hand drawn diagrams or computer-generated diagrams, like mermaid diagrams.
 
 ![Hand-drawn data visualization of relationships](data_visualization.png)
 
-![Mermaid diagram visualization of the same data](Mermaid_diagram.png)
+![Another hand-drawn representation of the relationships within and between events and occurrences](relationship_diagram.png)
 
+![Mermaid diagram visualization of the same data](Mermaid_diagram.png)
 
 # Mapping to Darwin Core
 
 Once we have a better grasp on the relationships in our data and what cores or extensions we might use, deciding what DwC terms to use becomes easier. Going through each column, we will need to determine what DwC terms are most appropriate and if term relationships are 1:1, 1:many, many:1, or 1:0, which will be valuable in wrangling the data.
 
 While a computer is not required here, it may be useful to have access to DwC vocabulary pages to reference in this process.
-

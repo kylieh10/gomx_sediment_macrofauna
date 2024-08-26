@@ -45,7 +45,7 @@ Infauna_emof <- Infauna %>%
     #proportion mud (<63um)
     "Proportion by volume of particles (0-63um) in the sediment" = as.character(Mud),
     "proportionGravel(>2000um)" = as.character(Gravel),
-   "Thickness (transverse) of core" = as.character(CoreDiameter)
+   "Thickness (transverse) of core" = as.character(round(CoreDiameter, digits = 2))
   ) %>% 
   
   pivot_longer(
@@ -97,8 +97,9 @@ Infauna_emof <- Infauna %>%
     measurementRemarks
   ) %>% 
   
-  distinct() %>% 
-  slice(1:6, 899:908) %>% 
+  distinct()
+
+Infauna_emof %>% 
   write.csv(paste0("gomx_sediment_macrofauna_emof_", Sys.Date(), ".csv"))
                                  
                                 

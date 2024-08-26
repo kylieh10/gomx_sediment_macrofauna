@@ -101,18 +101,6 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./demopoulos_obis_mobilization_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Main Notebook</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./data_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Model</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./purpose_page.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Why are we doing this?</span></a>
   </div>
@@ -131,13 +119,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./getting_a_feel_for_the_data.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./data_modeling_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting a Feel for the Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./version_control.html" class="sidebar-item-text sidebar-link">
+  <a href="./version_control.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control with Git</span></a>
   </div>
 </li>
@@ -145,6 +133,30 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./wrangling_data_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Wrangling the Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uploading_page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Uploading to the IPT</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./EML_metadata.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating EML Metadata</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./publishing_page" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Publishing to GBIF and OBIS</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./use_stats_page" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dataset Use Statistics</span></a>
   </div>
 </li>
     </ul>
@@ -211,6 +223,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="darwin-core-archive" class="level1">
 <h1>Darwin Core Archive</h1>
+<p>Darwin Core Archive (DwC-A) is a data standard for datasets. It is comprised of <code>csv</code> files containing the different data tables, which follow a star schema; the <code>xml</code> file that describes the organization and mapping; and the <code>EML</code> file that provides metadata for the dataset. The <code>csv</code> files must contain one core table and, if needed, extension tables that are connected to the core via an identifier.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="star_diagram.png" class="img-fluid figure-img"></p>
+<figcaption>DwC-A components</figcaption>
+</figure>
+</div>
 <section id="what-is-darwin-core" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-darwin-core">What is Darwin Core?</h2>
 <p>Darwin Core (DwC) is a set of data standards from Biodiversity Information Standards (TDWG). It includes standardized vocabulary and file format for Darwin Core Archives, which contains an <code>event</code> or <code>occurrence</code> core file, extension files, and metadata files.</p>
@@ -218,7 +237,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="what-is-eml" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-eml">What is EML?</h2>
-<p>Ecological Metadata Language (EML)</p>
+<p>Ecological Metadata Language (EML) is a standard for recording and organizing metadata, and is required for publishing to GBIF and OBIS. It promotes transparency and accessibility of published datasets.</p>
 
 
 </section>

@@ -3,18 +3,17 @@ title: "Why Are we Doing This?"
 editor: visual
 ---
 
-
-
 ## Introduction
 
-This notebook aims to provide a general workflow for mobilizing the Demopoulos Lab's data to OBIS to use in the future for similar tasks. Using an existing dataset as an example, we will walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process. 
+This notebook aims to provide a general workflow for mobilizing the Demopoulos Lab's data to OBIS to use in the future for similar tasks. Using an existing dataset as an example, we will walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.
 
 # Open Science, OBIS, and GBIF
+
 ## Open Science and FAIR Data
 
 Open science is the practice of making data, resources, results, and publications as available as possible, while still respecting diverse cultures, security, and privacy.
 
-FAIR data is data that is findable, accessible, interoperable, and reusable. While the two often go hand-in-hand, FAIRness doesn't require openness. However, by practicing the principles of open and FAIR science, we promote transparency in the scientific process. This transparency encourages collaboration, more efficient scientific advancements, and policy changes, while also increasing the impact of research. 
+FAIR data is data that is findable, accessible, interoperable, and reusable. While the two often go hand-in-hand, FAIRness doesn't require openness. However, by practicing the principles of open and FAIR science, we promote transparency in the scientific process. This transparency encourages collaboration, more efficient scientific advancements, and policy changes, while also increasing the impact of research.
 
 ## OBIS and GBIF
 
@@ -22,14 +21,16 @@ The Ocean Biodiversity Information System (OBIS) and Global Biodiversity Informa
 
 # Darwin Core Archive
 
+Darwin Core Archive (DwC-A) is a data standard for datasets. It is comprised of `csv` files containing the different data tables, which follow a star schema; the `xml` file that describes the organization and mapping; and the `EML` file that provides metadata for the dataset. The `csv` files must contain one core table and, if needed, extension tables that are connected to the core via an identifier.
 
+![DwC-A components](star_diagram.png)
 
 ## What is Darwin Core?
 
 Darwin Core (DwC) is a set of data standards from Biodiversity Information Standards (TDWG). It includes standardized vocabulary and file format for Darwin Core Archives, which contains an `event` or `occurrence` core file, extension files, and metadata files.
 
-DwC is used by both OBIS and GBIF to help facilitate the sharing of open biological data in accordance with the FAIR principles. 
+DwC is used by both OBIS and GBIF to help facilitate the sharing of open biological data in accordance with the FAIR principles.
 
 ## What is EML?
 
-Ecological Metadata Language (EML)
+Ecological Metadata Language (EML) is a standard for recording and organizing metadata, and is required for publishing to GBIF and OBIS. It promotes transparency and accessibility of published datasets.

@@ -1,4 +1,0 @@
----
-title: "Version Control with Git"
-editor: visual
----

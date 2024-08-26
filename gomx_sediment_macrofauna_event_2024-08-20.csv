@@ -1,4 +1,0 @@
-parentEventID,eventID,eventDate,materialEntityID,locationID,decimalLatitude,decimalLongitude,higherGeography,locality,geodeticDatum,minimumDepthInMeters,maximumDepthInMeters,samplingProtocol,locationRemarks,minimumDistanceAboveSurfaceInMeters,maximumDistancesAboveSurfaceInMeters
-MC885_20140501_AT26144705046,MC885_20140501_AT26144705046A,2014-05-01,NA,AT26-14-4705,28.06614,-89.71717,Gulf of Mexico | BOEM Lease Block MC885,BOEM Lease Block MC885,WGS84,634,634,Push core,Near,-0,-0.02
-MC885_20140501_AT26144705046,MC885_20140501_AT26144705046B,2014-05-01,NA,AT26-14-4705,28.06614,-89.71717,Gulf of Mexico | BOEM Lease Block MC885,BOEM Lease Block MC885,WGS84,634,634,Push core,Near,-0.02,-0.05
-MC885_20140501_AT26144705046,MC885_20140501_AT26144705046C,2014-05-01,NA,AT26-14-4705,28.06614,-89.71717,Gulf of Mexico | BOEM Lease Block MC885,BOEM Lease Block MC885,WGS84,634,634,Push core,Near,-0.05,-0.1

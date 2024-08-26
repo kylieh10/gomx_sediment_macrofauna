@@ -12,23 +12,26 @@ website:
     background: green
     search: true    
     contents:
-      - href: demopoulos_obis_mobilization_workflow.qmd
-        text: Main Notebook
-      - href: data_model.qmd
-        text: Data Model
       - href: purpose_page.qmd
         text: Why are we doing this?
       - href: intended_user_page.qmd
         text: Intended User
       - href: dataset_background_page.qmd
         text: Dataset Background
-      - href: getting_a_feel_for_the_data.qmd
+      - href: data_modeling_page.qmd
         text: Getting a Feel for the Data
-      - href: version_control.qmd
+      - href: version_control_page.qmd
         text: Version Control with Git
       - href: wrangling_data_page.qmd
         text: Wrangling the Data
-      - href: 
+      - href: uploading_page.qmd
+        text: Uploading to the IPT
+      - href: EML_metadata_page.qmd
+        text: Creating EML Metadata
+      - href: publishing_page
+        text: Publishing to GBIF and OBIS
+      - href: use_stats_page
+        text: Dataset Use Statistics
       
       
       
