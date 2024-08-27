@@ -1,7 +1,18 @@
 project:
   type: website
   output-dir: docs
-  
+  render:
+    - purpose_page.qmd
+    - intended_user_page.qmd
+    - dataset_background_page.qmd
+    - data_modeling_page.qmd
+    - version_control_page.qmd
+    - wrangling_data_page.qmd
+    - uploading_page.qmd
+    - EML_metadata_page.qmd
+    - publishing_page.qmd
+    - use_stats_page.qmd
+        
 format:
   html:
     toc: true
@@ -28,9 +39,9 @@ website:
         text: Uploading to the IPT
       - href: EML_metadata_page.qmd
         text: Creating EML Metadata
-      - href: publishing_page
+      - href: publishing_page.qmd
         text: Publishing to GBIF and OBIS
-      - href: use_stats_page
+      - href: use_stats_page.qmd
         text: Dataset Use Statistics
       
       
