@@ -46,7 +46,7 @@ website:
   navbar: 
     tools:
       - icon: github
-        href: repo-url: "https://github.com/kylieh10/gomx_sediment_macrofauna"
+        href: "https://github.com/kylieh10/gomx_sediment_macrofauna"
   
       
       
