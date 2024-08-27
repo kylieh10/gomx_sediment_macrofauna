@@ -18,6 +18,7 @@ format:
     toc: true
 
 website:
+  repo-url: "https://github.com/kylieh10/gomx_sediment_macrofauna"
   sidebar:
     style: "docked"
     background: green
