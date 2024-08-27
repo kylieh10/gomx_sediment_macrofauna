@@ -18,7 +18,6 @@ format:
     toc: true
 
 website:
-  repo-url: "https://github.com/kylieh10/gomx_sediment_macrofauna"
   sidebar:
     style: "docked"
     background: green
@@ -44,6 +43,11 @@ website:
         text: Publishing to GBIF and OBIS
       - href: use_stats_page.qmd
         text: Dataset Use Statistics
+  navbar: 
+    tools:
+      - icon: github
+        href: repo-url: "https://github.com/kylieh10/gomx_sediment_macrofauna"
+  
       
       
       
