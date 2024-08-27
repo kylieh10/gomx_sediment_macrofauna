@@ -37,7 +37,7 @@ graph RL
         direction TB    
         taxonomy
         occ1["occurrenceID - coral"]
-        occ2["occurrenceID - meiofauna"]
+        occ2["occurrenceID - macrofauna"]
 
         taxonomy--- occ1 & occ2
     end
