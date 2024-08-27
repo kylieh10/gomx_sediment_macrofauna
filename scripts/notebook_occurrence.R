@@ -94,7 +94,8 @@ Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c
 Occurrence_Ext %>% 
   write.csv(paste0("data/gomx_sediment_macrofauna_occurrence_", Sys.Date(), ".csv"),
             na = "",
-            fileEncoding = "UTF-8"
+            fileEncoding = "UTF-8", 
+            row.names = FALSE
   )
  
   

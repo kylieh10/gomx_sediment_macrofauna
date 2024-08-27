@@ -46,7 +46,7 @@ Infauna_StationCore <- Infauna %>%
                             paste("BOEM Lease Block",
                                   Site), sep = " | "),
     Fraction = str_extract(Fraction, pattern= ".*\\d"),
-    maximumDistancesAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 2) %>% 
+    maximumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 2) %>% 
       as.numeric()/-100,
     minimumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 1) %>% 
       as.numeric()/-100,
@@ -67,7 +67,7 @@ Infauna_StationCore <- Infauna %>%
     maximumDepthInMeters,
     samplingProtocol,
     locationRemarks,
-    maximumDistancesAboveSurfaceInMeters,
+    maximumDistanceAboveSurfaceInMeters,
     minimumDistanceAboveSurfaceInMeters
   ) %>%
 
@@ -101,7 +101,7 @@ Infauna_Sample <- Infauna %>%
                                   Site), sep = " | "),
     samplingProtocol = Gear,
     Fraction=str_extract(Fraction, pattern= ".*\\d"),
-    maximumDistancesAboveSurfaceInMeters = str_split_i(
+    maximumDistanceAboveSurfaceInMeters = str_split_i(
         Fraction, pattern = "-", i = 2) %>% 
       as.integer()/-100,
     minimumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 1) %>% 
@@ -127,7 +127,7 @@ Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>%
     samplingProtocol,
     locationRemarks,
     minimumDistanceAboveSurfaceInMeters,
-    maximumDistancesAboveSurfaceInMeters,
+    maximumDistanceAboveSurfaceInMeters,
     materialEntityID
   ) %>% 
   distinct()
@@ -136,5 +136,6 @@ Infauna_Event %>%
   write.csv(
     paste0("data/gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"),
     na = "",
-    fileEncoding = "UTF-8"
+    fileEncoding = "UTF-8", 
+    row.names = FALSE
   )
