@@ -133,4 +133,8 @@ Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>%
   distinct()
 
 Infauna_Event %>% 
-  write.csv(paste0("gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"))
+  write.csv(
+    paste0("data/gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"),
+    na = "",
+    fileEncoding = "UTF-8"
+  )

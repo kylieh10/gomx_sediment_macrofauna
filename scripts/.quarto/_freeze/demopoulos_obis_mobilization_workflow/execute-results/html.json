@@ -1,0 +1,17 @@
+{
+  "hash": "10f2b5e1c3ed42c24c7af9fe9e9ad6d0",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Demopoulos Lab OBIS Mobilization Workflow\"\nsubtitle: \"An elegant guide to mobilizing data to OBIS for the discerning member of the Demopoulos lab.\" \ndate: today\nauthor: \n  - name: \"Kylie Hollis\"\n    orcid: NA\n    email: \"khollis@usgs.gov\"\n  - name: \"Stephen Formel\"\n    orcid: \"0000-0001-7418-1244\"\n    email: \"sformel@usgs.gov\"\nformat: \n  html:\n    toc: true\n---\n\n\n# Purpose\n## OBIS, GBIF and Open Science\n## What is Darwin Core?\n## What is EML?\n\n# Intended User\n\n# Dataset Background\n## What data are we using in this notebook?\n\n# Getting a feel for the data\n  \n  Does not need to be done on a computer.\n  \n## Modeling the Data\n## Mapping to Darwin Core\n\n# Version Control with Git\n## Gitlab vs Github\n\n# Wrangling the Data\n## Using R to get the data from ScienceBase\n\nTo retrieve and use the data from ScienceBase, R packages `dplyr`, `sbtools`, and `stringr` will need to be loaded. After loading these packages, we will read the data in from ScienceBase.\n\nThe ScienceBase dataset ID can be found at the end of the ScienceBase link for the dataset. If the full link to the data is \"https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e\", then the identifier is `5a709594e4b0a9a2e9d88e4e`.\n\nUsing the ScienceBase ID, we will get information about the data files using `item_list_files(sb_id = sb_id)` and assign it to an object `sb_filenames`.\n\nFrom the object `sb_filenames`, we will pull the column `url`. This column contains the url needed to download the data file from ScienceBase. Rather than download a local copy of the files, we will read it directly into the memory of our computer with `read_csv(file = sb_filenames$url[n])`, with n being the row number of the file we are reading.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(dplyr)\nlibrary(sbtools)\nlibrary(stringr)\n\nsb_id <- '5a709594e4b0a9a2e9d88e4e'\n\nsb_filenames <- item_list_files(sb_id = sb_id)\n\nBTA <-readr::read_csv(file = sb_filenames$url[1])\nInfauna <- readr::read_csv(file = sb_filenames$url[2])\nSedChem <- readr::read_csv(file = sb_filenames$url[3])\n```\n:::\n\n\n## Using R to transform the data\n### Renaming Columns\n### Mutating Columns\n### Adding new metadata\n### Reconfiguring Tables\n#### Pivoting\n#### Joins\n### Writing Data\n\n# Uploading to the IPT\n# Creating EML Metadata\n# Publishing to OBIS and GBIF\n# Understanding Dataset Use Statistics",
+    "supporting": [
+      "demopoulos_obis_mobilization_workflow_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

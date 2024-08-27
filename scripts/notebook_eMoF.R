@@ -100,6 +100,9 @@ Infauna_emof <- Infauna %>%
   distinct()
 
 Infauna_emof %>% 
-  write.csv(paste0("gomx_sediment_macrofauna_emof_", Sys.Date(), ".csv"))
+  write.csv(paste0("data/gomx_sediment_macrofauna_emof_", Sys.Date(), ".csv"),
+            na = "",
+            fileEncoding = "UTF-8"
+  )
                                  
                                 
