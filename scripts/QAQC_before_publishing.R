@@ -25,3 +25,12 @@ event %>%
   count() %>% 
   filter(n > 1) %>% 
   arrange(desc(n))
+
+
+# Check occurrences ------------------------
+
+occ %>% 
+  pull(occurrenceID) %>% 
+  unique() %>% 
+  length() == nrow(occ)
+#True :)

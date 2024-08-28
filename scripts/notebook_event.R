@@ -33,7 +33,8 @@ Infauna_StationCore <- Infauna %>%
   ) %>%
 
   mutate(
-    locationRemarks = paste(Location, "coral"),
+    locationRemarks = case_when(Location == "Near" ~ paste("within 1 meter of", Coral),
+                                Location == "Background" ~ paste("14 to 1000 meters away from", Coral)),
     geodeticDatum = "WGS84",
     eventDate = DateCollected %>%
       as.Date("%m/%d/%Y"),

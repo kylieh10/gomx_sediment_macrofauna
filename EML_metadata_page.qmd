@@ -4,3 +4,5 @@ editor: visual
 ---
 
 EML metadata can either be made as a separate file and uploaded to the IPT, or it can be made by filling out the IPT's metadata section. In our case, we used the IPT's built-in metadata section. GBIF's IPT guides you through various categories and required fields, providing descriptions as needed. For this, use metadata provided by the researchers when possible.
+
+In GBIF, the main metadata categories are 
