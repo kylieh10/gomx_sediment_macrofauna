@@ -37,6 +37,10 @@ Infauna_Occurrence <- Infauna %>%
     individualCount = Abundance,
     associatedTaxa = paste("livesNear:", Coral),
     taxonRank = NA,
+    locality = paste("BOEM Lease Block", Site),
+    higherGeography = paste("Gulf of Mexico",
+                            paste("BOEM Lease Block",
+                                  Site), sep = " | "),
     occurrenceRemarks = case_when(Location == "Near" ~ paste("within 1 meter of", Coral),
                                   Location == "Background" ~ paste("14 to 1000 meters away from", Coral)
     )
@@ -60,7 +64,9 @@ select(
   associatedTaxa,
   occurrenceRemarks,
   AphiaID,
-  TSN
+  TSN,
+  locality,
+  higherGeography
 )
 
 myAphiaID <- Infauna$AphiaID %>% na.omit() %>% unique()

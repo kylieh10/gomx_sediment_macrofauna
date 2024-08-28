@@ -281,13 +281,18 @@ Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>%
 # since there were multiple occurrences listed for events in the original dataset, here, we used distinct to make sure only unique events are included
 ```
 
-Then to export as a `csv` file, we will use `write.csv`. In in this case, we named the new file `gomx_sediment_macrofauna_event_(date of export).csv`.
+Then to export as a `csv` file, we will use `write.csv`. In in this case, we named the new file `gomx_sediment_macrofauna_event_(date of export).csv`. If you are planning to publish your data, it is important to make sure `na = ""`, so that valueless columns will be left blank, and that `fileEncoding = "UTF-8"`, which is what GBIF and OBIS use.
 
 ```{r}
 #| eval: false
 
 Infauna_Event %>% 
-  write.csv(paste0("gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"))
+  write.csv(
+    paste0("data/gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"),
+    na = "",
+    fileEncoding = "UTF-8", 
+    row.names = FALSE
+  )
 
 #make sure you don't pipe write.csv from the previous chunk
 
