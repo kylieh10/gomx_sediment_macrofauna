@@ -25,13 +25,15 @@ Infauna_Occurrence <- Infauna %>%
   rename(
     materialEntityID = SampleID
   ) %>% 
-  
+  filter(
+    !TaxaName == "No individuals"
+  ) %>% 
   mutate(
     eventDate = DateCollected %>% 
       as.Date("%m/%d/%Y"),
     eventID = paste(Site, eventDate %>% as.character(), materialEntityID,
                     sep = "_") %>% str_remove_all(pattern = "-"),
-    occurrenceStatus = if_else(TaxaName == "No individuals", "absent", "present"),
+    occurrenceStatus = "present",
     basisOfRecord = "HumanObservation",
     verbatimIdentification = TaxaName,
     individualCount = Abundance,
@@ -49,7 +51,7 @@ Infauna_Occurrence <- Infauna %>%
   group_by(materialEntityID) %>% 
     mutate(
        occurrenceID = paste(materialEntityID, row_number(), sep = "_")
-       #find alternative to row number here
+       #find alternative to row number here if possible
       ) %>% 
   ungroup() %>% 
   
@@ -87,7 +89,8 @@ scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaI
 Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>%
   mutate(
     TSN = paste("urn:lsid:itis.gov:itis_tsn:", TSN),
-    scientificNameID = paste(scientificNameID, TSN, sep = ", ")
+    scientificNameID = paste(scientificNameID, TSN, sep = ", "),
+    countryCode = "US"
   ) %>% 
   subset(select = -c(AphiaID,TSN)) %>% 
   select(eventID,
