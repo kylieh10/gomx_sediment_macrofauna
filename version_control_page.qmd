@@ -2,3 +2,10 @@
 title: "Version Control with Git"
 editor: visual
 ---
+
+Git is a version control system that underlies commercial products like Github and Gitlab. Github is a public platformed owned by Microsoft and used by many scientists. In contrast, USGS maintains a private instance of Gitlab that is regulated by USGS and subject to USGS and DOI policy about code sharing. In addition to making sure you understand how to use git, please make sure you understand USGS policy about how to properly use Gitlab and Github.
+
+Lessons in the basics of Git:
+
+1.  Github
+2.  USGS HPC

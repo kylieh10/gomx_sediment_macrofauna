@@ -44,12 +44,17 @@ Infauna_emof <- Infauna %>%
     "Proportion by volume of particles (63-2000um) in the sediment" = as.character(Sand),
     #proportion mud (<63um)
     "Proportion by volume of particles (0-63um) in the sediment" = as.character(Mud),
-    "proportionGravel(>2000um)" = as.character(Gravel),
-   "Thickness (transverse) of core" = as.character(round(CoreDiameter, digits = 2))
+    "Proportion by volume of particles (>2000um) in the sediment" = as.character(Gravel),
+    "Thickness (transverse) of core" = as.character(round(CoreDiameter, digits = 2))
   ) %>% 
   
   pivot_longer(
-    cols = c("Thickness (transverse) of core", "Depth (spatial coordinate) minimum relative to bed surface in the bed", "Depth (spatial coordinate) maximum relative to bed surface in the bed", "Proportion by volume of particles (63-2000um) in the sediment", "Proportion by volume of particles (0-63um) in the sediment", "proportionGravel(>2000um)"
+    cols = c("Thickness (transverse) of core", 
+             "Depth (spatial coordinate) minimum relative to bed surface in the bed", 
+             "Depth (spatial coordinate) maximum relative to bed surface in the bed", 
+             "Proportion by volume of particles (63-2000um) in the sediment", 
+             "Proportion by volume of particles (0-63um) in the sediment", 
+             "Proportion by volume of particles (>2000um) in the sediment"
              ),
     names_to = "measurementType",
     values_to = "measurementValue",
@@ -61,29 +66,29 @@ Infauna_emof <- Infauna %>%
                                   measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/",
                                   measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/",
                                   measurementType == "Proportion by volume of particles (63-2000um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL064/",
-                                  measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL088/"
-                                  #measurementType == "proportionGravel(>2000um)" ~ "LINK"
+                                  measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL088/",
+                                  measurementType == "Proportion by volume of particles (>2000um) in the sediment" ~ ""
     ),
     measurementUnit = case_when(measurementType == "Thickness (transverse) of core" ~ "ULCM",
                                 measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "ULCM",
                                 measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "ULCM",
                                 measurementType == "Proportion by volume of particles (63-2000um) in the sediment" ~ "UPCT",
-                                measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "UPCT"
-                                #measurementType == "proportionGravel(>2000um)" ~ "UPCT"
+                                measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "UPCT",
+                                measurementType == "Proportion by volume of particles (>2000um) in the sediment" ~ "UPCT"
     ),
     measurementUnitID = case_when(measurementType == "Thickness (transverse) of core" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
                                   measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
                                   measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
                                   measurementType == "Proportion by volume of particles (63-2000um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
-                                  measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
-                                  #measurementType == "proportionGravel(>2000um)" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
+                                  measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
+                                  measurementType == "Proportion by volume of particles (>2000um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
     ), 
-    measurementRemarks = case_when(measurementType == 'Thickness (transverse) of core' ~ '"CoreDiameter"',
-                                   measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ 'lower value of "Fraction"',
-                                   measurementType == 'Depth (spatial coordinate) maximum relative to bed surface in the bed' ~ 'upper value of "Fraction"',
-                                   measurementType == 'Proportion by volume of particles (63-2000um) in the sediment' ~ '"Sand"',
-                                   measurementType == 'Proportion by volume of particles (0-63um) in the sediment' ~ '"Mud"'
-                                   # measurementType == 'proportionGravel(>2000um)' ~ '"Gravel"')
+    measurementRemarks = case_when(measurementType == 'Thickness (transverse) of core' ~ paste("Verbatim Label:", "CoreDiameter"),
+                                   measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ paste("Verbatim Label:", 'lower value of "Fraction'),
+                                   measurementType == 'Depth (spatial coordinate) maximum relative to bed surface in the bed' ~ paste("Verbatim Label:", 'upper value of "Fraction'),
+                                   measurementType == 'Proportion by volume of particles (63-2000um) in the sediment' ~ paste("Verbatim Label:", 'Sand'),
+                                   measurementType == 'Proportion by volume of particles (0-63um) in the sediment' ~ paste("Verbatim Label:", 'Mud'),
+                                   measurementType == "Proportion by volume of particles (>2000um) in the sediment" ~ paste("Verbatim Label:", "Gravel")
     )
   ) %>% 
   
