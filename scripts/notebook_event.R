@@ -21,7 +21,8 @@ SedChem <- readr::read_csv(file = sb_filenames$url[3])
 
 #events representing unique cores (coreID)
 
-Infauna_StationCore <- Infauna %>%
+#create table of core min/max values to join later with events
+core_minmax <- Infauna %>%
   bind_rows(SedChem) %>% 
   
   rename(
@@ -30,6 +31,36 @@ Infauna_StationCore <- Infauna %>%
     decimalLatitude = Latitude,
     decimalLongitude = Longitude,
     eventRemarks = EnvironmentalGroup
+  ) %>%
+  
+  mutate(
+    eventDate = DateCollected %>%
+      as.Date("%m/%d/%Y"),
+    eventID = paste(Site, eventDate %>% as.character(), materialEntityID, 
+                    sep = "_") %>% stringr::str_remove_all(pattern = "-")) %>% 
+  group_by(eventID) %>% 
+  summarise(Fraction = str_remove_all(Fraction, pattern= " cm") %>% 
+              stringr::str_split(pattern = "-") %>% 
+              unlist() %>% 
+              as.integer()) %>% 
+  group_by(eventID) %>% 
+  summarise(maximumDistanceAboveSurfaceInMeters = max(Fraction) %>% 
+               as.numeric()/-100,
+             minimumDistanceAboveSurfaceInMeters = min(Fraction) %>% 
+               as.numeric()/-100) %>% 
+  distinct()
+
+# create event table without core min/max values
+Infauna_StationCore <- Infauna %>%
+  bind_rows(SedChem) %>% 
+  
+  rename(
+    materialEntityID = CoreID,
+    locationID = Station,
+    decimalLatitude = Latitude,
+    decimalLongitude = Longitude,
+    eventRemarks = EnvironmentalGroup,
+    samplingProtocol = Gear
   ) %>%
 
   mutate(
@@ -45,14 +76,7 @@ Infauna_StationCore <- Infauna %>%
     locality = paste("BOEM Lease Block", Site),
     higherGeography = paste("Gulf of Mexico",
                             paste("BOEM Lease Block",
-                                  Site), sep = " | "),
-    Fraction = str_extract(Fraction, pattern= ".*\\d"),
-    maximumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 2) %>% 
-      as.numeric()/-100,
-    minimumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 1) %>% 
-      as.numeric()/-100,
-    samplingProtocol = Gear
-  ) %>%
+                                  Site), sep = " | ")) %>% 
 
   select(
     eventID,
@@ -68,11 +92,10 @@ Infauna_StationCore <- Infauna %>%
     maximumDepthInMeters,
     samplingProtocol,
     locationRemarks,
-    maximumDistanceAboveSurfaceInMeters,
-    minimumDistanceAboveSurfaceInMeters
   ) %>%
 
-  distinct()
+  distinct() %>% 
+  left_join(., core_minmax)
 
 # Sample Level Event Table -------------------------------------------------
 
