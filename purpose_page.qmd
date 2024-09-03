@@ -27,7 +27,7 @@ Darwin Core Archive (DwC-A) is a data standard for datasets. It is comprised of 
 
 ## What is Darwin Core?
 
-Darwin Core (DwC) is a set of data standards from Biodiversity Information Standards (TDWG). It includes standardized vocabulary and file format for Darwin Core Archives, which contains an `event` or `occurrence` core file, extension files, and metadata files.
+Darwin Core (DwC) is a set of data standards from Biodiversity Information Standards (TDWG). It includes standardized vocabulary and file formats for Darwin Core Archives, which contains an `event` or `occurrence` core file, extension files, and metadata files.
 
 DwC is used by both OBIS and GBIF to help facilitate the sharing of open biological data in accordance with the FAIR principles.
 

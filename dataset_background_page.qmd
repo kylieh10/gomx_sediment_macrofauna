@@ -5,6 +5,6 @@ editor: visual
 
 # What data are we using in this notebook?
 
-We will be using data published by USGS, titled "Sediment macrofaunal composition, sediment grain size, and taxa functional traits of multiple deep-sea coral habitats in the Gulf of Mexico, 2009-2014", collected by Dr. Amanda Demopoulos and Dr. Jill Bourque. DOI: https://doi.org/10.5066/F7TH8KXD
+We will be using data published by USGS, titled "Sediment macrofaunal composition, sediment grain size, and taxa functional traits of multiple deep-sea coral habitats in the Gulf of Mexico, 2009-2014", collected by Dr. Amanda Demopoulos and Dr. Jill Bourque. DOI: <https://doi.org/10.5066/F7TH8KXD>
 
 This data describes a series of sampling events where cores are taken near one of several types coral and analyzed for sediment composition or subsampled for macrofauna.

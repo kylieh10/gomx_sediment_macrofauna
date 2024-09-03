@@ -4,4 +4,4 @@ format: html
 editor: visual
 ---
 
-To make our data available through GBIF and OBIS, we have to publish it through GBIF's Integrated Publishing Toolkit (IPT). The IPT makes a DwC-A file, similar to how Excel make csv files, which is read in by GBIF and OBIS. Here's a video explaining this process and the IPT: 
+To make our data available through GBIF and OBIS, we have to publish it through GBIF's Integrated Publishing Toolkit (IPT). The IPT makes a DwC-A file, similar to how Excel make csv files, which is read in by GBIF and OBIS. Here's a video explaining this process and the IPT:
