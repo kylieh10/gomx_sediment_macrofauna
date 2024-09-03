@@ -23,6 +23,9 @@ SedChem <- readr::read_csv(file = sb_filenames$url[3])
 SedChem <- SedChem %>% 
   rename(
     SampleID = CoreID
+  ) %>% 
+  mutate(
+    CoreDiameter = 6.35
   )
        
 Infauna_emof <- Infauna %>% 

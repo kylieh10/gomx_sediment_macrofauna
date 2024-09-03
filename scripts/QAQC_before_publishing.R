@@ -9,6 +9,15 @@ emof <- readr::read_csv("data/gomx_sediment_macrofauna_emof_2024-08-28.csv")
 
 
 # Check events ------------------------------------------------------------
+Infauna_Sample %>% 
+  pull(eventID) %>% 
+  unique() %>% 
+  length() == nrow(Infauna_Sample)
+
+Infauna_StationCore %>% 
+  pull(eventID) %>% 
+  unique() %>% 
+  length() == nrow(Infauna_StationCore)
 
 event %>% 
   pull(eventID) %>%

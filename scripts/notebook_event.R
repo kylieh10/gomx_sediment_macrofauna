@@ -51,6 +51,10 @@ core_minmax <- Infauna %>%
   distinct()
 
 # create event table without core min/max values
+SedChem <- SedChem %>%
+  mutate(
+    Gear = "Push core")
+
 Infauna_StationCore <- Infauna %>%
   bind_rows(SedChem) %>% 
   
@@ -59,8 +63,7 @@ Infauna_StationCore <- Infauna %>%
     locationID = Station,
     decimalLatitude = Latitude,
     decimalLongitude = Longitude,
-    eventRemarks = EnvironmentalGroup,
-    samplingProtocol = Gear
+    eventRemarks = EnvironmentalGroup
   ) %>%
 
   mutate(
@@ -73,6 +76,11 @@ Infauna_StationCore <- Infauna %>%
                     sep = "_") %>% stringr::str_remove_all(pattern = "-"),
     minimumDepthInMeters = Depth,
     maximumDepthInMeters = Depth,
+    # Fraction=str_extract(Fraction, pattern= ".*\\d"),
+    # maximumDistanceAboveSurfaceInMeters = str_split_i(
+    #   Fraction, pattern = "-", i = 2) %>% 
+    #   as.integer()/-100,
+    # samplingProtocol = paste(Gear, ",", maximumDistanceAboveSurfaceInMeters, "m long"),
     countryCode = "US",
     locality = paste("BOEM Lease Block", Site),
     higherGeography = paste("Gulf of Mexico",
@@ -92,12 +100,19 @@ Infauna_StationCore <- Infauna %>%
     countryCode,
     minimumDepthInMeters,
     maximumDepthInMeters,
-    samplingProtocol,
     locationRemarks,
+    Gear
   ) %>%
 
   distinct() %>% 
-  left_join(., core_minmax)
+  left_join(., core_minmax) %>% 
+  mutate(
+    samplingProtocol = paste(Gear, ",", maximumDistanceAboveSurfaceInMeters, "m long")
+  ) %>% 
+  
+  select(everything(),
+         -Gear)
+
 
 # Sample Level Event Table -------------------------------------------------
 
@@ -133,7 +148,17 @@ Infauna_Sample <- Infauna %>%
       as.integer()/-100,
     minimumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 1) %>% 
       as.integer()/-100
-      )
+      ) %>% 
+  select(
+    everything(),
+    -c(Analysis,
+       EnvironmentalGroup,
+       TSN,
+       AphiaID,
+       Abundance,
+       TaxaName)
+  ) %>% 
+  distinct()
 
 
 # Bind tables and write out to csv ----------------------------------------
