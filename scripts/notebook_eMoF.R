@@ -43,9 +43,7 @@ Infauna_emof <- Infauna %>%
       as.character(),
     "Depth (spatial coordinate) minimum relative to bed surface in the bed" = str_split_i(Fraction, pattern = "-", i = 1) %>% readr::parse_number() %>% 
       as.character(),
-    #proportion sand (63-2000um)
     "Proportion by volume of particles (63-2000um) in the sediment" = as.character(Sand),
-    #proportion mud (<63um)
     "Proportion by volume of particles (0-63um) in the sediment" = as.character(Mud),
     "Proportion by volume of particles (>2000um) in the sediment" = as.character(Gravel),
     "Thickness (transverse) of core" = as.character(round(CoreDiameter, digits = 2))

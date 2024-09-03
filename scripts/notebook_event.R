@@ -76,11 +76,6 @@ Infauna_StationCore <- Infauna %>%
                     sep = "_") %>% stringr::str_remove_all(pattern = "-"),
     minimumDepthInMeters = Depth,
     maximumDepthInMeters = Depth,
-    # Fraction=str_extract(Fraction, pattern= ".*\\d"),
-    # maximumDistanceAboveSurfaceInMeters = str_split_i(
-    #   Fraction, pattern = "-", i = 2) %>% 
-    #   as.integer()/-100,
-    # samplingProtocol = paste(Gear, ",", maximumDistanceAboveSurfaceInMeters, "m long"),
     countryCode = "US",
     locality = paste("BOEM Lease Block", Site),
     higherGeography = paste("Gulf of Mexico",
