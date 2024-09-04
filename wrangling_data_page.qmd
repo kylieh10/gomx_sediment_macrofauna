@@ -58,7 +58,7 @@ Infauna_StationCore <- Infauna %>%
 
 Some renaming might be slightly more complex, requiring manipulation of a column's format or content to fit the DwC standard. For these tasks, we will use the `mutate` function.
 
-In this case, the column may be in the wrong format, like `DateCollected` which needs to be adjusted before being assigned to `eventDate`. Others, like `eventDate` or `samplingProtocol`, are concatenations of other columns (many:1 relationships), which can be combined with `paste`. `Mutate` is also used to create new columns, like `geodeticDatum`, which was not included in the original dataset.
+In this case, the column may be in the wrong format, like `DateCollected` which needs to be adjusted before being assigned to `eventDate`. Others, like `eventID` or `higherGeography`, are concatenations of other columns (many:1 relationships) and new information, which can be combined with `paste`. `Mutate` is also used to create new columns, like `geodeticDatum`, which was not included in the original dataset.
 
 ```{r}
 Infauna_StationCore <- Infauna_StationCore %>%
@@ -73,8 +73,7 @@ Infauna_StationCore <- Infauna_StationCore %>%
     locality = paste("BOEM Lease Block", Site),
     higherGeography = paste("Gulf of Mexico",
                             paste("BOEM Lease Block", 
-                                  Site), sep = " | "),
-    samplingProtocol = paste(Gear, CoreDiameter, sep = "_")
+                                  Site), sep = " | ")
   )
 ```
 
@@ -155,7 +154,7 @@ flextable(long_example) %>%
 
 ```
 
-This is done using the `pivot_longer` function. We will specify what columns to include in the pivot with `cols = c(columnsToBeIncluded)`. All column names included in the `cols` function will now be under the new column `measurementType` using `names_to` and the old columns' values under the new column `measurementValue`using `values_to`. Other columns for identifiers will also need to be added for the eMoF table and can be found in the guides mentioned in the Data Modeling page.
+This is done using the `pivot_longer` function. We will specify what columns to include in the pivot with `cols = c(columnsToBeIncluded)`. All column names included in the `cols` function will now be in the new column `measurementType` using `names_to` and the old columns' values in the new column `measurementValue` using `values_to`. Other columns for identifiers will also need to be added for the eMoF table and can be found in the guides mentioned in the Data Modeling page.
 
 We use pivot to wrangle the eMoF table, and the pertinent chunk of code looks something like this:
 
@@ -175,7 +174,7 @@ pivot_longer(
     )
 ```
 
-Here is the full code chunk where we first do a variety of mutates prior to the pivot:
+Here is the full code chunk where we first do a variety of mutates prior to the pivot and show a subset of the resulting table:
 
 ```{r}
 SedChem <- SedChem %>%
@@ -232,7 +231,7 @@ Infauna_emof <- Infauna %>%
 
 ### Joins
 
-Joins are useful if data from multiple tables need to be included in the final table, like when we make a new table with WoRMS data, which is covered in the next section. `left_join` will join table `x` to table `y` by values in the specified columns, so this function will join the tables `Infauna_Occurrence` and `uniqueAphiaSelectColumns` by matching `AphiaID` from both.
+Joins are useful if data from multiple tables need to be included in the final table, like when we make a new table with WoRMS data, which is covered in the next section. `left_join` will join table `x` to table `y` by values in the specified columns, so our function will join the tables `Infauna_Occurrence` and `uniqueAphiaSelectColumns` by matching `AphiaID` from both.
 
 After combining these tables and mutating our final iteration of `scientificNameID`, we have finished our `occurrence` table!
 
@@ -249,7 +248,7 @@ Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c
 
 #Aligning to a Taxonomic Database
 
-Occurrence tables require some taxonomic information that may not be provided in your data. In these cases, we will need to call taxonomic information from WoRMS using the `worrms` package. In addition to the required `scientificName` and `scientificNameID` fields, it is valuable to provide other information if it is available, like `taxonRank`, which is the lowest identifiable taxon of an occurrence, and corresponding parent taxa.
+Occurrence tables require some taxonomic information that may not be provided in the original data. In these cases, we will need to call taxonomic information from WoRMS using the `worrms` package. In addition to the required `scientificName` and `scientificNameID` fields, it is valuable to provide other information if it is available, like `taxonRank`, which is the lowest identifiable taxon of an occurrence, and corresponding parent taxa.
 
 We will assign `AphiaID` from the occurrence table to a new variable `myAphiaID` which we will use to call the corresponding WoRMS data. Adding `lapply` to circumvent limits on the number of inputs, we then use `wm_record(id = x)`, where `x` is `myAphiaID`. From the new table, we just pull the columns that we need using `select`.
 
@@ -260,8 +259,18 @@ myAphiaID <- Infauna$AphiaID %>% na.omit() %>% unique()
 myAphiaID <- lapply(myAphiaID, function(x) wm_record(id = x)) %>% 
   data.table::rbindlist()
 
-uniqueAphiaSelectColumns <- select(.data = myAphiaID,
-scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaID
+uniqueAphiaSelectColumns <- select(.data = 
+                                     myAphiaID, 
+                                   scientificname, 
+                                   rank, 
+                                   kingdom, 
+                                   phylum, 
+                                   class, 
+                                   order, 
+                                   family, 
+                                   genus, 
+                                   lsid, 
+                                   AphiaID
 ) %>%
   rename(
     scientficName = scientificname,
@@ -299,7 +308,7 @@ Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>%
 # since there were multiple occurrences listed for events in the original dataset, here, we used distinct to make sure only unique events are included
 ```
 
-Then to export as a `csv` file, we will use `write.csv`. In in this case, we named the new file `gomx_sediment_macrofauna_event_(date of export).csv`. If you are planning to publish your data, it is important to make sure `na = ""`, so that valueless columns will be left blank, and that `fileEncoding = "UTF-8"`, which is what GBIF and OBIS use.
+Then to export as a `csv` file, we will use `write.csv`. In in this case, we named the new file `gomx_sediment_macrofauna_event_(date of export).csv`. If you are planning to publish your data, it is important to make sure `na = ""`, so that valueless columns will be left blank, and that `fileEncoding = "UTF-8"`, which is the formatting GBIF and OBIS use.
 
 ```{r}
 #| eval: false

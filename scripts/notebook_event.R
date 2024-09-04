@@ -138,8 +138,7 @@ Infauna_Sample <- Infauna %>%
                                   Site), sep = " | "),
     samplingProtocol = paste(Gear, "fraction"),
     Fraction=str_extract(Fraction, pattern= ".*\\d"),
-    maximumDistanceAboveSurfaceInMeters = str_split_i(
-        Fraction, pattern = "-", i = 2) %>% 
+    maximumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 2) %>% 
       as.integer()/-100,
     minimumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 1) %>% 
       as.integer()/-100

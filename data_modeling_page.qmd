@@ -19,4 +19,4 @@ Modeling the data and the relationships may be essential in understanding more c
 
 Once we have a better grasp on the relationships in our data and what cores or extensions we might use, deciding what DwC terms to use becomes easier. Going through each column, we will need to determine what DwC terms are most appropriate and if term relationships are 1:1, 1:many, many:1, or 1:0, which will be valuable in wrangling the data.
 
-While a computer is not required here, it may be useful to have access to DwC vocabulary pages to reference in this process. This quick reference guide published by TDWG is a good starting point for mapping: <https://dwc.tdwg.org/terms/>. GBIF also has a vocabulary reference guide, sorted by DwC extension type: <https://rs.gbif.org/extensions.html>.
+While a computer is not required here, it may be useful to have access to DwC vocabulary pages to reference at this point in this process. This quick reference guide published by TDWG is a good starting point for mapping: <https://dwc.tdwg.org/terms/>. GBIF also has a vocabulary reference guide, sorted by DwC extension type: <https://rs.gbif.org/extensions.html>.
