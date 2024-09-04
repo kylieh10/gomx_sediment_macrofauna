@@ -177,7 +177,11 @@ Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>%
     maximumDistanceAboveSurfaceInMeters,
     materialEntityID
   ) %>% 
-  distinct()
+  distinct() %>% 
+  mutate(
+    minimumDistanceAboveSurfaceInMeters = sprintf("%.2f", minimumDistanceAboveSurfaceInMeters),
+    maximumDistanceAboveSurfaceInMeters = sprintf("%.2f", maximumDistanceAboveSurfaceInMeters)
+  )
 
 Infauna_Event %>% 
   write.csv(
