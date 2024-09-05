@@ -10,7 +10,7 @@
 <meta name="author" content="Stephen Formel">
 <meta name="dcterms.date" content="2024-09-05">
 
-<title>Getting a Feel for the Data</title>
+<title>DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow - Dataset Background</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,6 +79,11 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow</span>
+    </a>
+  </div>
         <div class="quarto-navbar-tools tools-end">
     <a href="https://github.com/kylieh10/gomx_sediment_macrofauna" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
@@ -90,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_modeling_page.html">Getting a Feel for the Data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dataset_background_page.html">Dataset Background</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -124,13 +129,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dataset_background_page.html" class="sidebar-item-text sidebar-link">
+  <a href="./dataset_background_page.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Dataset Background</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_modeling_page.html" class="sidebar-item-text sidebar-link active">
+  <a href="./data_modeling_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting a Feel for the Data</span></a>
   </div>
 </li>
@@ -180,8 +185,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#modeling-the-data" id="toc-modeling-the-data" class="nav-link active" data-scroll-target="#modeling-the-data">Modeling the Data</a></li>
-  <li><a href="#mapping-to-darwin-core" id="toc-mapping-to-darwin-core" class="nav-link" data-scroll-target="#mapping-to-darwin-core">Mapping to Darwin Core</a></li>
+  <li><a href="#what-data-are-we-using-in-this-notebook" id="toc-what-data-are-we-using-in-this-notebook" class="nav-link active" data-scroll-target="#what-data-are-we-using-in-this-notebook">What data are we using in this notebook?</a></li>
   </ul>
 </nav>
     </div>
@@ -190,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Getting a Feel for the Data</h1>
+<h1 class="title">Dataset Background</h1>
 <p class="subtitle lead">An elegant guide to mobilizing data to OBIS for the discerning member of the Demopoulos lab.</p>
 </div>
 
@@ -221,33 +225,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Starting to understand the data we are working with may not require a computer. Simple diagrams and maps can be very useful in this stage to understand the relationships and information provided in a dataset. To get started, it’s valuable to model the data and begin the process of mapping terms to DwC vocabulary.</p>
-<section id="modeling-the-data" class="level1">
-<h1>Modeling the Data</h1>
-<p>Modeling the data and the relationships may be essential in understanding more complex datasets or those with multiple, related tables. This can be done with simple hand drawn diagrams or computer-generated diagrams, like mermaid diagrams.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="data_visualization.png" class="img-fluid figure-img"></p>
-<figcaption>Hand-drawn data visualization of relationships</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="relationship_diagram.png" class="img-fluid figure-img"></p>
-<figcaption>Another hand-drawn representation of the relationships within and between events and occurrences</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Mermaid_diagram.png" class="img-fluid figure-img"></p>
-<figcaption>Mermaid diagram visualization of the same data</figcaption>
-</figure>
-</div>
-</section>
-<section id="mapping-to-darwin-core" class="level1">
-<h1>Mapping to Darwin Core</h1>
-<p>Once we have a better grasp on the relationships in our data and what cores or extensions we might use, deciding what DwC terms to use becomes easier. Going through each column, we will need to determine what DwC terms are most appropriate and if term relationships are 1:1, 1:many, many:1, or 1:0, which will be valuable in wrangling the data.</p>
-<p>While a computer is not required here, it may be useful to have access to DwC vocabulary pages to reference at this point in this process. This quick reference guide published by TDWG is a good starting point for mapping: <a href="https://dwc.tdwg.org/terms/" class="uri">https://dwc.tdwg.org/terms/</a>. GBIF also has a vocabulary reference guide, sorted by DwC extension type: <a href="https://rs.gbif.org/extensions.html" class="uri">https://rs.gbif.org/extensions.html</a>.</p>
+<section id="what-data-are-we-using-in-this-notebook" class="level1">
+<h1>What data are we using in this notebook?</h1>
+<p>We will be using data published by USGS, titled “Sediment macrofaunal composition, sediment grain size, and taxa functional traits of multiple deep-sea coral habitats in the Gulf of Mexico, 2009-2014”, collected by Dr.&nbsp;Amanda Demopoulos and Dr.&nbsp;Jill Bourque. DOI: <a href="https://doi.org/10.5066/F7TH8KXD" class="uri">https://doi.org/10.5066/F7TH8KXD</a></p>
+<p>This data describes a series of sampling events where cores are taken near one of several types coral and analyzed for sediment composition or subsampled for macrofauna.</p>
 
 
 </section>

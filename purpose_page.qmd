@@ -1,7 +1,17 @@
 ---
-title: "Why Are we Doing This?"
-editor: visual
+title: "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow"
+subtitle: "An elegant guide to mobilizing data to OBIS for the discerning member of the Demopoulos lab." 
+date: today
+author: 
+  - name: "Kylie Hollis"
+    orcid: "0009-0006-4061-8077"
+    email: "khollis@usgs.gov"
+  - name: "Stephen Formel"
+    orcid: "0000-0001-7418-1244"
+    email: "sformel@usgs.gov"        
 ---
+
+# Why Are We Doing This?
 
 ## Introduction
 
@@ -23,7 +33,7 @@ The Ocean Biodiversity Information System (OBIS) and Global Biodiversity Informa
 
 Darwin Core Archive (DwC-A) is a data standard for datasets. It is comprised of `csv` files containing the different data tables, which follow a star schema; the `xml` file that describes the organization and mapping; and the `EML` file that provides metadata for the dataset. The `csv` files must contain one core table and, if needed, extension tables that are connected to the core via an identifier.
 
-![DwC-A components](star_diagram.png)
+![Schematic of a Darwin Core Archive, sourced from Wieczorek J, Blissett M, Braak K & Podolskiy M (2024) The GBIF Integrated Publishing Toolkit User Manual, version 3.0. Copenhagen: GBIF Secretariat. https://ipt.gbif.org/manual/en/ipt/3.0/ CC BY 4.0](images/star_diagram.png){fig-alt="schematic of a Darwin Core Archive" fig-align="center"}
 
 ## What is Darwin Core?
 

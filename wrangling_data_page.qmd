@@ -16,6 +16,8 @@ From the object `sb_filenames`, we will pull the column `url`. This column conta
 ```{r}
 #| warning: false
 #| message: false
+#| eval: true
+
 
 library(dplyr)
 library(sbtools)
@@ -61,6 +63,7 @@ Some renaming might be slightly more complex, requiring manipulation of a column
 In this case, the column may be in the wrong format, like `DateCollected` which needs to be adjusted before being assigned to `eventDate`. Others, like `eventID` or `higherGeography`, are concatenations of other columns (many:1 relationships) and new information, which can be combined with `paste`. `Mutate` is also used to create new columns, like `geodeticDatum`, which was not included in the original dataset.
 
 ```{r}
+
 Infauna_StationCore <- Infauna_StationCore %>%
   mutate(
     geodeticDatum = "WGS84",
@@ -177,6 +180,8 @@ pivot_longer(
 Here is the full code chunk where we first do a variety of mutates prior to the pivot and show a subset of the resulting table:
 
 ```{r}
+#| eval: true
+
 SedChem <- SedChem %>%
   mutate(
     SampleID = CoreID
@@ -246,14 +251,14 @@ Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c
 
 ```
 
-#Aligning to a Taxonomic Database
+# Aligning to a Taxonomic Database
 
 Occurrence tables require some taxonomic information that may not be provided in the original data. In these cases, we will need to call taxonomic information from WoRMS using the `worrms` package. In addition to the required `scientificName` and `scientificNameID` fields, it is valuable to provide other information if it is available, like `taxonRank`, which is the lowest identifiable taxon of an occurrence, and corresponding parent taxa.
 
 We will assign `AphiaID` from the occurrence table to a new variable `myAphiaID` which we will use to call the corresponding WoRMS data. Adding `lapply` to circumvent limits on the number of inputs, we then use `wm_record(id = x)`, where `x` is `myAphiaID`. From the new table, we just pull the columns that we need using `select`.
 
 ```{r}
-
+#| eval: false
 myAphiaID <- Infauna$AphiaID %>% na.omit() %>% unique()
 
 myAphiaID <- lapply(myAphiaID, function(x) wm_record(id = x)) %>% 
@@ -279,7 +284,7 @@ uniqueAphiaSelectColumns <- select(.data =
   )
 ```
 
-#Outputting Data
+# Outputting Data
 
 Once our data has been cleaned up, mapped, and is ready to be uploaded to the IPT, we will have to output the data as a csv file. To do this, first use the `select` function to choose what columns to include in the final table. For example, for the event table, it will look something like this:
 

@@ -1,6 +1,0 @@
----
-title: "Creating EML Metadata"
-editor: visual
----
-
-Creating EML metadata is one of the most complex parts of publishing EML metadata can either be made as a separate file and uploaded to the IPT, or it can be made by filling out the GBIF Metadata Template. For guidance on creating EML metadata, reference the [GBIF IPT User Manual](https://ipt.gbif.org/manual/en/ipt/latest/gbif-metadata-profile#metadata-publishing-solutions). For any further questions, reach out to GBIF or OBIS teams for assistance.

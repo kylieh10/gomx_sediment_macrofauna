@@ -1,7 +1,8 @@
 project:
   type: website
-  output-dir: docs
-  render:
+  title: "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow"
+output-dir: docs
+render:
     - purpose_page.qmd
     - intended_user_page.qmd
     - dataset_background_page.qmd
@@ -12,7 +13,7 @@ project:
     - EML_metadata_page.qmd
     - publishing_page.qmd
     - use_stats_page.qmd
-        
+
 format:
   html:
     toc: true
@@ -21,7 +22,7 @@ website:
   sidebar:
     style: "docked"
     background: green
-    search: true    
+    search: true
     contents:
       - href: purpose_page.qmd
         text: Why are we doing this?
@@ -35,10 +36,6 @@ website:
         text: Version Control with Git
       - href: wrangling_data_page.qmd
         text: Wrangling the Data
-      - href: uploading_page.qmd
-        text: Uploading to the IPT
-      - href: EML_metadata_page.qmd
-        text: Creating EML Metadata
       - href: publishing_page.qmd
         text: Publishing to GBIF and OBIS
       - href: use_stats_page.qmd
@@ -47,7 +44,9 @@ website:
     tools:
       - icon: github
         href: "https://github.com/kylieh10/gomx_sediment_macrofauna"
-  
+
+
+
       
       
       

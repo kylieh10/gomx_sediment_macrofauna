@@ -10,7 +10,7 @@
 <meta name="author" content="Stephen Formel">
 <meta name="dcterms.date" content="2024-09-05">
 
-<title>Getting a Feel for the Data</title>
+<title>DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,6 +79,11 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow</span>
+    </a>
+  </div>
         <div class="quarto-navbar-tools tools-end">
     <a href="https://github.com/kylieh10/gomx_sediment_macrofauna" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
@@ -90,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_modeling_page.html">Getting a Feel for the Data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./purpose_page.html">Why are we doing this?</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -112,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./purpose_page.html" class="sidebar-item-text sidebar-link">
+  <a href="./purpose_page.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Why are we doing this?</span></a>
   </div>
 </li>
@@ -130,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_modeling_page.html" class="sidebar-item-text sidebar-link active">
+  <a href="./data_modeling_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting a Feel for the Data</span></a>
   </div>
 </li>
@@ -144,18 +149,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./wrangling_data_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Wrangling the Data</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./uploading_page.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Uploading to the IPT</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./EML_metadata_page.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Creating EML Metadata</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -180,8 +173,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#modeling-the-data" id="toc-modeling-the-data" class="nav-link active" data-scroll-target="#modeling-the-data">Modeling the Data</a></li>
-  <li><a href="#mapping-to-darwin-core" id="toc-mapping-to-darwin-core" class="nav-link" data-scroll-target="#mapping-to-darwin-core">Mapping to Darwin Core</a></li>
+  <li><a href="#why-are-we-doing-this" id="toc-why-are-we-doing-this" class="nav-link active" data-scroll-target="#why-are-we-doing-this">Why Are We Doing This?</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  </ul></li>
+  <li><a href="#open-science-obis-and-gbif" id="toc-open-science-obis-and-gbif" class="nav-link" data-scroll-target="#open-science-obis-and-gbif">Open Science, OBIS, and GBIF</a>
+  <ul class="collapse">
+  <li><a href="#open-science-and-fair-data" id="toc-open-science-and-fair-data" class="nav-link" data-scroll-target="#open-science-and-fair-data">Open Science and FAIR Data</a></li>
+  <li><a href="#obis-and-gbif" id="toc-obis-and-gbif" class="nav-link" data-scroll-target="#obis-and-gbif">OBIS and GBIF</a></li>
+  </ul></li>
+  <li><a href="#darwin-core-archive" id="toc-darwin-core-archive" class="nav-link" data-scroll-target="#darwin-core-archive">Darwin Core Archive</a>
+  <ul class="collapse">
+  <li><a href="#what-is-darwin-core" id="toc-what-is-darwin-core" class="nav-link" data-scroll-target="#what-is-darwin-core">What is Darwin Core?</a></li>
+  <li><a href="#what-is-eml" id="toc-what-is-eml" class="nav-link" data-scroll-target="#what-is-eml">What is EML?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -190,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Getting a Feel for the Data</h1>
+<h1 class="title">DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow</h1>
 <p class="subtitle lead">An elegant guide to mobilizing data to OBIS for the discerning member of the Demopoulos lab.</p>
 </div>
 
@@ -221,35 +226,45 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Starting to understand the data we are working with may not require a computer. Simple diagrams and maps can be very useful in this stage to understand the relationships and information provided in a dataset. To get started, it’s valuable to model the data and begin the process of mapping terms to DwC vocabulary.</p>
-<section id="modeling-the-data" class="level1">
-<h1>Modeling the Data</h1>
-<p>Modeling the data and the relationships may be essential in understanding more complex datasets or those with multiple, related tables. This can be done with simple hand drawn diagrams or computer-generated diagrams, like mermaid diagrams.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="data_visualization.png" class="img-fluid figure-img"></p>
-<figcaption>Hand-drawn data visualization of relationships</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="relationship_diagram.png" class="img-fluid figure-img"></p>
-<figcaption>Another hand-drawn representation of the relationships within and between events and occurrences</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Mermaid_diagram.png" class="img-fluid figure-img"></p>
-<figcaption>Mermaid diagram visualization of the same data</figcaption>
-</figure>
-</div>
+<section id="why-are-we-doing-this" class="level1">
+<h1>Why Are We Doing This?</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This notebook aims to provide a general workflow for mobilizing the Demopoulos Lab’s data to OBIS to use in the future for similar tasks. Using an existing dataset as an example, we will walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.</p>
 </section>
-<section id="mapping-to-darwin-core" class="level1">
-<h1>Mapping to Darwin Core</h1>
-<p>Once we have a better grasp on the relationships in our data and what cores or extensions we might use, deciding what DwC terms to use becomes easier. Going through each column, we will need to determine what DwC terms are most appropriate and if term relationships are 1:1, 1:many, many:1, or 1:0, which will be valuable in wrangling the data.</p>
-<p>While a computer is not required here, it may be useful to have access to DwC vocabulary pages to reference at this point in this process. This quick reference guide published by TDWG is a good starting point for mapping: <a href="https://dwc.tdwg.org/terms/" class="uri">https://dwc.tdwg.org/terms/</a>. GBIF also has a vocabulary reference guide, sorted by DwC extension type: <a href="https://rs.gbif.org/extensions.html" class="uri">https://rs.gbif.org/extensions.html</a>.</p>
+</section>
+<section id="open-science-obis-and-gbif" class="level1">
+<h1>Open Science, OBIS, and GBIF</h1>
+<section id="open-science-and-fair-data" class="level2">
+<h2 class="anchored" data-anchor-id="open-science-and-fair-data">Open Science and FAIR Data</h2>
+<p>Open science is the practice of making data, resources, results, and publications as available as possible, while still respecting diverse cultures, security, and privacy.</p>
+<p>FAIR data is data that is findable, accessible, interoperable, and reusable. While the two often go hand-in-hand, FAIRness doesn’t require openness. However, by practicing the principles of open and FAIR science, we promote transparency in the scientific process. This transparency encourages collaboration, more efficient scientific advancements, and policy changes, while also increasing the impact of research.</p>
+</section>
+<section id="obis-and-gbif" class="level2">
+<h2 class="anchored" data-anchor-id="obis-and-gbif">OBIS and GBIF</h2>
+<p>The Ocean Biodiversity Information System (OBIS) and Global Biodiversity Information Facility (GBIF) are international networks that mobilize data to provide free, open access to biodiversity data. They promote global scientific collaboration and open science as pillars of their missions, which is facilitated by the use of data standards and FAIR principles.</p>
+</section>
+</section>
+<section id="darwin-core-archive" class="level1">
+<h1>Darwin Core Archive</h1>
+<p>Darwin Core Archive (DwC-A) is a data standard for datasets. It is comprised of <code>csv</code> files containing the different data tables, which follow a star schema; the <code>xml</code> file that describes the organization and mapping; and the <code>EML</code> file that provides metadata for the dataset. The <code>csv</code> files must contain one core table and, if needed, extension tables that are connected to the core via an identifier.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/star_diagram.png" class="img-fluid figure-img" alt="schematic of a Darwin Core Archive"></p>
+<figcaption>Schematic of a Darwin Core Archive, sourced from Wieczorek J, Blissett M, Braak K &amp; Podolskiy M (2024) The GBIF Integrated Publishing Toolkit User Manual, version 3.0. Copenhagen: GBIF Secretariat. https://ipt.gbif.org/manual/en/ipt/3.0/ CC BY 4.0</figcaption>
+</figure>
+</div>
+<section id="what-is-darwin-core" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-darwin-core">What is Darwin Core?</h2>
+<p>Darwin Core (DwC) is a set of data standards from Biodiversity Information Standards (TDWG). It includes standardized vocabulary and file formats for Darwin Core Archives, which contains an <code>event</code> or <code>occurrence</code> core file, extension files, and metadata files.</p>
+<p>DwC is used by both OBIS and GBIF to help facilitate the sharing of open biological data in accordance with the FAIR principles.</p>
+</section>
+<section id="what-is-eml" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-eml">What is EML?</h2>
+<p>Ecological Metadata Language (EML) is a standard for recording and organizing metadata, and is required for publishing to GBIF and OBIS. It promotes transparency and accessibility of published datasets.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

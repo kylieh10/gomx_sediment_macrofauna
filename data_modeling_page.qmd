@@ -9,11 +9,11 @@ Starting to understand the data we are working with may not require a computer. 
 
 Modeling the data and the relationships may be essential in understanding more complex datasets or those with multiple, related tables. This can be done with simple hand drawn diagrams or computer-generated diagrams, like mermaid diagrams.
 
-![Hand-drawn data visualization of relationships](data_visualization.png)
+![Hand-drawn data visualization of relationships, Image by Kylie Hollis CC BY 4.0](images/data_visualization.png){fig-alt="Schematic showing the relationships of different variables across three tables"}
 
-![Another hand-drawn representation of the relationships within and between events and occurrences](relationship_diagram.png)
+![Another hand-drawn representation of the relationships within and between events and occurrences, Image by Kylie Hollis CC BY 4.0](images/relationship_diagram.png){fig-alt="A hand-drawn diagram showing how the events and samples are nested within each other}
 
-![Mermaid diagram visualization of the same data](Mermaid_diagram.png)
+![Mermaid diagram visualization of the same data, Image by Steve Formel CC BY 4.0](images/Mermaid_diagram.png){fig-alt="A computer-generated mermaid diagram showing the same relationships between variables in different tables"}
 
 # Mapping to Darwin Core
 
