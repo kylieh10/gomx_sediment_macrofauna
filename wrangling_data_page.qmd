@@ -91,7 +91,6 @@ After renaming and mutating column names, we may have to pivot the table from wi
 Example of Wide Format
 
 ```{r}
-#| label: tbl-tidyformat wide
 #| echo: false
 #| warning: false
 
@@ -122,7 +121,6 @@ long_example <- tidyr::pivot_longer(data = example_df, cols = site_01:site_03, n
 Example of Long Format
 
 ```{r}
-#| label: tbl-tidyformat long
 #| echo: false
 #| warning: false
 
