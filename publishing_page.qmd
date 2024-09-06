@@ -3,3 +3,14 @@ title: "Publishing to GBIF and OBIS"
 format: html
 editor: visual
 ---
+
+# Uploading to the IPT
+
+To make our data available through GBIF and OBIS, we have to upload it through GBIF's Integrated Publishing Toolkit (IPT), which can be the most complex part of data mabilization. The IPT makes a DwC-A file, similar to how Excel make csv files, which is read in by GBIF and OBIS. Here's a video explaining this process and the IPT:
+
+# Creating EML Metadata
+
+Creating EML metadata is one of the most complex parts of publishing EML metadata can either be made as a separate file and uploaded to the IPT, or it can be made by filling out the GBIF Metadata Template. For guidance on creating EML metadata, reference the [GBIF IPT User Manual](https://ipt.gbif.org/manual/en/ipt/latest/gbif-metadata-profile#metadata-publishing-solutions). For any further questions, reach out to GBIF or OBIS teams for assistance.
+
+
+# Final Steps

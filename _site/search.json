@@ -1,0 +1,308 @@
+[
+  {
+    "objectID": "intended_user_page.html",
+    "href": "intended_user_page.html",
+    "title": "Intended User",
+    "section": "",
+    "text": "The intended user of this notebook is a person who has been tasked with publishing data that has already been published to ScienceBase via the USGS data release process. However, the basic structure and concepts should apply for any data that is being mobilized (i.e. published to) GBIF and OBIS. Basic knowledge of R is needed, but you do not need to be an expert. Similarly, basic knowledge of the Darwin Core, and Ecological Metadata Language (EML) standards is useful, but you do not need to be an expert. Finally, this notebook will be most useful if it can be built on through repeated use. Knowing how to use Git, and either USGS Gitlab or Github, will help the user version control the evolution of their approach to data mobilization, but if you have never used Git before, there is a section included that points you toward some good lessons.",
+    "crumbs": [
+      "Intended User"
+    ]
+  },
+  {
+    "objectID": "purpose_page.html",
+    "href": "purpose_page.html",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "",
+    "text": "This notebook aims to provide a general workflow for mobilizing the Demopoulos Lab’s data to OBIS to use in the future for similar tasks. Using an existing dataset as an example, we will walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.",
+    "crumbs": [
+      "Why are we doing this?"
+    ]
+  },
+  {
+    "objectID": "purpose_page.html#introduction",
+    "href": "purpose_page.html#introduction",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "",
+    "text": "This notebook aims to provide a general workflow for mobilizing the Demopoulos Lab’s data to OBIS to use in the future for similar tasks. Using an existing dataset as an example, we will walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.",
+    "crumbs": [
+      "Why are we doing this?"
+    ]
+  },
+  {
+    "objectID": "purpose_page.html#open-science-and-fair-data",
+    "href": "purpose_page.html#open-science-and-fair-data",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "Open Science and FAIR Data",
+    "text": "Open Science and FAIR Data\nOpen science is the practice of making data, resources, results, and publications as available as possible, while still respecting diverse cultures, security, and privacy.\nFAIR data is data that is findable, accessible, interoperable, and reusable. While the two often go hand-in-hand, FAIRness doesn’t require openness. However, by practicing the principles of open and FAIR science, we promote transparency in the scientific process. This transparency encourages collaboration, more efficient scientific advancements, and policy changes, while also increasing the impact of research.",
+    "crumbs": [
+      "Why are we doing this?"
+    ]
+  },
+  {
+    "objectID": "purpose_page.html#obis-and-gbif",
+    "href": "purpose_page.html#obis-and-gbif",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "OBIS and GBIF",
+    "text": "OBIS and GBIF\nThe Ocean Biodiversity Information System (OBIS) and Global Biodiversity Information Facility (GBIF) are international networks that mobilize data to provide free, open access to biodiversity data. They promote global scientific collaboration and open science as pillars of their missions, which is facilitated by the use of data standards and FAIR principles.",
+    "crumbs": [
+      "Why are we doing this?"
+    ]
+  },
+  {
+    "objectID": "purpose_page.html#what-is-darwin-core",
+    "href": "purpose_page.html#what-is-darwin-core",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "What is Darwin Core?",
+    "text": "What is Darwin Core?\nDarwin Core (DwC) is a set of data standards from Biodiversity Information Standards (TDWG). It includes standardized vocabulary and file formats for Darwin Core Archives, which contains an event or occurrence core file, extension files, and metadata files.\nDwC is used by both OBIS and GBIF to help facilitate the sharing of open biological data in accordance with the FAIR principles.",
+    "crumbs": [
+      "Why are we doing this?"
+    ]
+  },
+  {
+    "objectID": "purpose_page.html#what-is-eml",
+    "href": "purpose_page.html#what-is-eml",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "What is EML?",
+    "text": "What is EML?\nEcological Metadata Language (EML) is a standard for recording and organizing metadata, and is required for publishing to GBIF and OBIS. It promotes transparency and accessibility of published datasets.",
+    "crumbs": [
+      "Why are we doing this?"
+    ]
+  },
+  {
+    "objectID": "scripts/data_model.html",
+    "href": "scripts/data_model.html",
+    "title": "Data Model",
+    "section": "",
+    "text": "%%{init: {'theme':'base'}}%%\n\ngraph RL\n\n    %% build event core box\n    subgraph Event Core\n        direction TB\n        subgraph core[\"eventID\"]\n            direction TB\n            Site--&gt;Station--&gt;Core\n        end\n        subgraph sample[\"eventID\"]\n            direction TB\n            Sample(\"Sample (Fraction)\")\n        end\n        sample---|\"parentEventID\"|core\n        end\n    \n    %% build occurrence box\n    subgraph Occurrence[\"Occurrence Extension\"]\n        direction TB    \n        taxonomy\n        occ1[\"occurrenceID - coral\"]\n        occ2[\"occurrenceID - macrofauna\"]\n\n        taxonomy--- occ1 & occ2\n    end\n\n    Occurrence---|\"eventID\"| Sample\n    %% build eMOF box\n    subgraph eMOF[\"Extended Measurement Or Fact Extension\"]\n    Fraction[\"Sediment Composition\"]\n    end\n\n%% connect fraction to sample\nFraction---|eventID| Sample\n\n\n\n\n%%{init: {'theme':'base'}}%%\n\ngraph RL\n\n    %% build event core box\n    subgraph Event Core\n        direction TB\n        subgraph core[\"eventID\"]\n            direction TB\n            Site--&gt;Station--&gt;Core\n        end\n        subgraph sample[\"eventID\"]\n            direction TB\n            Sample(\"Sample (Fraction)\")\n        end\n        sample---|\"parentEventID\"|core\n        end\n    \n    %% build occurrence box\n    subgraph Occurrence[\"Occurrence Extension\"]\n        direction TB    \n        taxonomy\n        occ1[\"occurrenceID - coral\"]\n        occ2[\"occurrenceID - macrofauna\"]\n\n        taxonomy--- occ1 & occ2\n    end\n\n    Occurrence---|\"eventID\"| Sample\n    %% build eMOF box\n    subgraph eMOF[\"Extended Measurement Or Fact Extension\"]\n    Fraction[\"Sediment Composition\"]\n    end\n\n%% connect fraction to sample\nFraction---|eventID| Sample"
+  },
+  {
+    "objectID": "scripts/data_model.html#use-mermaid-to-make-a-diagram-of-the-data-model",
+    "href": "scripts/data_model.html#use-mermaid-to-make-a-diagram-of-the-data-model",
+    "title": "Data Model",
+    "section": "",
+    "text": "%%{init: {'theme':'base'}}%%\n\ngraph RL\n\n    %% build event core box\n    subgraph Event Core\n        direction TB\n        subgraph core[\"eventID\"]\n            direction TB\n            Site--&gt;Station--&gt;Core\n        end\n        subgraph sample[\"eventID\"]\n            direction TB\n            Sample(\"Sample (Fraction)\")\n        end\n        sample---|\"parentEventID\"|core\n        end\n    \n    %% build occurrence box\n    subgraph Occurrence[\"Occurrence Extension\"]\n        direction TB    \n        taxonomy\n        occ1[\"occurrenceID - coral\"]\n        occ2[\"occurrenceID - macrofauna\"]\n\n        taxonomy--- occ1 & occ2\n    end\n\n    Occurrence---|\"eventID\"| Sample\n    %% build eMOF box\n    subgraph eMOF[\"Extended Measurement Or Fact Extension\"]\n    Fraction[\"Sediment Composition\"]\n    end\n\n%% connect fraction to sample\nFraction---|eventID| Sample\n\n\n\n\n%%{init: {'theme':'base'}}%%\n\ngraph RL\n\n    %% build event core box\n    subgraph Event Core\n        direction TB\n        subgraph core[\"eventID\"]\n            direction TB\n            Site--&gt;Station--&gt;Core\n        end\n        subgraph sample[\"eventID\"]\n            direction TB\n            Sample(\"Sample (Fraction)\")\n        end\n        sample---|\"parentEventID\"|core\n        end\n    \n    %% build occurrence box\n    subgraph Occurrence[\"Occurrence Extension\"]\n        direction TB    \n        taxonomy\n        occ1[\"occurrenceID - coral\"]\n        occ2[\"occurrenceID - macrofauna\"]\n\n        taxonomy--- occ1 & occ2\n    end\n\n    Occurrence---|\"eventID\"| Sample\n    %% build eMOF box\n    subgraph eMOF[\"Extended Measurement Or Fact Extension\"]\n    Fraction[\"Sediment Composition\"]\n    end\n\n%% connect fraction to sample\nFraction---|eventID| Sample"
+  },
+  {
+    "objectID": "scripts/demopoulos_obis_mobilization_workflow.html",
+    "href": "scripts/demopoulos_obis_mobilization_workflow.html",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "",
+    "text": "This notebook aims to provide a general workflow for mobilizing the Demopoulos Lab’s data to OBIS to use in the future for similar tasks. Using an existing dataset as an example, we will walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.\n\n\n\n\nOpen science is the practice of making data, resources, results, and publications as available as possible, while still respecting diverse cultures, security, and privacy.\nFAIR data is data that is findable, accessible, interoperable, and reusable. While the two often go hand-in-hand, FAIRness doesn’t require openness. However, by practicing the principles of open and FAIR science, we promote transparency in the scientific process. This transparency encourages collaboration, more efficient scientific advancements, and policy changes, while also increasing the impact of research.\n\n\n\nThe Ocean Biodiversity Information System (OBIS) and Global Biodiversity Information Facility (GBIF) are international networks that mobilize data to provide free, open access to biodiversity data. They promote global scientific collaboration and open science as pillars of their missions, which is facilitated by the use of data standards and FAIR principles.\n\n\n\n\nDarwin Core (DwC) is a set of data standards from Biodiversity Information Standards (TDWG). It includes standardized vocabulary and file format for Darwin Core Archives, which contains an event or occurrence core file, extension files, and metadata files.\nDwC is used by both OBIS and GBIF to help facilitate the sharing of open biological data in accordance with the FAIR principles.\n\n\n\nEcological Metadata Language (EML)"
+  },
+  {
+    "objectID": "scripts/demopoulos_obis_mobilization_workflow.html#open-science-obis-and-gbif",
+    "href": "scripts/demopoulos_obis_mobilization_workflow.html#open-science-obis-and-gbif",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "",
+    "text": "Open science is the practice of making data, resources, results, and publications as available as possible, while still respecting diverse cultures, security, and privacy.\nFAIR data is data that is findable, accessible, interoperable, and reusable. While the two often go hand-in-hand, FAIRness doesn’t require openness. However, by practicing the principles of open and FAIR science, we promote transparency in the scientific process. This transparency encourages collaboration, more efficient scientific advancements, and policy changes, while also increasing the impact of research.\n\n\n\nThe Ocean Biodiversity Information System (OBIS) and Global Biodiversity Information Facility (GBIF) are international networks that mobilize data to provide free, open access to biodiversity data. They promote global scientific collaboration and open science as pillars of their missions, which is facilitated by the use of data standards and FAIR principles."
+  },
+  {
+    "objectID": "scripts/demopoulos_obis_mobilization_workflow.html#what-is-darwin-core",
+    "href": "scripts/demopoulos_obis_mobilization_workflow.html#what-is-darwin-core",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "",
+    "text": "Darwin Core (DwC) is a set of data standards from Biodiversity Information Standards (TDWG). It includes standardized vocabulary and file format for Darwin Core Archives, which contains an event or occurrence core file, extension files, and metadata files.\nDwC is used by both OBIS and GBIF to help facilitate the sharing of open biological data in accordance with the FAIR principles."
+  },
+  {
+    "objectID": "scripts/demopoulos_obis_mobilization_workflow.html#what-is-eml",
+    "href": "scripts/demopoulos_obis_mobilization_workflow.html#what-is-eml",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "",
+    "text": "Ecological Metadata Language (EML)"
+  },
+  {
+    "objectID": "scripts/demopoulos_obis_mobilization_workflow.html#what-data-are-we-using-in-this-notebook",
+    "href": "scripts/demopoulos_obis_mobilization_workflow.html#what-data-are-we-using-in-this-notebook",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "What data are we using in this notebook?",
+    "text": "What data are we using in this notebook?\nWe will be using data published by USGS, titled “Sediment macrofaunal composition, sediment grain size, and taxa functional traits of multiple deep-sea coral habitats in the Gulf of Mexico, 2009-2014”, collected by Dr. Amanda Demopoulos and Dr. Jill Bourque. DOI: https://doi.org/10.5066/F7TH8KXD\nThis data describes a series of sampling events where cores are taken near one of several types coral and analyzed for sediment composition or subsampled for macrofauna."
+  },
+  {
+    "objectID": "scripts/demopoulos_obis_mobilization_workflow.html#modeling-the-data",
+    "href": "scripts/demopoulos_obis_mobilization_workflow.html#modeling-the-data",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "Modeling the Data",
+    "text": "Modeling the Data\nModeling the data and the relationships may be essential in understanding more complex datasets or those with multiple, related tables. This can be done with simple hand drawn diagrams or computer-generated diagrams, like mermaid diagrams.\n\n\n\nHand-drawn data visualization of relationships\n\n\n\n\n\nMermaid diagram visualization of the same data"
+  },
+  {
+    "objectID": "scripts/demopoulos_obis_mobilization_workflow.html#mapping-to-darwin-core",
+    "href": "scripts/demopoulos_obis_mobilization_workflow.html#mapping-to-darwin-core",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "Mapping to Darwin Core",
+    "text": "Mapping to Darwin Core\nOnce we have a better grasp on the relationships in our data and what cores or extensions we might use, deciding what DwC terms to use becomes easier. Going through each column, we will need to determine what DwC terms are most appropriate and if term relationships are 1:1, 1:many, many:1, or 1:0, which will be valuable in wrangling the data.\nWhile a computer is not required here, it may be useful to have access to DwC vocabulary pages to reference in this process."
+  },
+  {
+    "objectID": "scripts/demopoulos_obis_mobilization_workflow.html#gitlab-vs-github",
+    "href": "scripts/demopoulos_obis_mobilization_workflow.html#gitlab-vs-github",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "Gitlab vs Github",
+    "text": "Gitlab vs Github"
+  },
+  {
+    "objectID": "scripts/demopoulos_obis_mobilization_workflow.html#using-r-to-get-the-data-from-sciencebase",
+    "href": "scripts/demopoulos_obis_mobilization_workflow.html#using-r-to-get-the-data-from-sciencebase",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "Using R to get the data from ScienceBase",
+    "text": "Using R to get the data from ScienceBase\nTo retrieve and use the data from ScienceBase, R packages dplyr, sbtools, stringr, and worrms will need to be loaded. After loading these packages, we will read the data in from ScienceBase.\nThe ScienceBase dataset ID can be found at the end of the ScienceBase link for the dataset. If the full link to the data is “https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e”, then the identifier is 5a709594e4b0a9a2e9d88e4e.\nUsing the ScienceBase ID, we will get information about the data files using item_list_files(sb_id = sb_id) and assign it to an object sb_filenames.\nFrom the object sb_filenames, we will pull the column url. This column contains the url needed to download the data file from ScienceBase. Rather than download a local copy of the files, we will read it directly into the memory of our computer with readr:: read_csv(file = sb_filenames$url[n]), with n being the row number of the file we are reading. Now we have dataframes to work with!\n\nlibrary(dplyr)\nlibrary(sbtools)\nlibrary(stringr)\nlibrary(worrms)\nlibrary(tidyr)\n\nsb_id &lt;- '5a709594e4b0a9a2e9d88e4e'\n\nsb_filenames &lt;- item_list_files(sb_id = sb_id)\n\nBTA &lt;-readr::read_csv(file = sb_filenames$url[1])\nInfauna &lt;- readr::read_csv(file = sb_filenames$url[2])\nSedChem &lt;- readr::read_csv(file = sb_filenames$url[3])"
+  },
+  {
+    "objectID": "scripts/demopoulos_obis_mobilization_workflow.html#using-r-to-transform-the-data",
+    "href": "scripts/demopoulos_obis_mobilization_workflow.html#using-r-to-transform-the-data",
+    "title": "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow",
+    "section": "Using R to transform the data",
+    "text": "Using R to transform the data\nAfter loading the data, we will have to transform the data to align with DarwinCore standard formats and terms.\n\nRenaming Columns\nSome column names may directly correlate with the definitions of some DwC terms (a 1:1 relationship), meaning we only have to rename them. To preserve the original data, we will create a new table from Infauna to do the manipulations. Then, we will use rename(newName = oldName) to assign new column names.\n\nInfauna_StationCore &lt;- Infauna %&gt;%\n  \n  rename(\n    locationRemarks = Location,\n    materialEntityID = CoreID,\n    locationID = Station,\n    decimalLatitude = Latitude,\n    decimalLongitude = Longitude\n  )\n\n\n\nMutating Columns\nSome renaming might be slightly more complex, requiring manipulation of a column’s format or content to fit the DwC standard. For these tasks, we will use the mutate function.\nIn this case, the column may be in the wrong format, like DateCollected which needs to be adjusted before being assigned to eventDate. Others, like eventDate or samplingProtocol, are concatenations of other columns (many:1 relationships), which can be combined with paste.\n\nInfauna_StationCore &lt;- Infauna_StationCore %&gt;%\n  mutate(\n    geodeticDatum = \"WGS84\",\n    eventDate = DateCollected %&gt;% \n      as.Date(\"%m/%d/%Y\"),\n    eventID = paste(Site, eventDate %&gt;% as.character(), locationID, materialEntityID,\n                    sep = \"_\") %&gt;% stringr::str_remove_all(pattern = \"-\"),\n    minimumDepthInMeters = Depth,\n    maximumDepthInMeters = Depth,\n    locality = paste(\"BOEM Lease Block\", Site),\n    higherGeography = paste(\"Gulf of Mexico\",\n                            paste(\"BOEM Lease Block\", \n                                  Site), sep = \" | \"),\n    samplingProtocol = paste(Gear, CoreDiameter, sep = \"_\")\n  )\n\n\n\nAdding new metadata\n\n\nReconfiguring Tables\nFor some extensions, like the extendedMeasurementOrFact extension, imported data may have different configurations than required by DwC, requiring reconfiguration.\n\nPivoting\nAfter renaming and mutating column names, we may have to pivot the table from wide to long format. For extendedMeasurementOrFact tables, all columns in wide format need to be pivoted into long format.\nExample of Wide Format\n::: {#tbl-tidyformat wide .cell} ::: {.cell-output-display}\nspeciessite_01site_02site_03Tilia americana202Pinus strobus531\n::: :::\nExample of Long Format\n::: {#tbl-tidyformat long .cell} ::: {.cell-output-display}\nspeciessitecountTilia americanasite_014Tilia americanasite_023Tilia americanasite_033Pinus strobussite_012Pinus strobussite_020Pinus strobussite_032\n::: :::\nThis is done using the pivot_longer function. We will specify what columns to include in the pivot with cols = c(columnsToBeIncluded). All column names included in the cols function will now be under the new column measurementType, named using names_to and the old columns’ values under the new column measurementValue, named with values_to.\nWe use pivot to wrangle the eMoF table, and the pertinent chunk of code looks something like this:\n\npivot_longer(\n    cols = c(\"COREWDTH\", \"MINCDIST\", \"MAXCDIST\", \"ADEPZZ01\",\n             \"PRPCL064\", \"PRPCL088\", \"proportionGravel(&gt;2000um)\"\n             ),\n    names_to = \"measurementType\",\n    values_to = \"measurementValue\",\n    values_drop_na = TRUE\n    )\n\nHere is the full code chunk where we first do a variety of mutates prior to the pivot:\n\nSedChem &lt;- SedChem %&gt;%\n  mutate(\n    SampleID = CoreID\n  )\n\nInfauna_emof &lt;- Infauna %&gt;%\n  bind_rows(SedChem) %&gt;%\n\n  rename(\n    materialEntityID = SampleID,\n    locationID = Station\n  ) %&gt;%\n\n  mutate(\n    eventDate = DateCollected %&gt;%\n      as.Date(\"%m/%d/%Y\"),\n    eventID = paste(Site, eventDate %&gt;% as.character(), materialEntityID, sep = \"_\") %&gt;%\n      stringr::str_remove_all(pattern = \"-\"),\n    MAXCDIST = str_split_i(Fraction, pattern = \"-\", i = 2) %&gt;% readr::parse_number() %&gt;%\n      as.character(),\n    MINCDIST = str_split_i(Fraction, pattern = \"-\", i = 1) %&gt;% readr::parse_number() %&gt;%\n      as.character(),\n    \"PRPCL064\" = as.character(Sand),\n    \"PRPCL088\" = as.character(Mud),\n    \"proportionGravel(&gt;2000um)\" = as.character(Gravel),\n    ADEPZZ01 = as.character(Depth),\n    COREWDTH = as.character(CoreDiameter)\n  ) %&gt;%\npivot_longer(\n    cols = c(\"COREWDTH\", \"MINCDIST\", \"MAXCDIST\", \"ADEPZZ01\",\n             \"PRPCL064\", \"PRPCL088\", \"proportionGravel(&gt;2000um)\"\n             ),\n    names_to = \"measurementType\",\n    values_to = \"measurementValue\",\n    values_drop_na = TRUE\n    )\n\n\n\nOccurrences and WoRMS\nOccurrence tables require some taxonomic information that may not be provided in your data. In these cases, we will need to call taxonomic information using the worrms package. In addition to the required scientificName and scientificNameID fields, it is valuable to provide other information if it is available, like taxonRank, which is the lowest identifiable taxon of an occurrence, and corresponding parent taxa.\nWe will assign AphiaID from the occurrence table to a new variable myAphiaID which we will use to call the corresponding WoRMS data. Adding lapply to circumvent limits on the number of inputs, we then use wm_record(id = x), where x is myAphiaID. From the new table, we just pull the columns that we need using select.\n\nmyAphiaID &lt;- Infauna$AphiaID %&gt;% na.omit() %&gt;% unique()\n\nmyAphiaID &lt;- lapply(myAphiaID, function(x) wm_record(id = x)) %&gt;% \n  data.table::rbindlist()\n\nuniqueAphiaSelectColumns &lt;- select(.data = myAphiaID,\nscientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaID\n) %&gt;%\n  rename(\n    scientficName = scientificname,\n    taxonRank = rank,\n    scientificNameID = lsid\n  )\n\n\n\nJoins\nJoins are useful if data from multiple tables need to be included in the final table, like when we make a new table with WoRMS data. left_join will join table x to table y by values in the specified columns, so this function will join the tables Infauna_Occurrence and uniqueAphiaSelectColumns by matching AphiaID from both.\nAfter combining these tables and mutating our final iteration of scientificNameID, we have finished our occurrence table!\n\n# in this case, TSN was provided because it was listed in the original dataset, however it is not required to have both AphiaID and TSN\nOccurrence_Ext &lt;- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c(\"AphiaID\" = \"AphiaID\")) %&gt;% \n  mutate(\n    TSN = paste(\"urn:lsid:itis.gov:itis_tsn:\", TSN),\n    scientificNameID = paste(scientificNameID, TSN, sep = \", \")\n  )\n\n\n\n\nWriting Data"
+  },
+  {
+    "objectID": "version_control_page.html",
+    "href": "version_control_page.html",
+    "title": "Version Control with Git",
+    "section": "",
+    "text": "Git is a version control system that underlies commercial products like Github and Gitlab. Github is a public platformed owned by Microsoft and used by many scientists. In contrast, USGS maintains a private instance of Gitlab that is regulated by USGS and subject to USGS and DOI policy about code sharing. In addition to making sure you understand how to use git, please make sure you understand USGS policy about how to properly use Gitlab and Github.\nLessons in the basics of Git:\n\nGithub\nUSGS HPC",
+    "crumbs": [
+      "Version Control with Git"
+    ]
+  },
+  {
+    "objectID": "dataset_background_page.html",
+    "href": "dataset_background_page.html",
+    "title": "Dataset Background",
+    "section": "",
+    "text": "What data are we using in this notebook?\nWe will be using data published by USGS, titled “Sediment macrofaunal composition, sediment grain size, and taxa functional traits of multiple deep-sea coral habitats in the Gulf of Mexico, 2009-2014”, collected by Dr. Amanda Demopoulos and Dr. Jill Bourque. DOI: https://doi.org/10.5066/F7TH8KXD\nThis data describes a series of sampling events where cores are taken near one of several types coral and analyzed for sediment composition or subsampled for macrofauna.",
+    "crumbs": [
+      "Dataset Background"
+    ]
+  },
+  {
+    "objectID": "wrangling_data_page.html",
+    "href": "wrangling_data_page.html",
+    "title": "Wrangling the Data",
+    "section": "",
+    "text": "To retrieve and use the data from ScienceBase, R packages dplyr, sbtools, stringr, and worrms will need to be loaded. After loading these packages, we will read the data in from ScienceBase.\nThe ScienceBase dataset ID can be found at the end of the ScienceBase link for the dataset. If the full link to the data is https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e, then the identifier is 5a709594e4b0a9a2e9d88e4e.\nUsing the ScienceBase ID, we will get information about the data files using item_list_files(sb_id = sb_id) and assign it to an object sb_filenames.\nFrom the object sb_filenames, we will pull the column url. This column contains the url needed to download the data file from ScienceBase. Rather than download a local copy of the files, we will read it directly into the memory of our computer with readr:: read_csv(file = sb_filenames$url[n]), with n being the row number of the file we are reading. Now we have dataframes to work with!\n\nlibrary(dplyr)\nlibrary(sbtools)\nlibrary(stringr)\nlibrary(worrms)\nlibrary(tidyr)\n\nsb_id &lt;- '5a709594e4b0a9a2e9d88e4e'\n\nsb_filenames &lt;- item_list_files(sb_id = sb_id)\n\nBTA &lt;-readr::read_csv(file = sb_filenames$url[1])\nInfauna &lt;- readr::read_csv(file = sb_filenames$url[2])\nSedChem &lt;- readr::read_csv(file = sb_filenames$url[3])",
+    "crumbs": [
+      "Wrangling the Data"
+    ]
+  },
+  {
+    "objectID": "wrangling_data_page.html#renaming-columns",
+    "href": "wrangling_data_page.html#renaming-columns",
+    "title": "Wrangling the Data",
+    "section": "Renaming Columns",
+    "text": "Renaming Columns\nSome column names may directly correlate with the definitions of some DwC terms (a 1:1 relationship), so we only have to rename them. To preserve the original data, we will create a new table from Infauna to do the manipulations. Then, we will use rename(newName = oldName) to assign new column names.\n\nInfauna_StationCore &lt;- Infauna %&gt;%\n  \n  rename(\n    locationRemarks = Location,\n    materialEntityID = CoreID,\n    locationID = Station,\n    decimalLatitude = Latitude,\n    decimalLongitude = Longitude\n  )",
+    "crumbs": [
+      "Wrangling the Data"
+    ]
+  },
+  {
+    "objectID": "wrangling_data_page.html#creating-new-columns",
+    "href": "wrangling_data_page.html#creating-new-columns",
+    "title": "Wrangling the Data",
+    "section": "Creating New Columns",
+    "text": "Creating New Columns\n\nMutating\nSome renaming might be slightly more complex, requiring manipulation of a column’s format or content to fit the DwC standard. For these tasks, we will use the mutate function.\nIn this case, the column may be in the wrong format, like DateCollected which needs to be adjusted before being assigned to eventDate. Others, like eventID or higherGeography, are concatenations of other columns (many:1 relationships) and new information, which can be combined with paste. Mutate is also used to create new columns, like geodeticDatum, which was not included in the original dataset.\n\nInfauna_StationCore &lt;- Infauna_StationCore %&gt;%\n  mutate(\n    geodeticDatum = \"WGS84\",\n    eventDate = DateCollected %&gt;% \n      as.Date(\"%m/%d/%Y\"),\n    eventID = paste(Site, eventDate %&gt;% as.character(), locationID, materialEntityID,\n                    sep = \"_\") %&gt;% stringr::str_remove_all(pattern = \"-\"),\n    minimumDepthInMeters = Depth,\n    maximumDepthInMeters = Depth,\n    locality = paste(\"BOEM Lease Block\", Site),\n    higherGeography = paste(\"Gulf of Mexico\",\n                            paste(\"BOEM Lease Block\", \n                                  Site), sep = \" | \")\n  )\n\n\n\nCreating new metadata",
+    "crumbs": [
+      "Wrangling the Data"
+    ]
+  },
+  {
+    "objectID": "wrangling_data_page.html#reconfiguring-tables",
+    "href": "wrangling_data_page.html#reconfiguring-tables",
+    "title": "Wrangling the Data",
+    "section": "Reconfiguring Tables",
+    "text": "Reconfiguring Tables\nFor some extensions, like the extendedMeasurementOrFact extension, imported data may have different configurations than required by DwC, requiring reconfiguration.\n\nPivoting\nAfter renaming and mutating column names, we may have to pivot the table from wide to long format. For extendedMeasurementOrFact tables, all columns in wide format need to be pivoted into long format.\nExample of Wide Format\n::: {#tbl-tidyformat wide .cell} ::: {.cell-output-display}\nspeciessite_01site_02site_03Tilia americana244Pinus strobus400\n::: :::\nExample of Long Format\n::: {#tbl-tidyformat long .cell} ::: {.cell-output-display}\nspeciessitecountTilia americanasite_012Tilia americanasite_024Tilia americanasite_032Pinus strobussite_011Pinus strobussite_021Pinus strobussite_033\n::: :::\nThis is done using the pivot_longer function. We will specify what columns to include in the pivot with cols = c(columnsToBeIncluded). All column names included in the cols function will now be in the new column measurementType using names_to and the old columns’ values in the new column measurementValue using values_to. Other columns for identifiers will also need to be added for the eMoF table and can be found in the guides mentioned in the Data Modeling page.\nWe use pivot to wrangle the eMoF table, and the pertinent chunk of code looks something like this:\n\npivot_longer(\n    cols = c(\"Thickness (transverse) of core\", \n             \"Depth (spatial coordinate) minimum relative to bed surface in the bed\", \n             \"Depth (spatial coordinate) maximum relative to bed surface in the bed\", \n             \"Proportion by volume of particles (63-2000um) in the sediment\", \n             \"Proportion by volume of particles (0-63um) in the sediment\", \n             \"Proportion by volume of particles (&gt;2000um) in the sediment\"\n             ),\n    names_to = \"measurementType\",\n    values_to = \"measurementValue\",\n    values_drop_na = TRUE\n    )\n\nHere is the full code chunk where we first do a variety of mutates prior to the pivot and show a subset of the resulting table:\n\nSedChem &lt;- SedChem %&gt;%\n  mutate(\n    SampleID = CoreID\n  )\n\nInfauna_emof &lt;- Infauna %&gt;%\n  bind_rows(SedChem) %&gt;%\n  rename(\n    materialEntityID = SampleID\n  ) %&gt;%\n  \n  mutate(\n    eventDate = DateCollected %&gt;%\n      as.Date(\"%m/%d/%Y\"),\n    eventID = paste(Site, eventDate %&gt;% as.character(), materialEntityID, sep = \"_\") %&gt;%\n      stringr::str_remove_all(pattern = \"-\"),\n    \"Depth (spatial coordinate) maximum relative to bed surface in the bed\" =\n      str_split_i(Fraction, pattern = \"-\", i = 2) %&gt;% readr::parse_number() %&gt;% \n      as.character(),\n    \"Depth (spatial coordinate) minimum relative to bed surface in the bed\" =\n      str_split_i(Fraction, pattern = \"-\", i = 1) %&gt;% readr::parse_number() %&gt;% \n      as.character(),\n    \"Proportion by volume of particles (63-2000um) in the sediment\" = as.character(Sand),\n    \"Proportion by volume of particles (0-63um) in the sediment\" = as.character(Mud),\n    \"Proportion by volume of particles (&gt;2000um) in the sediment\" = as.character(Gravel),\n    \"Thickness (transverse) of core\" = as.character(round(CoreDiameter, digits = 2))\n  ) %&gt;%\n  \n  pivot_longer(\n    cols = c(\"Thickness (transverse) of core\", \n             \"Depth (spatial coordinate) minimum relative to bed surface in the bed\", \n             \"Depth (spatial coordinate) maximum relative to bed surface in the bed\", \n             \"Proportion by volume of particles (63-2000um) in the sediment\", \n             \"Proportion by volume of particles (0-63um) in the sediment\", \n             \"Proportion by volume of particles (&gt;2000um) in the sediment\"\n             ),\n    names_to = \"measurementType\",\n    values_to = \"measurementValue\",\n    values_drop_na = TRUE\n    ) %&gt;%\n  \n  select(\n    eventID,\n    measurementType,\n    measurementValue\n  ) %&gt;% \n  distinct() %&gt;%   \n  slice(922:931) %&gt;% \n  print()\n\n# A tibble: 7 × 3\n  eventID                      measurementType                  measurementValue\n  &lt;chr&gt;                        &lt;chr&gt;                            &lt;chr&gt;           \n1 AT357_20140504_AT26144706054 Proportion by volume of particl… 44.8851836      \n2 AT357_20140504_AT26144706054 Proportion by volume of particl… 33.79811283     \n3 MC036_20140627_NA043023      Depth (spatial coordinate) mini… 0               \n4 MC036_20140627_NA043023      Depth (spatial coordinate) maxi… 10              \n5 MC036_20140627_NA043023      Proportion by volume of particl… 2.696320665     \n6 MC036_20140627_NA043023      Proportion by volume of particl… 97.04856398     \n7 MC036_20140627_NA043023      Proportion by volume of particl… 0.255115353     \n\n\n\n\nJoins\nJoins are useful if data from multiple tables need to be included in the final table, like when we make a new table with WoRMS data, which is covered in the next section. left_join will join table x to table y by values in the specified columns, so our function will join the tables Infauna_Occurrence and uniqueAphiaSelectColumns by matching AphiaID from both.\nAfter combining these tables and mutating our final iteration of scientificNameID, we have finished our occurrence table!\n\n# in this case, TSN was provided because it was listed in the original dataset, however it is not required to have both AphiaID and TSN\nOccurrence_Ext &lt;- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c(\"AphiaID\" = \"AphiaID\")) %&gt;% \n  mutate(\n    TSN = paste(\"urn:lsid:itis.gov:itis_tsn:\", TSN),\n    scientificNameID = paste(scientificNameID, TSN, sep = \", \")\n  )",
+    "crumbs": [
+      "Wrangling the Data"
+    ]
+  },
+  {
+    "objectID": "data_modeling_page.html",
+    "href": "data_modeling_page.html",
+    "title": "Getting a Feel for the Data",
+    "section": "",
+    "text": "Starting to understand the data we are working with may not require a computer. Simple diagrams and maps can be very useful in this stage to understand the relationships and information provided in a dataset. To get started, it’s valuable to model the data and begin the process of mapping terms to DwC vocabulary.\n\nModeling the Data\nModeling the data and the relationships may be essential in understanding more complex datasets or those with multiple, related tables. This can be done with simple hand drawn diagrams or computer-generated diagrams, like mermaid diagrams.\n\n\n\nHand-drawn data visualization of relationships, Image by Kylie Hollis CC BY 4.0\n\n\n{fig-alt=“A hand-drawn diagram showing how the events and samples are nested within each other}\n\n\n\nMermaid diagram visualization of the same data, Image by Steve Formel CC BY 4.0\n\n\n\n\nMapping to Darwin Core\nOnce we have a better grasp on the relationships in our data and what cores or extensions we might use, deciding what DwC terms to use becomes easier. Going through each column, we will need to determine what DwC terms are most appropriate and if term relationships are 1:1, 1:many, many:1, or 1:0, which will be valuable in wrangling the data.\nWhile a computer is not required here, it may be useful to have access to DwC vocabulary pages to reference at this point in this process. This quick reference guide published by TDWG is a good starting point for mapping: https://dwc.tdwg.org/terms/. GBIF also has a vocabulary reference guide, sorted by DwC extension type: https://rs.gbif.org/extensions.html.",
+    "crumbs": [
+      "Getting a Feel for the Data"
+    ]
+  },
+  {
+    "objectID": "uploading_page.html",
+    "href": "uploading_page.html",
+    "title": "Uploading to the IPT",
+    "section": "",
+    "text": "To make our data available through GBIF and OBIS, we have to upload it through GBIF’s Integrated Publishing Toolkit (IPT), which can be the most complex part of data mabilization. The IPT makes a DwC-A file, similar to how Excel make csv files, which is read in by GBIF and OBIS. Here’s a video explaining this process and the IPT:",
+    "crumbs": [
+      "Uploading to the IPT"
+    ]
+  },
+  {
+    "objectID": "scripts/kylie_follow_along.html#what-data-are-we-using-in-this-notebook",
+    "href": "scripts/kylie_follow_along.html#what-data-are-we-using-in-this-notebook",
+    "title": "Kylie’s OBIS Mobilization Follow Along",
+    "section": "what data are we using in this notebook",
+    "text": "what data are we using in this notebook"
+  },
+  {
+    "objectID": "scripts/kylie_follow_along.html#modeling-the-data",
+    "href": "scripts/kylie_follow_along.html#modeling-the-data",
+    "title": "Kylie’s OBIS Mobilization Follow Along",
+    "section": "modeling the data",
+    "text": "modeling the data"
+  },
+  {
+    "objectID": "scripts/kylie_follow_along.html#mapping-to-darwin-core",
+    "href": "scripts/kylie_follow_along.html#mapping-to-darwin-core",
+    "title": "Kylie’s OBIS Mobilization Follow Along",
+    "section": "mapping to darwin core",
+    "text": "mapping to darwin core"
+  },
+  {
+    "objectID": "scripts/kylie_follow_along.html#gitlab-vs-github",
+    "href": "scripts/kylie_follow_along.html#gitlab-vs-github",
+    "title": "Kylie’s OBIS Mobilization Follow Along",
+    "section": "Gitlab vs Github",
+    "text": "Gitlab vs Github"
+  },
+  {
+    "objectID": "scripts/kylie_follow_along.html#using-r-to-get-data-from-sciencebase",
+    "href": "scripts/kylie_follow_along.html#using-r-to-get-data-from-sciencebase",
+    "title": "Kylie’s OBIS Mobilization Follow Along",
+    "section": "using R to get data from ScienceBase",
+    "text": "using R to get data from ScienceBase"
+  },
+  {
+    "objectID": "scripts/kylie_follow_along.html#using-r-to-transform-data",
+    "href": "scripts/kylie_follow_along.html#using-r-to-transform-data",
+    "title": "Kylie’s OBIS Mobilization Follow Along",
+    "section": "using R to transform data",
+    "text": "using R to transform data\n\nrenaming columns\n\n\nmutating columns\n\n\nadding new metadata\n\n\nreconfiguring tables\n\nPivoting\n\n\nJoins\n\n\n\nwriting data"
+  },
+  {
+    "objectID": "EML_metadata_page.html",
+    "href": "EML_metadata_page.html",
+    "title": "Creating EML Metadata",
+    "section": "",
+    "text": "Creating EML metadata is one of the most complex parts of publishing EML metadata can either be made as a separate file and uploaded to the IPT, or it can be made by filling out the GBIF Metadata Template. For guidance on creating EML metadata, reference the GBIF IPT User Manual. For any further questions, reach out to GBIF or OBIS teams for assistance.",
+    "crumbs": [
+      "Creating EML Metadata"
+    ]
+  },
+  {
+    "objectID": "use_stats_page.html",
+    "href": "use_stats_page.html",
+    "title": "Dataset Use Statistics",
+    "section": "",
+    "text": "To be done after publication.",
+    "crumbs": [
+      "Dataset Use Statistics"
+    ]
+  },
+  {
+    "objectID": "publishing_page.html",
+    "href": "publishing_page.html",
+    "title": "Publishing to GBIF and OBIS",
+    "section": "",
+    "text": "Uploading to the IPT\nTo make our data available through GBIF and OBIS, we have to upload it through GBIF’s Integrated Publishing Toolkit (IPT), which can be the most complex part of data mabilization. The IPT makes a DwC-A file, similar to how Excel make csv files, which is read in by GBIF and OBIS. Here’s a video explaining this process and the IPT:\n\n\nCreating EML Metadata\nCreating EML metadata is one of the most complex parts of publishing EML metadata can either be made as a separate file and uploaded to the IPT, or it can be made by filling out the GBIF Metadata Template. For guidance on creating EML metadata, reference the GBIF IPT User Manual. For any further questions, reach out to GBIF or OBIS teams for assistance.\n\n\nFinal Steps",
+    "crumbs": [
+      "Publishing to GBIF and OBIS"
+    ]
+  }
+]

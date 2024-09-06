@@ -23,6 +23,9 @@ SedChem <- readr::read_csv(file = sb_filenames$url[3])
 SedChem <- SedChem %>% 
   rename(
     SampleID = CoreID
+  ) %>% 
+  mutate(
+    CoreDiameter = 6.35
   )
        
 Infauna_emof <- Infauna %>% 
@@ -40,9 +43,7 @@ Infauna_emof <- Infauna %>%
       as.character(),
     "Depth (spatial coordinate) minimum relative to bed surface in the bed" = str_split_i(Fraction, pattern = "-", i = 1) %>% readr::parse_number() %>% 
       as.character(),
-    #proportion sand (63-2000um)
     "Proportion by volume of particles (63-2000um) in the sediment" = as.character(Sand),
-    #proportion mud (<63um)
     "Proportion by volume of particles (0-63um) in the sediment" = as.character(Mud),
     "Proportion by volume of particles (>2000um) in the sediment" = as.character(Gravel),
     "Thickness (transverse) of core" = as.character(round(CoreDiameter, digits = 2))
@@ -69,12 +70,12 @@ Infauna_emof <- Infauna %>%
                                   measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL088/",
                                   measurementType == "Proportion by volume of particles (>2000um) in the sediment" ~ ""
     ),
-    measurementUnit = case_when(measurementType == "Thickness (transverse) of core" ~ "ULCM",
-                                measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "ULCM",
-                                measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "ULCM",
-                                measurementType == "Proportion by volume of particles (63-2000um) in the sediment" ~ "UPCT",
-                                measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "UPCT",
-                                measurementType == "Proportion by volume of particles (>2000um) in the sediment" ~ "UPCT"
+    measurementUnit = case_when(measurementType == "Thickness (transverse) of core" ~ "Centimetres",
+                                measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "Centimetres",
+                                measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "Centimetres",
+                                measurementType == "Proportion by volume of particles (63-2000um) in the sediment" ~ "Percent",
+                                measurementType == "Proportion by volume of particles (0-63um) in the sediment" ~ "Percent",
+                                measurementType == "Proportion by volume of particles (>2000um) in the sediment" ~ "Percent"
     ),
     measurementUnitID = case_when(measurementType == "Thickness (transverse) of core" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
                                   measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
