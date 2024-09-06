@@ -1,8 +1,7 @@
 project:
   type: website
-  title: "DRAFT, UNDER DEVELOPMENT: Demopoulos Lab OBIS Mobilization Workflow"
-output-dir: docs
-render:
+  output-dir: docs
+  render:
     - purpose_page.qmd
     - intended_user_page.qmd
     - dataset_background_page.qmd
@@ -14,36 +13,55 @@ render:
     - publishing_page.qmd
     - use_stats_page.qmd
 
+date: today
+
+author: 
+  - name: "Kylie Hollis"
+    orcid: "0009-0006-4061-8077"
+    email: "khollis@usgs.gov"
+  - name: "Stephen Formel"
+    orcid: "0000-0001-7418-1244"
+    email: "sformel@usgs.gov"        
+    
 format:
   html:
     toc: true
-
+    css: styles.css
+    
 website:
-  sidebar:
-    style: "docked"
-    background: green
-    search: true
-    contents:
-      - href: purpose_page.qmd
-        text: Why are we doing this?
-      - href: intended_user_page.qmd
-        text: Intended User
-      - href: dataset_background_page.qmd
-        text: Dataset Background
-      - href: data_modeling_page.qmd
-        text: Getting a Feel for the Data
-      - href: version_control_page.qmd
-        text: Version Control with Git
-      - href: wrangling_data_page.qmd
-        text: Wrangling the Data
-      - href: publishing_page.qmd
-        text: Publishing to GBIF and OBIS
-      - href: use_stats_page.qmd
-        text: Dataset Use Statistics
+  title: "DRAFT, UNDER DEVELOPMENT: An elegant guide to mobilizing data to OBIS & GBIF for the discerning member of the Demopoulos lab."
   navbar: 
     tools:
       - icon: github
         href: "https://github.com/kylieh10/gomx_sediment_macrofauna"
+  page-navigation: true
+  sidebar:
+    style: "docked"
+    background: "lightgray"
+    search: true
+    contents:
+      - section: "Background"
+        contents: 
+          - href: purpose_page.qmd
+            text: Why are we doing this?
+          - href: intended_user_page.qmd
+            text: Intended User
+          - href: dataset_background_page.qmd
+            text: Dataset Background
+      - section: "Working with the Data"
+        contents: 
+          - href: data_modeling_page.qmd
+            text: Getting a Feel for the Data
+          - href: version_control_page.qmd
+            text: Version Control with Git
+          - href: wrangling_data_page.qmd
+            text: Wrangling the Data
+      - section: "Publication and Reuse"
+        contents: 
+          - href: publishing_page.qmd
+            text: Publishing to GBIF and OBIS
+          - href: use_stats_page.qmd
+            text: Dataset Use Statistics
 
 
 

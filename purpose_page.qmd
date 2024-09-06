@@ -1,0 +1,39 @@
+# Why Are We Doing This?
+
+## Introduction
+
+This notebook provides a general workflow for mobilizing data from the USGS lab of [Amanda Demopoulos](https://www.usgs.gov/staff-profiles/amanda-demopoulos/) to [OBIS](https://obis.org/) and [GBIF](https://www.gbif.org/). Using a [dataset that was previously published through ScienceBase](https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e), we walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.
+
+# Open Science, OBIS, and GBIF
+
+## Open Science and FAIR Data
+
+-   [**Open science**](https://nasa.github.io/Transform-to-Open-Science/os101-modules/) is the practice of making data, resources, results, and publications as available as possible, while still respecting diverse cultures, security, and privacy.
+
+-   [**FAIR data**](https://www.go-fair.org/fair-principles/) is data that is Findable, Accessible, Interoperable, and Reusable. While the two often go hand-in-hand, FAIR data is not necessarily open data.
+
+By practicing the principles of open and FAIR science, we follow the [direction of the U.S. government](https://www.congress.gov/bill/115th-congress/house-bill/4174). Less pragmatically, we promote transparency in the scientific process, encourage collaboration, drive efficient advancement of science and policy, and increase the impact of research.
+
+## OBIS and GBIF
+
+The [Ocean Biodiversity Information System (OBIS)](https://obis.org/) and [Global Biodiversity Information Facility (GBIF)](https://www.gbif.org/) are international networks that mobilize data to provide free, open access to biodiversity data. They promote global scientific collaboration and open science as pillars of their missions, which is facilitated by the use of data standards and FAIR principles. GBIF and OBIS actively collaborate, and the USGS Science Analytics and Synthesis operates the US nodes for both OBIS and GBIF. However, they are distinct endeavors with separate funding streams and governance. The easiest way to differentiate the networks is that OBIS is strictly working with marine data, while GBIF accepts all data.
+
+# Open Standards
+
+An open standard is a specification, of how data should be formatted and handled, for which the documentation is Open and FAIR. Frequently open standards are community-developed and maintained. 
+
+> In plain language, this means that two scientists should be able to learn and apply an open standard to their data, and then easily use each other's data, without ever meeting.
+
+## What is Darwin Core?
+
+[Darwin Core (DwC)](https://dwc.tdwg.org/terms/) is an open data standard for sharing evidence of biological occurrence. It has been developed by the [Biodiversity Information Standards (TDWG)](https://www.tdwg.org/), beginning in 1998. Darwin Core includes standardized vocabulary (i.e. column names for a spreadsheet) and file formats for sharing (i.e Darwin Core Archives, see below). Its used by OBIS and GBIF to help facilitate the sharing of open biological data in accordance with the FAIR principles. You may find it useful to read the relevant sections of the [OBIS manual](https://manual.obis.org/data_standards.html#biodiversity-data-standards) and the [GBIF IPT manual](https://ipt.gbif.org/manual/en/ipt/latest/darwin-core).
+
+## What is EML?
+
+[Ecological Metadata Language (EML)](https://eml.ecoinformatics.org/) is a standard for recording and organizing metadata, and is the metadata that describes the entire dataset when using Darwin Core and publishing to GBIF and OBIS. Although it does not directly align with other metadata standards, like ISO 19115 and CSDGM, you will likely find it very familiar if you have ever worked with those other metadata standards. Again, the relevant sections of the [OBIS manual](https://manual.obis.org/eml.html) and the [GBIF IPT manual](https://ipt.gbif.org/manual/en/ipt/latest/data-quality-checklist#dataset-metadata) may be useful for deeper understanding.
+
+## Darwin Core Archive
+
+The Darwin Core Archive (DwC-A) is the fundamental unit of Darwin Core. It is a `zip` file, comprised of `csv` files containing the table describing biodiversity occurrence. These tables follow a star schema (see below).  The EML is included as an `xml` file containing metadata that describes the entire dataset. The `csv` files reference each other using unique identifiers, akin to keys in a SQL database. For more information, see the [OBIS manual](https://manual.obis.org/data_format.html#darwin-core-archive-1) and the [GBIF IPT manual](https://ipt.gbif.org/manual/en/ipt/latest/dwca-guide#what-is-darwin-core-archive-dwc-a).
+
+![Schematic of a Darwin Core Archive, sourced from Wieczorek J, Blissett M, Braak K & Podolskiy M (2024) The GBIF Integrated Publishing Toolkit User Manual, version 3.0. Copenhagen: GBIF Secretariat. https://ipt.gbif.org/manual/en/ipt/3.0/ CC BY 4.0](images/star_diagram.png){fig-alt="schematic of a Darwin Core Archive" fig-align="center"}

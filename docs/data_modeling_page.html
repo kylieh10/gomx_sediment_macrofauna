@@ -8,9 +8,9 @@
 
 <meta name="author" content="Kylie Hollis">
 <meta name="author" content="Stephen Formel">
-<meta name="dcterms.date" content="2024-09-05">
+<meta name="dcterms.date" content="2024-09-06">
 
-<title>Getting a Feel for the Data</title>
+<title>DRAFT, UNDER DEVELOPMENT: An elegant guide to mobilizing data to OBIS &amp; GBIF for the discerning member of the Demopoulos lab.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,6 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./version_control_page.html" rel="next">
+<link href="./dataset_background_page.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,6 +73,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -79,6 +82,11 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DRAFT, UNDER DEVELOPMENT: An elegant guide to mobilizing data to OBIS &amp; GBIF for the discerning member of the Demopoulos lab.</span>
+    </a>
+  </div>
         <div class="quarto-navbar-tools tools-end">
     <a href="https://github.com/kylieh10/gomx_sediment_macrofauna" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
@@ -90,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_modeling_page.html">Getting a Feel for the Data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_modeling_page.html">Working with the Data</a></li><li class="breadcrumb-item"><a href="./data_modeling_page.html">Getting a Feel for the Data</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -110,66 +118,87 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Background</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./purpose_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Why are we doing this?</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intended_user_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intended User</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dataset_background_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dataset Background</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Working with the Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_modeling_page.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Getting a Feel for the Data</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./version_control_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control with Git</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wrangling_data_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Wrangling the Data</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./uploading_page.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Uploading to the IPT</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./EML_metadata_page.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Creating EML Metadata</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Publication and Reuse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./publishing_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Publishing to GBIF and OBIS</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./use_stats_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dataset Use Statistics</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -180,7 +209,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#modeling-the-data" id="toc-modeling-the-data" class="nav-link active" data-scroll-target="#modeling-the-data">Modeling the Data</a></li>
+  <li><a href="#getting-a-feel-for-the-data" id="toc-getting-a-feel-for-the-data" class="nav-link active" data-scroll-target="#getting-a-feel-for-the-data">Getting a Feel for the Data</a></li>
+  <li><a href="#modeling-the-data" id="toc-modeling-the-data" class="nav-link" data-scroll-target="#modeling-the-data">Modeling the Data</a></li>
   <li><a href="#mapping-to-darwin-core" id="toc-mapping-to-darwin-core" class="nav-link" data-scroll-target="#mapping-to-darwin-core">Mapping to Darwin Core</a></li>
   </ul>
 </nav>
@@ -188,10 +218,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_modeling_page.html">Working with the Data</a></li><li class="breadcrumb-item"><a href="./data_modeling_page.html">Getting a Feel for the Data</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Getting a Feel for the Data</h1>
-<p class="subtitle lead">An elegant guide to mobilizing data to OBIS for the discerning member of the Demopoulos lab.</p>
 </div>
 
 
@@ -209,7 +237,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 5, 2024</p>
+      <p class="date">September 6, 2024</p>
     </div>
   </div>
   
@@ -221,33 +249,75 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Starting to understand the data we are working with may not require a computer. Simple diagrams and maps can be very useful in this stage to understand the relationships and information provided in a dataset. To get started, it’s valuable to model the data and begin the process of mapping terms to DwC vocabulary.</p>
+<section id="getting-a-feel-for-the-data" class="level1">
+<h1>Getting a Feel for the Data</h1>
+<p>Starting to understand the data we are working with may not require a computer. Simple diagrams and maps can be very useful in this stage to understand the relationships and information provided in a dataset. To get started, it’s valuable to model the data and begin the process of <a href="https://dwc.tdwg.org/terms/">mapping terms to DwC vocabulary</a>.</p>
+</section>
 <section id="modeling-the-data" class="level1">
 <h1>Modeling the Data</h1>
 <p>Modeling the data and the relationships may be essential in understanding more complex datasets or those with multiple, related tables. This can be done with simple hand drawn diagrams or computer-generated diagrams, like mermaid diagrams.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="data_visualization.png" class="img-fluid figure-img"></p>
-<figcaption>Hand-drawn data visualization of relationships</figcaption>
+<p><img src="images/data_visualization.png" class="img-fluid figure-img" alt="Schematic showing the relationships of different variables across three tables"></p>
+<figcaption>Hand-drawn data visualization of relationships, Image by Kylie Hollis, License <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a></figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="relationship_diagram.png" class="img-fluid figure-img"></p>
-<figcaption>Another hand-drawn representation of the relationships within and between events and occurrences</figcaption>
+<p><img src="images/relationship_diagram.png" class="img-fluid figure-img" alt="A hand-drawn diagram showing how the events and samples are nested within each other"></p>
+<figcaption>Another hand-drawn representation of the relationships within and between events and occurrences, Image by Kylie Hollis, License <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a></figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Mermaid_diagram.png" class="img-fluid figure-img"></p>
-<figcaption>Mermaid diagram visualization of the same data</figcaption>
+<p><img src="images/Mermaid_diagram.png" class="img-fluid figure-img" alt="A computer-generated mermaid diagram showing the same relationships between variables in different tables"></p>
+<figcaption>Mermaid diagram visualization of the same data, Image by Steve Formel, License <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a></figcaption>
 </figure>
 </div>
 </section>
 <section id="mapping-to-darwin-core" class="level1">
 <h1>Mapping to Darwin Core</h1>
-<p>Once we have a better grasp on the relationships in our data and what cores or extensions we might use, deciding what DwC terms to use becomes easier. Going through each column, we will need to determine what DwC terms are most appropriate and if term relationships are 1:1, 1:many, many:1, or 1:0, which will be valuable in wrangling the data.</p>
-<p>While a computer is not required here, it may be useful to have access to DwC vocabulary pages to reference at this point in this process. This quick reference guide published by TDWG is a good starting point for mapping: <a href="https://dwc.tdwg.org/terms/" class="uri">https://dwc.tdwg.org/terms/</a>. GBIF also has a vocabulary reference guide, sorted by DwC extension type: <a href="https://rs.gbif.org/extensions.html" class="uri">https://rs.gbif.org/extensions.html</a>.</p>
+<p>Once we have a better grasp on the relationships in our data and what DwC core and extensions we might use, choosing which DwC terms to use becomes easier. Going through each column, we will need to determine what DwC terms are most appropriate and if term relationships are 1:1, 1:many, many:1, or 1:0, which will be valuable in wrangling the data.</p>
+<p>Let’s try to say that more simply. In the data on ScienceBase, there are csv files with column headers. We’re going to choose Darwin Core terms to rename columns (when we can) or form new columns (e.g.&nbsp;concatenation of columns), when needed.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Examples
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Term in ScienceBase data</th>
+<th>Term in Darwin Core</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>DateCollected</code></td>
+<td><code>eventDate</code></td>
+</tr>
+<tr class="even">
+<td><code>Latitude</code></td>
+<td><code>decimalLatitude</code></td>
+</tr>
+<tr class="odd">
+<td><code>Longitude</code></td>
+<td><code>decimalLongitude</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>While a computer is not required here, it will be useful to have access to DwC vocabulary pages to reference at this point in this process.</p>
+<ul>
+<li><p>This quick reference guide published by TDWG should be at your side during mapping: <a href="https://dwc.tdwg.org/terms/" class="uri">https://dwc.tdwg.org/terms/</a>. It is never expected that you should know all the Darwin Core terms, but repeated use will help you remember those which are required by OBIS/GBIF and which ones most often apply to your work.</p></li>
+<li><p>The documentation for the DwC extension is not as friendly looking, but if you dig in, it should make sense relatively quickly. GBIF publishes these here: <a href="https://rs.gbif.org/extensions.html" class="uri">https://rs.gbif.org/extensions.html</a>.</p></li>
+</ul>
 
 
 </section>
@@ -662,6 +732,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./dataset_background_page.html" class="pagination-link" aria-label="Dataset Background">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Dataset Background</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./version_control_page.html" class="pagination-link" aria-label="Version Control with Git">
+        <span class="nav-page-text">Version Control with Git</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

@@ -1,0 +1,35 @@
+# Getting a Feel for the Data
+
+Starting to understand the data we are working with may not require a computer. Simple diagrams and maps can be very useful in this stage to understand the relationships and information provided in a dataset. To get started, it's valuable to model the data and begin the process of [mapping terms to DwC vocabulary](https://dwc.tdwg.org/terms/).
+
+# Modeling the Data
+
+Modeling the data and the relationships may be essential in understanding more complex datasets or those with multiple, related tables. This can be done with simple hand drawn diagrams or computer-generated diagrams, like mermaid diagrams.
+
+![Hand-drawn data visualization of relationships, Image by Kylie Hollis, License [CC0](https://creativecommons.org/publicdomain/zero/1.0/)](images/data_visualization.png){fig-alt="Schematic showing the relationships of different variables across three tables"}
+
+![Another hand-drawn representation of the relationships within and between events and occurrences, Image by Kylie Hollis, License [CC0](https://creativecommons.org/publicdomain/zero/1.0/)](images/relationship_diagram.png){fig-alt="A hand-drawn diagram showing how the events and samples are nested within each other"}
+
+![Mermaid diagram visualization of the same data, Image by Steve Formel, License [ CC0](https://creativecommons.org/publicdomain/zero/1.0/)](images/Mermaid_diagram.png){fig-alt="A computer-generated mermaid diagram showing the same relationships between variables in different tables"}
+
+# Mapping to Darwin Core
+
+Once we have a better grasp on the relationships in our data and what DwC core and extensions we might use, choosing which DwC terms to use becomes easier. Going through each column, we will need to determine what DwC terms are most appropriate and if term relationships are 1:1, 1:many, many:1, or 1:0, which will be valuable in wrangling the data.
+
+Let's try to say that more simply. In the data on ScienceBase, there are csv files with column headers. We're going to choose Darwin Core terms to rename columns (when we can) or form new columns (e.g. concatenation of columns), when needed.
+
+::: {.callout-tip}
+## Examples
+
+|Term in ScienceBase data| Term in Darwin Core |
+| --- | --- |
+|`DateCollected`| `eventDate` |
+| `Latitude` | `decimalLatitude` |
+| `Longitude` | `decimalLongitude` |
+:::
+
+While a computer is not required here, it will be useful to have access to DwC vocabulary pages to reference at this point in this process. 
+
+- This quick reference guide published by TDWG should be at your side during mapping: <https://dwc.tdwg.org/terms/>. It is never expected that you should know all the Darwin Core terms, but repeated use will help you remember those which are required by OBIS/GBIF and which ones most often apply to your work.
+
+- The documentation for the DwC extension is not as friendly looking, but if you dig in, it should make sense relatively quickly.  GBIF publishes these here: <https://rs.gbif.org/extensions.html>.

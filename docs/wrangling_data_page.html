@@ -8,9 +8,9 @@
 
 <meta name="author" content="Kylie Hollis">
 <meta name="author" content="Stephen Formel">
-<meta name="dcterms.date" content="2024-09-05">
+<meta name="dcterms.date" content="2024-09-06">
 
-<title>Wrangling the Data</title>
+<title>DRAFT, UNDER DEVELOPMENT: An elegant guide to mobilizing data to OBIS &amp; GBIF for the discerning member of the Demopoulos lab.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,6 +67,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./publishing_page.html" rel="next">
+<link href="./version_control_page.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -104,9 +106,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
 <script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
 
 
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -115,6 +120,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DRAFT, UNDER DEVELOPMENT: An elegant guide to mobilizing data to OBIS &amp; GBIF for the discerning member of the Demopoulos lab.</span>
+    </a>
+  </div>
         <div class="quarto-navbar-tools tools-end">
     <a href="https://github.com/kylieh10/gomx_sediment_macrofauna" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
@@ -126,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wrangling_data_page.html">Wrangling the Data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_modeling_page.html">Working with the Data</a></li><li class="breadcrumb-item"><a href="./wrangling_data_page.html">Wrangling the Data</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -146,66 +156,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Background</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./purpose_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Why are we doing this?</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intended_user_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intended User</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dataset_background_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dataset Background</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Working with the Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_modeling_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting a Feel for the Data</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./version_control_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control with Git</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wrangling_data_page.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Wrangling the Data</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./uploading_page.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Uploading to the IPT</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./EML_metadata_page.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Creating EML Metadata</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Publication and Reuse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./publishing_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Publishing to GBIF and OBIS</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./use_stats_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dataset Use Statistics</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -216,7 +247,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#using-r-to-get-the-data-from-sciencebase" id="toc-using-r-to-get-the-data-from-sciencebase" class="nav-link active" data-scroll-target="#using-r-to-get-the-data-from-sciencebase">Using R to get the data from ScienceBase</a></li>
+  <li><a href="#wrangling-the-data" id="toc-wrangling-the-data" class="nav-link active" data-scroll-target="#wrangling-the-data">Wrangling the Data</a></li>
+  <li><a href="#using-r-to-get-the-data-from-sciencebase" id="toc-using-r-to-get-the-data-from-sciencebase" class="nav-link" data-scroll-target="#using-r-to-get-the-data-from-sciencebase">Using R to get the data from ScienceBase</a></li>
   <li><a href="#using-r-to-transform-the-data" id="toc-using-r-to-transform-the-data" class="nav-link" data-scroll-target="#using-r-to-transform-the-data">Using R to transform the data</a>
   <ul class="collapse">
   <li><a href="#renaming-columns" id="toc-renaming-columns" class="nav-link" data-scroll-target="#renaming-columns">Renaming Columns</a></li>
@@ -231,16 +263,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#joins" id="toc-joins" class="nav-link" data-scroll-target="#joins">Joins</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#aligning-to-a-taxonomic-database" id="toc-aligning-to-a-taxonomic-database" class="nav-link" data-scroll-target="#aligning-to-a-taxonomic-database">Aligning to a Taxonomic Database</a></li>
+  <li><a href="#outputting-data" id="toc-outputting-data" class="nav-link" data-scroll-target="#outputting-data">Outputting Data</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_modeling_page.html">Working with the Data</a></li><li class="breadcrumb-item"><a href="./wrangling_data_page.html">Wrangling the Data</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Wrangling the Data</h1>
-<p class="subtitle lead">An elegant guide to mobilizing data to OBIS for the discerning member of the Demopoulos lab.</p>
 </div>
 
 
@@ -258,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 5, 2024</p>
+      <p class="date">September 6, 2024</p>
     </div>
   </div>
   
@@ -270,10 +302,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="wrangling-the-data" class="level1">
+<h1>Wrangling the Data</h1>
+</section>
 <section id="using-r-to-get-the-data-from-sciencebase" class="level1">
 <h1>Using R to get the data from ScienceBase</h1>
 <p>To retrieve and use the data from ScienceBase, R packages <code>dplyr</code>, <code>sbtools</code>, <code>stringr</code>, and <code>worrms</code> will need to be loaded. After loading these packages, we will read the data in from ScienceBase.</p>
-<p>The ScienceBase dataset ID can be found at the end of the ScienceBase link for the dataset. If the full link to the data is https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e, then the identifier is <code>5a709594e4b0a9a2e9d88e4e</code>.</p>
+<p>The ScienceBase dataset ID can be found at the end of the ScienceBase link for the dataset.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ScienceBase identifiers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If the full link to the item on ScienceBase is <a href="https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e" class="uri">https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e</a>, then the identifier is <code>5a709594e4b0a9a2e9d88e4e</code>.</p>
+</div>
+</div>
 <p>Using the ScienceBase ID, we will get information about the data files using <code>item_list_files(sb_id = sb_id)</code> and assign it to an object <code>sb_filenames</code>.</p>
 <p>From the object <code>sb_filenames</code>, we will pull the column <code>url</code>. This column contains the url needed to download the data file from ScienceBase. Rather than download a local copy of the files, we will read it directly into the memory of our computer with <code>readr:: read_csv(file = sb_filenames$url[n])</code>, with n being the row number of the file we are reading. Now we have dataframes to work with!</p>
 <div class="cell">
@@ -339,18 +387,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="reconfiguring-tables" class="level2">
 <h2 class="anchored" data-anchor-id="reconfiguring-tables">Reconfiguring Tables</h2>
-<p>For some extensions, like the <code>extendedMeasurementOrFact</code> extension, imported data may have different configurations than required by DwC, requiring reconfiguration.</p>
+<p>For some extensions, like the <code>extendedMeasurementOrFact</code> extension (eMoF for the cool kids), imported data may have different configurations than required by DwC, requiring reconfiguration.</p>
 <section id="pivoting" class="level3">
 <h3 class="anchored" data-anchor-id="pivoting">Pivoting</h3>
 <p>After renaming and mutating column names, we may have to pivot the table from wide to long format. For <code>extendedMeasurementOrFact</code> tables, all columns in wide format need to be pivoted into long format.</p>
 <p>Example of Wide Format</p>
-<p>::: {#tbl-tidyformat wide .cell} ::: {.cell-output-display}</p>
-<div class="tabwid"><style>.cl-516412e6{}.cl-51576032{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-5157606e{font-family:'Helvetica';font-size:9pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-515d0050{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-515d006e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-515d2f4e{width:1.133in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-515d2f6c{width:0.778in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-515d2f6d{width:1.133in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-515d2f76{width:0.778in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-515d2f77{width:1.133in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-515d2f80{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-516412e6"><thead><tr style="overflow-wrap:break-word;"><th class="cl-515d2f4e"><p class="cl-515d0050"><span class="cl-51576032">species</span></p></th><th class="cl-515d2f6c"><p class="cl-515d006e"><span class="cl-51576032">site_01</span></p></th><th class="cl-515d2f6c"><p class="cl-515d006e"><span class="cl-51576032">site_02</span></p></th><th class="cl-515d2f6c"><p class="cl-515d006e"><span class="cl-51576032">site_03</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-515d2f6d"><p class="cl-515d0050"><span class="cl-5157606e">Tilia americana</span></p></td><td class="cl-515d2f76"><p class="cl-515d006e"><span class="cl-5157606e">5</span></p></td><td class="cl-515d2f76"><p class="cl-515d006e"><span class="cl-5157606e">4</span></p></td><td class="cl-515d2f76"><p class="cl-515d006e"><span class="cl-5157606e">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-515d2f77"><p class="cl-515d0050"><span class="cl-5157606e">Pinus strobus</span></p></td><td class="cl-515d2f80"><p class="cl-515d006e"><span class="cl-5157606e">3</span></p></td><td class="cl-515d2f80"><p class="cl-515d006e"><span class="cl-5157606e">5</span></p></td><td class="cl-515d2f80"><p class="cl-515d006e"><span class="cl-5157606e">5</span></p></td></tr></tbody></table></div>
-<p>::: :::</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-179e380a{}.cl-1797788a{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-17977894{font-family:'Arial';font-size:9pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-1799fce0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-1799fcea{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-179a0dca{width:1.133in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-179a0dcb{width:0.778in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-179a0dcc{width:1.133in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-179a0dd4{width:0.778in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-179a0dd5{width:1.133in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-179a0dd6{width:0.778in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-179e380a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-179a0dca"><p class="cl-1799fce0"><span class="cl-1797788a">species</span></p></th><th class="cl-179a0dcb"><p class="cl-1799fcea"><span class="cl-1797788a">site_01</span></p></th><th class="cl-179a0dcb"><p class="cl-1799fcea"><span class="cl-1797788a">site_02</span></p></th><th class="cl-179a0dcb"><p class="cl-1799fcea"><span class="cl-1797788a">site_03</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-179a0dcc"><p class="cl-1799fce0"><span class="cl-17977894">Tilia americana</span></p></td><td class="cl-179a0dd4"><p class="cl-1799fcea"><span class="cl-17977894">3</span></p></td><td class="cl-179a0dd4"><p class="cl-1799fcea"><span class="cl-17977894">1</span></p></td><td class="cl-179a0dd4"><p class="cl-1799fcea"><span class="cl-17977894">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-179a0dd5"><p class="cl-1799fce0"><span class="cl-17977894">Pinus strobus</span></p></td><td class="cl-179a0dd6"><p class="cl-1799fcea"><span class="cl-17977894">1</span></p></td><td class="cl-179a0dd6"><p class="cl-1799fcea"><span class="cl-17977894">2</span></p></td><td class="cl-179a0dd6"><p class="cl-1799fcea"><span class="cl-17977894">3</span></p></td></tr></tbody></table></div>
+</div>
+</div>
 <p>Example of Long Format</p>
-<p>::: {#tbl-tidyformat long .cell} ::: {.cell-output-display}</p>
-<div class="tabwid"><style>.cl-5195fce8{}.cl-5188f5c0{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-5188f5d4{font-family:'Helvetica';font-size:9pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-518ecf9a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-518ecfae{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-518ee5c0{width:1.133in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-518ee5d4{width:0.688in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-518ee5de{width:0.659in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-518ee5df{width:1.133in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-518ee5e8{width:0.688in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-518ee5e9{width:0.659in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-518ee5ea{width:1.133in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-518ee5f2{width:0.688in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-518ee5fc{width:0.659in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-5195fce8"><thead><tr style="overflow-wrap:break-word;"><th class="cl-518ee5c0"><p class="cl-518ecf9a"><span class="cl-5188f5c0">species</span></p></th><th class="cl-518ee5d4"><p class="cl-518ecf9a"><span class="cl-5188f5c0">site</span></p></th><th class="cl-518ee5de"><p class="cl-518ecfae"><span class="cl-5188f5c0">count</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-518ee5df"><p class="cl-518ecf9a"><span class="cl-5188f5d4">Tilia americana</span></p></td><td class="cl-518ee5e8"><p class="cl-518ecf9a"><span class="cl-5188f5d4">site_01</span></p></td><td class="cl-518ee5e9"><p class="cl-518ecfae"><span class="cl-5188f5d4">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-518ee5ea"><p class="cl-518ecf9a"><span class="cl-5188f5d4">Tilia americana</span></p></td><td class="cl-518ee5f2"><p class="cl-518ecf9a"><span class="cl-5188f5d4">site_02</span></p></td><td class="cl-518ee5fc"><p class="cl-518ecfae"><span class="cl-5188f5d4">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-518ee5df"><p class="cl-518ecf9a"><span class="cl-5188f5d4">Tilia americana</span></p></td><td class="cl-518ee5e8"><p class="cl-518ecf9a"><span class="cl-5188f5d4">site_03</span></p></td><td class="cl-518ee5e9"><p class="cl-518ecfae"><span class="cl-5188f5d4">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-518ee5ea"><p class="cl-518ecf9a"><span class="cl-5188f5d4">Pinus strobus</span></p></td><td class="cl-518ee5f2"><p class="cl-518ecf9a"><span class="cl-5188f5d4">site_01</span></p></td><td class="cl-518ee5fc"><p class="cl-518ecfae"><span class="cl-5188f5d4">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-518ee5df"><p class="cl-518ecf9a"><span class="cl-5188f5d4">Pinus strobus</span></p></td><td class="cl-518ee5e8"><p class="cl-518ecf9a"><span class="cl-5188f5d4">site_02</span></p></td><td class="cl-518ee5e9"><p class="cl-518ecfae"><span class="cl-5188f5d4">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-518ee5ea"><p class="cl-518ecf9a"><span class="cl-5188f5d4">Pinus strobus</span></p></td><td class="cl-518ee5f2"><p class="cl-518ecf9a"><span class="cl-5188f5d4">site_03</span></p></td><td class="cl-518ee5fc"><p class="cl-518ecfae"><span class="cl-5188f5d4">3</span></p></td></tr></tbody></table></div>
-<p>::: :::</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-17b45748{}.cl-17ae5ff0{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-17ae5ffa{font-family:'Arial';font-size:9pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-17b0c92a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-17b0c934{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-17b0d712{width:1.133in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-17b0d713{width:0.688in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-17b0d71c{width:0.659in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-17b0d71d{width:1.133in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-17b0d71e{width:0.688in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-17b0d726{width:0.659in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-17b0d727{width:1.133in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-17b0d728{width:0.688in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-17b0d729{width:0.659in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-17b45748"><thead><tr style="overflow-wrap:break-word;"><th class="cl-17b0d712"><p class="cl-17b0c92a"><span class="cl-17ae5ff0">species</span></p></th><th class="cl-17b0d713"><p class="cl-17b0c92a"><span class="cl-17ae5ff0">site</span></p></th><th class="cl-17b0d71c"><p class="cl-17b0c934"><span class="cl-17ae5ff0">count</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-17b0d71d"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">Tilia americana</span></p></td><td class="cl-17b0d71e"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">site_01</span></p></td><td class="cl-17b0d726"><p class="cl-17b0c934"><span class="cl-17ae5ffa">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-17b0d727"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">Tilia americana</span></p></td><td class="cl-17b0d728"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">site_02</span></p></td><td class="cl-17b0d729"><p class="cl-17b0c934"><span class="cl-17ae5ffa">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-17b0d71d"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">Tilia americana</span></p></td><td class="cl-17b0d71e"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">site_03</span></p></td><td class="cl-17b0d726"><p class="cl-17b0c934"><span class="cl-17ae5ffa">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-17b0d727"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">Pinus strobus</span></p></td><td class="cl-17b0d728"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">site_01</span></p></td><td class="cl-17b0d729"><p class="cl-17b0c934"><span class="cl-17ae5ffa">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-17b0d71d"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">Pinus strobus</span></p></td><td class="cl-17b0d71e"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">site_02</span></p></td><td class="cl-17b0d726"><p class="cl-17b0c934"><span class="cl-17ae5ffa">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-17b0d727"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">Pinus strobus</span></p></td><td class="cl-17b0d728"><p class="cl-17b0c92a"><span class="cl-17ae5ffa">site_03</span></p></td><td class="cl-17b0d729"><p class="cl-17b0c934"><span class="cl-17ae5ffa">3</span></p></td></tr></tbody></table></div>
+</div>
+</div>
 <p>This is done using the <code>pivot_longer</code> function. We will specify what columns to include in the pivot with <code>cols = c(columnsToBeIncluded)</code>. All column names included in the <code>cols</code> function will now be in the new column <code>measurementType</code> using <code>names_to</code> and the old columns’ values in the new column <code>measurementValue</code> using <code>values_to</code>. Other columns for identifiers will also need to be added for the eMoF table and can be found in the guides mentioned in the Data Modeling page.</p>
 <p>We use pivot to wrangle the eMoF table, and the pertinent chunk of code looks something like this:</p>
 <div class="cell">
@@ -444,8 +496,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">scientificNameID =</span> <span class="fu">paste</span>(scientificNameID, TSN, <span class="at">sep =</span> <span class="st">", "</span>)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>#Aligning to a Taxonomic Database</p>
-<p>Occurrence tables require some taxonomic information that may not be provided in the original data. In these cases, we will need to call taxonomic information from WoRMS using the <code>worrms</code> package. In addition to the required <code>scientificName</code> and <code>scientificNameID</code> fields, it is valuable to provide other information if it is available, like <code>taxonRank</code>, which is the lowest identifiable taxon of an occurrence, and corresponding parent taxa.</p>
+</section>
+</section>
+</section>
+<section id="aligning-to-a-taxonomic-database" class="level1">
+<h1>Aligning to a Taxonomic Database</h1>
+<p>In this dataset, we were lucky enough to have identifieres from the WoRMS databse, which is what OBIS expects the taxonomy to be aligned to. However, cccurrence tables require some taxonomic information (e.g.&nbsp;kingdom, lsid) that may not be provided in the original data. In these cases, we will need to call taxonomic information from WoRMS using the <code>worrms</code> package. In addition to the required <code>scientificName</code> and <code>scientificNameID</code> fields, it is valuable to provide other information if it is available, like <code>taxonRank</code>, which is the lowest identifiable taxon of an occurrence, and corresponding parent taxa.</p>
 <p>We will assign <code>AphiaID</code> from the occurrence table to a new variable <code>myAphiaID</code> which we will use to call the corresponding WoRMS data. Adding <code>lapply</code> to circumvent limits on the number of inputs, we then use <code>wm_record(id = x)</code>, where <code>x</code> is <code>myAphiaID</code>. From the new table, we just pull the columns that we need using <code>select</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>myAphiaID <span class="ot">&lt;-</span> Infauna<span class="sc">$</span>AphiaID <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span>
@@ -472,7 +528,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">scientificNameID =</span> lsid</span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>#Outputting Data</p>
+</section>
+<section id="outputting-data" class="level1">
+<h1>Outputting Data</h1>
 <p>Once our data has been cleaned up, mapped, and is ready to be uploaded to the IPT, we will have to output the data as a csv file. To do this, first use the <code>select</code> function to choose what columns to include in the final table. For example, for the event table, it will look something like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Infauna_Event <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(Infauna_StationCore, Infauna_Sample) <span class="sc">%&gt;%</span> </span>
@@ -512,8 +570,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now we have a file we can upload to the IPT.</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -926,6 +982,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./version_control_page.html" class="pagination-link" aria-label="Version Control with Git">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Version Control with Git</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./publishing_page.html" class="pagination-link" aria-label="Publishing to GBIF and OBIS">
+        <span class="nav-page-text">Publishing to GBIF and OBIS</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

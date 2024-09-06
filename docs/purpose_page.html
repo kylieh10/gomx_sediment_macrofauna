@@ -8,9 +8,9 @@
 
 <meta name="author" content="Kylie Hollis">
 <meta name="author" content="Stephen Formel">
-<meta name="dcterms.date" content="2024-09-05">
+<meta name="dcterms.date" content="2024-09-06">
 
-<title>Why Are we Doing This?</title>
+<title>DRAFT, UNDER DEVELOPMENT: An elegant guide to mobilizing data to OBIS &amp; GBIF for the discerning member of the Demopoulos lab.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,6 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./intended_user_page.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,14 +72,20 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DRAFT, UNDER DEVELOPMENT: An elegant guide to mobilizing data to OBIS &amp; GBIF for the discerning member of the Demopoulos lab.</span>
+    </a>
+  </div>
         <div class="quarto-navbar-tools tools-end">
     <a href="https://github.com/kylieh10/gomx_sediment_macrofauna" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
@@ -90,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./purpose_page.html">Why are we doing this?</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./purpose_page.html">Background</a></li><li class="breadcrumb-item"><a href="./purpose_page.html">Why are we doing this?</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -100,37 +107,7 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Why Are we Doing This?</h1>
-            <p class="subtitle lead">An elegant guide to mobilizing data to OBIS for the discerning member of the Demopoulos lab.</p>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Authors</div>
-      <div class="quarto-title-meta-contents">
-               <p>Kylie Hollis <a href="mailto:khollis@usgs.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0009-0006-4061-8077" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-               <p>Stephen Formel <a href="mailto:sformel@usgs.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-7418-1244" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">September 5, 2024</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -140,66 +117,87 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Background</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./purpose_page.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Why are we doing this?</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intended_user_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intended User</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dataset_background_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dataset Background</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Working with the Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_modeling_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting a Feel for the Data</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./version_control_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control with Git</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./wrangling_data_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Wrangling the Data</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./uploading_page.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Uploading to the IPT</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./EML_metadata_page.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Creating EML Metadata</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Publication and Reuse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./publishing_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Publishing to GBIF and OBIS</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./use_stats_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dataset Use Statistics</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -210,60 +208,103 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#why-are-we-doing-this" id="toc-why-are-we-doing-this" class="nav-link active" data-scroll-target="#why-are-we-doing-this">Why Are We Doing This?</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  </ul></li>
   <li><a href="#open-science-obis-and-gbif" id="toc-open-science-obis-and-gbif" class="nav-link" data-scroll-target="#open-science-obis-and-gbif">Open Science, OBIS, and GBIF</a>
   <ul class="collapse">
   <li><a href="#open-science-and-fair-data" id="toc-open-science-and-fair-data" class="nav-link" data-scroll-target="#open-science-and-fair-data">Open Science and FAIR Data</a></li>
   <li><a href="#obis-and-gbif" id="toc-obis-and-gbif" class="nav-link" data-scroll-target="#obis-and-gbif">OBIS and GBIF</a></li>
   </ul></li>
-  <li><a href="#darwin-core-archive" id="toc-darwin-core-archive" class="nav-link" data-scroll-target="#darwin-core-archive">Darwin Core Archive</a>
+  <li><a href="#open-standards" id="toc-open-standards" class="nav-link" data-scroll-target="#open-standards">Open Standards</a>
   <ul class="collapse">
   <li><a href="#what-is-darwin-core" id="toc-what-is-darwin-core" class="nav-link" data-scroll-target="#what-is-darwin-core">What is Darwin Core?</a></li>
   <li><a href="#what-is-eml" id="toc-what-is-eml" class="nav-link" data-scroll-target="#what-is-eml">What is EML?</a></li>
+  <li><a href="#darwin-core-archive" id="toc-darwin-core-archive" class="nav-link" data-scroll-target="#darwin-core-archive">Darwin Core Archive</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./purpose_page.html">Background</a></li><li class="breadcrumb-item"><a href="./purpose_page.html">Why are we doing this?</a></li></ol></nav>
+<div class="quarto-title">
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kylie Hollis <a href="mailto:khollis@usgs.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0009-0006-4061-8077" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+             <p>Stephen Formel <a href="mailto:sformel@usgs.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-7418-1244" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 6, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<section id="why-are-we-doing-this" class="level1">
+<h1>Why Are We Doing This?</h1>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This notebook aims to provide a general workflow for mobilizing the Demopoulos Lab’s data to OBIS to use in the future for similar tasks. Using an existing dataset as an example, we will walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.</p>
+<p>This notebook provides a general workflow for mobilizing data from the USGS lab of <a href="https://www.usgs.gov/staff-profiles/amanda-demopoulos/">Amanda Demopoulos</a> to <a href="https://obis.org/">OBIS</a> and <a href="https://www.gbif.org/">GBIF</a>. Using a <a href="https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e">dataset that was previously published through ScienceBase</a>, we walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.</p>
+</section>
 </section>
 <section id="open-science-obis-and-gbif" class="level1">
 <h1>Open Science, OBIS, and GBIF</h1>
 <section id="open-science-and-fair-data" class="level2">
 <h2 class="anchored" data-anchor-id="open-science-and-fair-data">Open Science and FAIR Data</h2>
-<p>Open science is the practice of making data, resources, results, and publications as available as possible, while still respecting diverse cultures, security, and privacy.</p>
-<p>FAIR data is data that is findable, accessible, interoperable, and reusable. While the two often go hand-in-hand, FAIRness doesn’t require openness. However, by practicing the principles of open and FAIR science, we promote transparency in the scientific process. This transparency encourages collaboration, more efficient scientific advancements, and policy changes, while also increasing the impact of research.</p>
+<ul>
+<li><p><a href="https://nasa.github.io/Transform-to-Open-Science/os101-modules/"><strong>Open science</strong></a> is the practice of making data, resources, results, and publications as available as possible, while still respecting diverse cultures, security, and privacy.</p></li>
+<li><p><a href="https://www.go-fair.org/fair-principles/"><strong>FAIR data</strong></a> is data that is Findable, Accessible, Interoperable, and Reusable. While the two often go hand-in-hand, FAIR data is not necessarily open data.</p></li>
+</ul>
+<p>By practicing the principles of open and FAIR science, we follow the <a href="https://www.congress.gov/bill/115th-congress/house-bill/4174">direction of the U.S. government</a>. Less pragmatically, we promote transparency in the scientific process, encourage collaboration, drive efficient advancement of science and policy, and increase the impact of research.</p>
 </section>
 <section id="obis-and-gbif" class="level2">
 <h2 class="anchored" data-anchor-id="obis-and-gbif">OBIS and GBIF</h2>
-<p>The Ocean Biodiversity Information System (OBIS) and Global Biodiversity Information Facility (GBIF) are international networks that mobilize data to provide free, open access to biodiversity data. They promote global scientific collaboration and open science as pillars of their missions, which is facilitated by the use of data standards and FAIR principles.</p>
+<p>The <a href="https://obis.org/">Ocean Biodiversity Information System (OBIS)</a> and <a href="https://www.gbif.org/">Global Biodiversity Information Facility (GBIF)</a> are international networks that mobilize data to provide free, open access to biodiversity data. They promote global scientific collaboration and open science as pillars of their missions, which is facilitated by the use of data standards and FAIR principles. GBIF and OBIS actively collaborate, and the USGS Science Analytics and Synthesis operates the US nodes for both OBIS and GBIF. However, they are distinct endeavors with separate funding streams and governance. The easiest way to differentiate the networks is that OBIS is strictly working with marine data, while GBIF accepts all data.</p>
 </section>
 </section>
-<section id="darwin-core-archive" class="level1">
-<h1>Darwin Core Archive</h1>
-<p>Darwin Core Archive (DwC-A) is a data standard for datasets. It is comprised of <code>csv</code> files containing the different data tables, which follow a star schema; the <code>xml</code> file that describes the organization and mapping; and the <code>EML</code> file that provides metadata for the dataset. The <code>csv</code> files must contain one core table and, if needed, extension tables that are connected to the core via an identifier.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="star_diagram.png" class="img-fluid figure-img"></p>
-<figcaption>DwC-A components</figcaption>
-</figure>
-</div>
+<section id="open-standards" class="level1">
+<h1>Open Standards</h1>
+<p>An open standard is a specification, of how data should be formatted and handled, for which the documentation is Open and FAIR. Frequently open standards are community-developed and maintained.</p>
+<blockquote class="blockquote">
+<p>In plain language, this means that two scientists should be able to learn and apply an open standard to their data, and then easily use each other’s data, without ever meeting.</p>
+</blockquote>
 <section id="what-is-darwin-core" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-darwin-core">What is Darwin Core?</h2>
-<p>Darwin Core (DwC) is a set of data standards from Biodiversity Information Standards (TDWG). It includes standardized vocabulary and file formats for Darwin Core Archives, which contains an <code>event</code> or <code>occurrence</code> core file, extension files, and metadata files.</p>
-<p>DwC is used by both OBIS and GBIF to help facilitate the sharing of open biological data in accordance with the FAIR principles.</p>
+<p><a href="https://dwc.tdwg.org/terms/">Darwin Core (DwC)</a> is an open data standard for sharing evidence of biological occurrence. It has been developed by the <a href="https://www.tdwg.org/">Biodiversity Information Standards (TDWG)</a>, beginning in 1998. Darwin Core includes standardized vocabulary (i.e.&nbsp;column names for a spreadsheet) and file formats for sharing (i.e Darwin Core Archives, see below). Its used by OBIS and GBIF to help facilitate the sharing of open biological data in accordance with the FAIR principles. You may find it useful to read the relevant sections of the <a href="https://manual.obis.org/data_standards.html#biodiversity-data-standards">OBIS manual</a> and the <a href="https://ipt.gbif.org/manual/en/ipt/latest/darwin-core">GBIF IPT manual</a>.</p>
 </section>
 <section id="what-is-eml" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-eml">What is EML?</h2>
-<p>Ecological Metadata Language (EML) is a standard for recording and organizing metadata, and is required for publishing to GBIF and OBIS. It promotes transparency and accessibility of published datasets.</p>
+<p><a href="https://eml.ecoinformatics.org/">Ecological Metadata Language (EML)</a> is a standard for recording and organizing metadata, and is the metadata that describes the entire dataset when using Darwin Core and publishing to GBIF and OBIS. Although it does not directly align with other metadata standards, like ISO 19115 and CSDGM, you will likely find it very familiar if you have ever worked with those other metadata standards. Again, the relevant sections of the <a href="https://manual.obis.org/eml.html">OBIS manual</a> and the <a href="https://ipt.gbif.org/manual/en/ipt/latest/data-quality-checklist#dataset-metadata">GBIF IPT manual</a> may be useful for deeper understanding.</p>
+</section>
+<section id="darwin-core-archive" class="level2">
+<h2 class="anchored" data-anchor-id="darwin-core-archive">Darwin Core Archive</h2>
+<p>The Darwin Core Archive (DwC-A) is the fundamental unit of Darwin Core. It is a <code>zip</code> file, comprised of <code>csv</code> files containing the table describing biodiversity occurrence. These tables follow a star schema (see below). The EML is included as an <code>xml</code> file containing metadata that describes the entire dataset. The <code>csv</code> files reference each other using unique identifiers, akin to keys in a SQL database. For more information, see the <a href="https://manual.obis.org/data_format.html#darwin-core-archive-1">OBIS manual</a> and the <a href="https://ipt.gbif.org/manual/en/ipt/latest/dwca-guide#what-is-darwin-core-archive-dwc-a">GBIF IPT manual</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/star_diagram.png" class="img-fluid figure-img" alt="schematic of a Darwin Core Archive"></p>
+<figcaption>Schematic of a Darwin Core Archive, sourced from Wieczorek J, Blissett M, Braak K &amp; Podolskiy M (2024) The GBIF Integrated Publishing Toolkit User Manual, version 3.0. Copenhagen: GBIF Secretariat. https://ipt.gbif.org/manual/en/ipt/3.0/ CC BY 4.0</figcaption>
+</figure>
+</div>
 
 
 </section>
@@ -679,6 +720,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./intended_user_page.html" class="pagination-link" aria-label="Intended User">
+        <span class="nav-page-text">Intended User</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
