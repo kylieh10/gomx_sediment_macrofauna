@@ -59,7 +59,7 @@
     "href": "intended_user_page.html",
     "title": "Intended User",
     "section": "",
-    "text": "Intended User\nThe intended user of this notebook is a person who has been tasked with publishing data that has already been published to ScienceBase via the USGS data release process. However, the basic structure and concepts should apply for any data that is being mobilized (i.e. published) to GBIF and OBIS.\n\nBasic knowledge of R is needed, but you do not need to be an expert.\nBasic knowledge of the Darwin Core, and Ecological Metadata Language (EML) standards is useful, but you do not need to be an expert.\nKnowing how to use Git, and either USGS Gitlab or Github, will help the user version control the evolution of their approach to data mobilization, but if you have never used Git before, there is a section included that points you toward some good lessons.\n\nFinally, this notebook will be most useful if it can be built on through repeated use. The code underlying this notebook can be forked and developed into a new notebook for subsequent dataset mobilizations.",
+    "text": "The intended user of this notebook is a person who has been tasked with publishing data that has already been published to ScienceBase via the USGS data release process. However, the basic structure and concepts should apply for any data that is being mobilized (i.e. published) to GBIF and OBIS.\n\nBasic knowledge of R is needed, but you do not need to be an expert.\nBasic knowledge of the Darwin Core, and Ecological Metadata Language (EML) standards is useful, but you do not need to be an expert.\nKnowing how to use Git, and either USGS Gitlab or Github, will help the user version control the evolution of their approach to data mobilization, but if you have never used Git before, there is a section included that points you toward some good lessons.\n\nFinally, this notebook will be most useful if it can be built on through repeated use. The code underlying this notebook can be forked and developed into a new notebook for subsequent dataset mobilizations.",
     "crumbs": [
       "Background",
       "Intended User"
@@ -147,7 +147,7 @@
     "href": "dataset_background_page.html",
     "title": "What data are we using in this notebook?",
     "section": "",
-    "text": "What data are we using in this notebook?\n\nWe will be using data published by USGS, titled “Sediment macrofaunal composition, sediment grain size, and taxa functional traits of multiple deep-sea coral habitats in the Gulf of Mexico, 2009-2014”, collected by Dr. Amanda Demopoulos and Dr. Jill Bourque. DOI: https://doi.org/10.5066/F7TH8KXD\nThis data describes a series of sampling events where cores are taken near one of several types coral and analyzed for sediment composition or subsampled for macrofauna.",
+    "text": "We will be using data published by USGS, titled “Sediment macrofaunal composition, sediment grain size, and taxa functional traits of multiple deep-sea coral habitats in the Gulf of Mexico, 2009-2014”, collected by Dr. Amanda Demopoulos and Dr. Jill Bourque. DOI: https://doi.org/10.5066/F7TH8KXD\nThis data describes a series of sampling events where cores are taken near one of several types coral and analyzed for sediment composition or subsampled for macrofauna.",
     "crumbs": [
       "Background",
       "Dataset Background"
@@ -156,7 +156,7 @@
   {
     "objectID": "version_control_page.html",
     "href": "version_control_page.html",
-    "title": "DRAFT, UNDER DEVELOPMENT: An elegant guide to mobilizing data to OBIS & GBIF for the discerning member of the Demopoulos lab.",
+    "title": "Version Control with Git",
     "section": "",
     "text": "We recommend that you use Git to track changes to the data as you align it to Darwin Core and ready it for publishing. The goal is to produce scripts that allow other users to start with the ScienceBase data and end with the data that is shared on GBIF/OBIS.\nGit is a version control system that underlies commercial products like Github and Gitlab. Github is a public platformed owned by Microsoft and used by many scientists. In contrast, USGS maintains a private instance of Gitlab (https://code.usgs.gov/) that is regulated by USGS and subject to USGS and DOI policy about code sharing. In addition to making sure you understand how to use Git, please make sure you understand USGS policy about how to properly use Gitlab and Github.\nLessons in the basics of Git:\n\nGithub\nGitlab",
     "crumbs": [
