@@ -1,4 +1,6 @@
-# Why Are We Doing This?
+---
+title: Why Are We Doing This?
+---
 
 ## Introduction
 
@@ -34,6 +36,6 @@ An open standard is a specification, of how data should be formatted and handled
 
 ## Darwin Core Archive
 
-The Darwin Core Archive (DwC-A) is the fundamental unit of Darwin Core. It is a `zip` file, comprised of `csv` files containing the table describing biodiversity occurrence. These tables follow a star schema (see below).  The EML is included as an `xml` file containing metadata that describes the entire dataset. The `csv` files reference each other using unique identifiers, akin to keys in a SQL database. For more information, see the [OBIS manual](https://manual.obis.org/data_format.html#darwin-core-archive-1) and the [GBIF IPT manual](https://ipt.gbif.org/manual/en/ipt/latest/dwca-guide#what-is-darwin-core-archive-dwc-a).
+The Darwin Core Archive (DwC-A) is the fundamental unit of Darwin Core. It is a `zip` file, comprised of `csv` files containing the tables describing biodiversity occurrence. These tables follow a star schema (see below).  The EML is included as an `xml` file containing metadata that describes the entire dataset. The `csv` files reference each other using unique identifiers, akin to keys in a SQL database. For more information, see the [OBIS manual](https://manual.obis.org/data_format.html#darwin-core-archive-1) and the [GBIF IPT manual](https://ipt.gbif.org/manual/en/ipt/latest/dwca-guide#what-is-darwin-core-archive-dwc-a).
 
 ![Schematic of a Darwin Core Archive, sourced from Wieczorek J, Blissett M, Braak K & Podolskiy M (2024) The GBIF Integrated Publishing Toolkit User Manual, version 3.0. Copenhagen: GBIF Secretariat. https://ipt.gbif.org/manual/en/ipt/3.0/ CC BY 4.0](images/star_diagram.png){fig-alt="schematic of a Darwin Core Archive" fig-align="center"}

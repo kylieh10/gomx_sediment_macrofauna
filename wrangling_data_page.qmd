@@ -1,12 +1,14 @@
-# Wrangling the Data
+---
+title: Wrangling the Data
+---
 
 # Using R to get the data from ScienceBase
 
 To retrieve and use the data from ScienceBase, R packages `dplyr`, `sbtools`, `stringr`, and `worrms` will need to be loaded. After loading these packages, we will read the data in from ScienceBase.
 
-The ScienceBase dataset ID can be found at the end of the ScienceBase link for the dataset. 
+The ScienceBase dataset ID can be found at the end of the ScienceBase link for the dataset.
 
-::: {.callout-tip}
+::: callout-tip
 ## ScienceBase identifiers
 
 If the full link to the item on ScienceBase is <https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e>, then the identifier is `5a709594e4b0a9a2e9d88e4e`.
@@ -82,8 +84,6 @@ Infauna_StationCore <- Infauna_StationCore %>%
                                   Site), sep = " | ")
   )
 ```
-
-### Creating new metadata
 
 ## Reconfiguring Tables
 
@@ -254,7 +254,7 @@ Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c
 
 # Aligning to a Taxonomic Database
 
-In this dataset, we were lucky enough to have identifieres from the WoRMS databse, which is what OBIS expects the taxonomy to be aligned to.  However, cccurrence tables require some taxonomic information (e.g. kingdom, lsid) that may not be provided in the original data. In these cases, we will need to call taxonomic information from WoRMS using the `worrms` package. In addition to the required `scientificName` and `scientificNameID` fields, it is valuable to provide other information if it is available, like `taxonRank`, which is the lowest identifiable taxon of an occurrence, and corresponding parent taxa.
+In this dataset, we were lucky enough to have identifiers from the WoRMS databse, which is what OBIS expects the taxonomy to be aligned to. However, occurrence tables require some taxonomic information (e.g. kingdom, lsid) that may not be provided in the original data. In these cases, we will need to call taxonomic information from WoRMS using the `worrms` package. In addition to the required `scientificName` and `scientificNameID` fields, it is valuable to provide other information if it is available, like `taxonRank`, which is the lowest identifiable taxon of an occurrence, and corresponding parent taxa.
 
 We will assign `AphiaID` from the occurrence table to a new variable `myAphiaID` which we will use to call the corresponding WoRMS data. Adding `lapply` to circumvent limits on the number of inputs, we then use `wm_record(id = x)`, where `x` is `myAphiaID`. From the new table, we just pull the columns that we need using `select`.
 

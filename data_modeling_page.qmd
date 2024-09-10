@@ -1,4 +1,7 @@
-# Getting a Feel for the Data
+
+---
+title: Getting a Feel for the Data
+---
 
 Starting to understand the data we are working with may not require a computer. Simple diagrams and maps can be very useful in this stage to understand the relationships and information provided in a dataset. To get started, it's valuable to model the data and begin the process of [mapping terms to DwC vocabulary](https://dwc.tdwg.org/terms/).
 

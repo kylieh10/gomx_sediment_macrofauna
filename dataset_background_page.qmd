@@ -1,4 +1,6 @@
-# What data are we using in this notebook?
+---
+title: What data are we using in this notebook?
+---
 
 ![](images/sciencebase_screengrab.png)
 

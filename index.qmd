@@ -1,0 +1,21 @@
+---
+title: "Mobilizing a Treasure Trove of Deep-Sea Biodiversity Data for Global Access and Use"
+date: today
+author:
+  - name: "Kylie Hollis"
+    orcid: "0009-0006-4061-8077"
+    email: "khollis@usgs.gov"
+  - name: "Stephen Formel"
+    orcid: "0000-0001-7418-1244"
+    email: "sformel@usgs.gov"
+---
+
+::: {style="text-align: center;font-size: 1.35em"}
+***Sediment macrofaunal composition, sediment grain size, and taxa functional traits of multiple deep-sea coral habitats in the Gulf of Mexico, 2009-2014***
+:::
+
+::: {style="text-align: center"}
+Collected by Dr. Amanda Demopoulos and Dr. Jill Bourque
+
+DOI: <https://doi.org/10.5066/F7TH8KXD>
+:::

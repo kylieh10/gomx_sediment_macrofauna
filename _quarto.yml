@@ -2,6 +2,7 @@ project:
   type: website
   output-dir: docs
   render:
+    - index.qmd
     - purpose_page.qmd
     - intended_user_page.qmd
     - dataset_background_page.qmd
@@ -12,16 +13,6 @@ project:
     - EML_metadata_page.qmd
     - publishing_page.qmd
     - use_stats_page.qmd
-
-date: today
-
-author: 
-  - name: "Kylie Hollis"
-    orcid: "0009-0006-4061-8077"
-    email: "khollis@usgs.gov"
-  - name: "Stephen Formel"
-    orcid: "0000-0001-7418-1244"
-    email: "sformel@usgs.gov"        
     
 format:
   html:

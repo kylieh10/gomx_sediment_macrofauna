@@ -1,6 +1,8 @@
-# Intended User
+---
+title: Intended User
+---
 
-The intended user of this notebook is a person who has been tasked with publishing data that has already been published to ScienceBase via the USGS data release process. However, the basic structure and concepts should apply for any data that is being mobilized (i.e. published to) GBIF and OBIS. 
+The intended user of this notebook is a person who has been tasked with publishing data that has already been published to ScienceBase via the USGS data release process. However, the basic structure and concepts should apply for any data that is being mobilized (i.e. published) to GBIF and OBIS. 
 
 - Basic knowledge of R is needed, but you do not need to be an expert. 
 - Basic knowledge of the Darwin Core, and Ecological Metadata Language (EML) standards is useful, but you do not need to be an expert. 
