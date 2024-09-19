@@ -13,6 +13,11 @@ project:
     - EML_metadata_page.qmd
     - publishing_page.qmd
     - use_stats_page.qmd
+    - event_core_page.qmd
+    - occ_ext_page.qmd
+    - eMoF_ext_page.qmd
+    - links_page.qmd
+    - add_resources_page.qmd
     
 format:
   html:
@@ -61,7 +66,12 @@ website:
             text: Occurrence Extension Example Script
           - href: eMoF_ext_page.qmd
             text: eMoF Extension Example Script
-
+      - section: "Links and Resources"
+        contents: 
+          - href: links_page.qmd
+            text: Links within this Notebook
+          - href: add_resources_page.qmd
+            text: Additional Resources
 
       
       

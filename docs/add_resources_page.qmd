@@ -1,0 +1,15 @@
+---
+title: "Additional Resources"
+---
+
+
+Marine Biological Data Mobilization Workshop: <https://ioos.github.io/bio_mobilization_workshop/>
+
+`tidyverse` core packages and cheatsheets: <https://tidyverse.tidyverse.org/index.html>
+
+WoRMS taxon matching tool: <https://www.marinespecies.org/aphia.php?p=match>
+
+Introduction to the `worrms` package: <http://cran.nexr.com/web/packages/worrms/vignettes/worrms_vignette.html>
+
+Guide on `obistools` package for QAQC: <https://github.com/iobis/obistools/blob/master/README.md>
+

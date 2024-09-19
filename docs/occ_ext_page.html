@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DRAFT, UNDER DEVELOPMENT: An elegant guide to mobilizing data to OBIS &amp; GBIF for the discerning member of the Demopoulos lab. - Why Are We Doing This?</title>
+<title>DRAFT, UNDER DEVELOPMENT: An elegant guide to mobilizing data to OBIS &amp; GBIF for the discerning member of the Demopoulos lab. - Occurrence Extension Example Script</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intended_user_page.html" rel="next">
+<link href="./eMoF_ext_page.html" rel="next">
+<link href="./event_core_page.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -94,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./purpose_page.html">Background</a></li><li class="breadcrumb-item"><a href="./purpose_page.html">Why are we doing this?</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./event_core_page.html">Executable Example Scripts</a></li><li class="breadcrumb-item"><a href="./occ_ext_page.html">Occurrence Extension Example Script</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -125,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./purpose_page.html" class="sidebar-item-text sidebar-link active">
+  <a href="./purpose_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Why are we doing this?</span></a>
   </div>
 </li>
@@ -206,20 +241,43 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./event_core_page.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./event_core_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Event Core Example Script</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./occ_ext_page.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./occ_ext_page.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Occurrence Extension Example Script</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./eMoF_ext_page.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./eMoF_ext_page.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">eMoF Extension Example Script</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Links and Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./links_page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Links within this Notebook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./add_resources_page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Additional Resources</span></a>
   </div>
 </li>
       </ul>
@@ -230,31 +288,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#open-science-obis-and-gbif" id="toc-open-science-obis-and-gbif" class="nav-link" data-scroll-target="#open-science-obis-and-gbif">Open Science, OBIS, and GBIF</a>
-  <ul class="collapse">
-  <li><a href="#open-science-and-fair-data" id="toc-open-science-and-fair-data" class="nav-link" data-scroll-target="#open-science-and-fair-data">Open Science and FAIR Data</a></li>
-  <li><a href="#obis-and-gbif" id="toc-obis-and-gbif" class="nav-link" data-scroll-target="#obis-and-gbif">OBIS and GBIF</a></li>
-  </ul></li>
-  <li><a href="#open-standards" id="toc-open-standards" class="nav-link" data-scroll-target="#open-standards">Open Standards</a>
-  <ul class="collapse">
-  <li><a href="#what-is-darwin-core" id="toc-what-is-darwin-core" class="nav-link" data-scroll-target="#what-is-darwin-core">What is Darwin Core?</a></li>
-  <li><a href="#what-is-eml" id="toc-what-is-eml" class="nav-link" data-scroll-target="#what-is-eml">What is EML?</a></li>
-  <li><a href="#darwin-core-archive" id="toc-darwin-core-archive" class="nav-link" data-scroll-target="#darwin-core-archive">Darwin Core Archive</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./purpose_page.html">Background</a></li><li class="breadcrumb-item"><a href="./purpose_page.html">Why are we doing this?</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./event_core_page.html">Executable Example Scripts</a></li><li class="breadcrumb-item"><a href="./occ_ext_page.html">Occurrence Extension Example Script</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Why Are We Doing This?</h1>
+<h1 class="title">Occurrence Extension Example Script</h1>
 </div>
 
 
@@ -271,52 +312,160 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This notebook provides a general workflow for mobilizing data from the USGS lab of <a href="https://www.usgs.gov/staff-profiles/amanda-demopoulos/">Amanda Demopoulos</a> to <a href="https://obis.org/">OBIS</a> and <a href="https://www.gbif.org/">GBIF</a>. Using a <a href="https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e">dataset that was previously published through ScienceBase</a>, we walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.</p>
-</section>
-<section id="open-science-obis-and-gbif" class="level1">
-<h1>Open Science, OBIS, and GBIF</h1>
-<section id="open-science-and-fair-data" class="level2">
-<h2 class="anchored" data-anchor-id="open-science-and-fair-data">Open Science and FAIR Data</h2>
-<ul>
-<li><p><a href="https://nasa.github.io/Transform-to-Open-Science/os101-modules/"><strong>Open science</strong></a> is the practice of making data, resources, results, and publications as available as possible, while still respecting diverse cultures, security, and privacy.</p></li>
-<li><p><a href="https://www.go-fair.org/fair-principles/"><strong>FAIR data</strong></a> is data that is Findable, Accessible, Interoperable, and Reusable. While the two often go hand-in-hand, FAIR data is not necessarily open data.</p></li>
-</ul>
-<p>By practicing the principles of open and FAIR science, we follow the <a href="https://www.congress.gov/bill/115th-congress/house-bill/4174">direction of the U.S. government</a>. Less pragmatically, we promote transparency in the scientific process, encourage collaboration, drive efficient advancement of science and policy, and increase the impact of research.</p>
-</section>
-<section id="obis-and-gbif" class="level2">
-<h2 class="anchored" data-anchor-id="obis-and-gbif">OBIS and GBIF</h2>
-<p>The <a href="https://obis.org/">Ocean Biodiversity Information System (OBIS)</a> and <a href="https://www.gbif.org/">Global Biodiversity Information Facility (GBIF)</a> are international networks that mobilize data to provide free, open access to biodiversity data. They promote global scientific collaboration and open science as pillars of their missions, which is facilitated by the use of data standards and FAIR principles. GBIF and OBIS actively collaborate, and the USGS Science Analytics and Synthesis operates the US nodes for both OBIS and GBIF. However, they are distinct endeavors with separate funding streams and governance. The easiest way to differentiate the networks is that OBIS is strictly working with marine data, while GBIF accepts all data.</p>
-</section>
-</section>
-<section id="open-standards" class="level1">
-<h1>Open Standards</h1>
-<p>An open standard is a specification, of how data should be formatted and handled, for which the documentation is Open and FAIR. Frequently open standards are community-developed and maintained.</p>
-<blockquote class="blockquote">
-<p>In plain language, this means that two scientists should be able to learn and apply an open standard to their data, and then easily use each other’s data, without ever meeting.</p>
-</blockquote>
-<section id="what-is-darwin-core" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-darwin-core">What is Darwin Core?</h2>
-<p><a href="https://dwc.tdwg.org/terms/">Darwin Core (DwC)</a> is an open data standard for sharing evidence of biological occurrence. It has been developed by the <a href="https://www.tdwg.org/">Biodiversity Information Standards (TDWG)</a>, beginning in 1998. Darwin Core includes standardized vocabulary (i.e.&nbsp;column names for a spreadsheet) and file formats for sharing (i.e Darwin Core Archives, see below). Its used by OBIS and GBIF to help facilitate the sharing of open biological data in accordance with the FAIR principles. You may find it useful to read the relevant sections of the <a href="https://manual.obis.org/data_standards.html#biodiversity-data-standards">OBIS manual</a> and the <a href="https://ipt.gbif.org/manual/en/ipt/latest/darwin-core">GBIF IPT manual</a>.</p>
-</section>
-<section id="what-is-eml" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-eml">What is EML?</h2>
-<p><a href="https://eml.ecoinformatics.org/">Ecological Metadata Language (EML)</a> is a standard for recording and organizing metadata, and is the metadata that describes the entire dataset when using Darwin Core and publishing to GBIF and OBIS. Although it does not directly align with other metadata standards, like ISO 19115 and CSDGM, you will likely find it very familiar if you have ever worked with those other metadata standards. Again, the relevant sections of the <a href="https://manual.obis.org/eml.html">OBIS manual</a> and the <a href="https://ipt.gbif.org/manual/en/ipt/latest/data-quality-checklist#dataset-metadata">GBIF IPT manual</a> may be useful for deeper understanding.</p>
-</section>
-<section id="darwin-core-archive" class="level2">
-<h2 class="anchored" data-anchor-id="darwin-core-archive">Darwin Core Archive</h2>
-<p>The Darwin Core Archive (DwC-A) is the fundamental unit of Darwin Core. It is a <code>zip</code> file, comprised of <code>csv</code> files containing the tables describing biodiversity occurrence. These tables follow a star schema (see below). The EML is included as an <code>xml</code> file containing metadata that describes the entire dataset. The <code>csv</code> files reference each other using unique identifiers, akin to keys in a SQL database. For more information, see the <a href="https://manual.obis.org/data_format.html#darwin-core-archive-1">OBIS manual</a> and the <a href="https://ipt.gbif.org/manual/en/ipt/latest/dwca-guide#what-is-darwin-core-archive-dwc-a">GBIF IPT manual</a>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/star_diagram.png" class="img-fluid figure-img" alt="schematic of a Darwin Core Archive"></p>
-<figcaption>Schematic of a Darwin Core Archive, sourced from Wieczorek J, Blissett M, Braak K &amp; Podolskiy M (2024) The GBIF Integrated Publishing Toolkit User Manual, version 3.0. Copenhagen: GBIF Secretariat. https://ipt.gbif.org/manual/en/ipt/3.0/ CC BY 4.0</figcaption>
-</figure>
+<p>This is the script, in its entirety, to create the occurrence extension table from our example dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries ----------------------------------------------------------</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sbtools)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(worrms)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from ScienceBase ----------------------------------------------</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># link to data: https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>sb_id <span class="ot">&lt;-</span> <span class="st">'5a709594e4b0a9a2e9d88e4e'</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>sbtools<span class="sc">::</span><span class="fu">item_get</span>(<span class="at">sb_id =</span> sb_id)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>sb_filenames <span class="ot">&lt;-</span> <span class="fu">item_list_files</span>(<span class="at">sb_id =</span> sb_id)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>BTA <span class="ot">&lt;-</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> sb_filenames<span class="sc">$</span>url[<span class="dv">1</span>])</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Infauna <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> sb_filenames<span class="sc">$</span>url[<span class="dv">2</span>])</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>SedChem <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> sb_filenames<span class="sc">$</span>url[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revise AphiaID ----------------------------------------------------------</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Manually add AphiaID for Caridea</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Although NA in original data, it exists in WoRMS as an infraorder</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Infauna <span class="ot">&lt;-</span> Infauna <span class="sc">%&gt;%</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">AphiaID =</span> <span class="fu">case_when</span>(TaxaName <span class="sc">==</span> <span class="st">"Caridea"</span> <span class="sc">~</span> <span class="dv">106674</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                             <span class="cn">TRUE</span> <span class="sc">~</span> AphiaID)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Occurrence Table ----------  </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Infauna_Occurrence <span class="ot">&lt;-</span> Infauna <span class="sc">%&gt;%</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">materialEntityID =</span> SampleID</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter out events without any observed occurrences</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>TaxaName <span class="sc">==</span> <span class="st">"No individuals"</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">eventDate =</span> DateCollected <span class="sc">%&gt;%</span> </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as.Date</span>(<span class="st">"%m/%d/%Y"</span>),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">eventID =</span> <span class="fu">paste</span>(Site, eventDate <span class="sc">%&gt;%</span> <span class="fu">as.character</span>(), materialEntityID,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sep =</span> <span class="st">"_"</span>) <span class="sc">%&gt;%</span> <span class="fu">str_remove_all</span>(<span class="at">pattern =</span> <span class="st">"-"</span>),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">occurrenceStatus =</span> <span class="st">"present"</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">basisOfRecord =</span> <span class="st">"HumanObservation"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbatimIdentification =</span> TaxaName,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">individualCount =</span> Abundance,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">associatedTaxa =</span> <span class="fu">paste</span>(<span class="st">"livesNear:"</span>, Coral),</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">taxonRank =</span> <span class="cn">NA</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">locality =</span> <span class="fu">paste</span>(<span class="st">"BOEM Lease Block"</span>, Site),</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">higherGeography =</span> <span class="fu">paste</span>(<span class="st">"Gulf of Mexico"</span>,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">paste</span>(<span class="st">"BOEM Lease Block"</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                                  Site), <span class="at">sep =</span> <span class="st">" | "</span>),</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">occurrenceRemarks =</span> <span class="fu">case_when</span>(Location <span class="sc">==</span> <span class="st">"Near"</span> <span class="sc">~</span> <span class="fu">paste</span>(<span class="st">"within 1 meter of"</span>, Coral),</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                                  Location <span class="sc">==</span> <span class="st">"Background"</span> <span class="sc">~</span> <span class="fu">paste</span>(<span class="st">"14 to 1000 meters away from"</span>, Coral)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># grouping by sample so occurrences are numbered if they are from the same sample</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(materialEntityID) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>       <span class="at">occurrenceID =</span> <span class="fu">paste</span>(materialEntityID, <span class="fu">row_number</span>(), <span class="at">sep =</span> <span class="st">"_"</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  eventID,</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  occurrenceID,</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  eventDate,</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  verbatimIdentification,</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  occurrenceStatus,</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  basisOfRecord,</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  individualCount,</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  associatedTaxa,</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  occurrenceRemarks,</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  AphiaID,</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  TSN,</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>  locality,</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>  higherGeography</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="co"># pulling taxonomic information from worms</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>myAphiaID <span class="ot">&lt;-</span> Infauna<span class="sc">$</span>AphiaID <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>myAphiaID <span class="ot">&lt;-</span> <span class="fu">lapply</span>(myAphiaID, <span class="cf">function</span>(x) <span class="fu">wm_record</span>(<span class="at">id =</span> x)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">rbindlist</span>()</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>uniqueAphiaSelectColumns <span class="ot">&lt;-</span> <span class="fu">select</span>(<span class="at">.data =</span> myAphiaID,</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaID</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">scientificName =</span> scientificname,</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">taxonRank =</span> rank,</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">scientificNameID =</span> lsid</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Joining the occurrence table with the taxonomic data table and writing to csv</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Occurrence_Ext <span class="ot">&lt;-</span> <span class="fu">left_join</span>(Infauna_Occurrence, uniqueAphiaSelectColumns, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"AphiaID"</span> <span class="ot">=</span> <span class="st">"AphiaID"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">TSN =</span> <span class="fu">paste</span>(<span class="st">"urn:lsid:itis.gov:itis_tsn:"</span>, TSN),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">scientificNameID =</span> <span class="fu">paste</span>(scientificNameID, TSN, <span class="at">sep =</span> <span class="st">", "</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">countryCode =</span> <span class="st">"US"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subset</span>(<span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(AphiaID,TSN)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(eventID,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>         occurrenceID,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>         eventDate,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>         scientificName,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>         scientificNameID,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>         <span class="fu">everything</span>())</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>Occurrence_Ext <span class="sc">%&gt;%</span> </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.csv</span>(<span class="fu">paste0</span>(<span class="st">"data/gomx_sediment_macrofauna_occurrence_"</span>, <span class="fu">Sys.Date</span>(), <span class="st">".csv"</span>),</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">na =</span> <span class="st">""</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>, </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">row.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Occurrence_Ext)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,072 × 21
+   eventID               occurrenceID eventDate  scientificName scientificNameID
+   &lt;chr&gt;                 &lt;chr&gt;        &lt;date&gt;     &lt;chr&gt;          &lt;chr&gt;           
+ 1 MC885_20140501_AT261… AT26-14-470… 2014-05-01 Agathotanaidae urn:lsid:marine…
+ 2 MC885_20140501_AT261… AT26-14-470… 2014-05-01 Akanthophorei… urn:lsid:marine…
+ 3 MC885_20140501_AT261… AT26-14-470… 2014-05-01 Amphipoda      urn:lsid:marine…
+ 4 MC885_20140501_AT261… AT26-14-470… 2014-05-01 Anarthruridae  urn:lsid:marine…
+ 5 MC885_20140501_AT261… AT26-14-470… 2014-05-01 Bivalvia       urn:lsid:marine…
+ 6 MC885_20140501_AT261… AT26-14-470… 2014-05-01 Chaetodermati… urn:lsid:marine…
+ 7 MC885_20140501_AT261… AT26-14-470… 2014-05-01 Cirratulidae   urn:lsid:marine…
+ 8 MC885_20140501_AT261… AT26-14-470… 2014-05-01 Desmosomatidae urn:lsid:marine…
+ 9 MC885_20140501_AT261… AT26-14-470… 2014-05-01 Gastropoda     urn:lsid:marine…
+10 MC885_20140501_AT261… AT26-14-470… 2014-05-01 Hydrozoa       urn:lsid:marine…
+# ℹ 2,062 more rows
+# ℹ 16 more variables: verbatimIdentification &lt;chr&gt;, occurrenceStatus &lt;chr&gt;,
+#   basisOfRecord &lt;chr&gt;, individualCount &lt;dbl&gt;, associatedTaxa &lt;chr&gt;,
+#   occurrenceRemarks &lt;chr&gt;, locality &lt;chr&gt;, higherGeography &lt;chr&gt;,
+#   taxonRank &lt;chr&gt;, kingdom &lt;chr&gt;, phylum &lt;chr&gt;, class &lt;chr&gt;, order &lt;chr&gt;,
+#   family &lt;chr&gt;, genus &lt;chr&gt;, countryCode &lt;chr&gt;</code></pre>
+</div>
 </div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -730,10 +879,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./event_core_page.html" class="pagination-link" aria-label="Event Core Example Script">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Event Core Example Script</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intended_user_page.html" class="pagination-link" aria-label="Intended User">
-        <span class="nav-page-text">Intended User</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./eMoF_ext_page.html" class="pagination-link" aria-label="eMoF Extension Example Script">
+        <span class="nav-page-text">eMoF Extension Example Script</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

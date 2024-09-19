@@ -9,6 +9,7 @@ This is the script, in its entirety, to create the occurrence extension table fr
 ```{r}
 #| warning: false
 #| message: false
+#| output: false
 
 # Load libraries ----------------------------------------------------------
 
@@ -28,8 +29,9 @@ sb_filenames <- item_list_files(sb_id = sb_id)
 BTA <-readr::read_csv(file = sb_filenames$url[1])
 Infauna <- readr::read_csv(file = sb_filenames$url[2])
 SedChem <- readr::read_csv(file = sb_filenames$url[3])
+```
 
-
+```{r}
 # Revise AphiaID ----------------------------------------------------------
 
 # Manually add AphiaID for Caridea
@@ -39,9 +41,9 @@ Infauna <- Infauna %>%
   mutate(AphiaID = case_when(TaxaName == "Caridea" ~ 106674,
                              TRUE ~ AphiaID)
   )
+```
 
-###############
-
+```{r}
 # Occurrence Table ----------  
 
 Infauna_Occurrence <- Infauna %>% 
@@ -112,8 +114,10 @@ scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaI
     taxonRank = rank,
     scientificNameID = lsid
   )
+```
 
-# joining the occurrence table with the taxonomic data table and writing to csv
+```{r}
+# Joining the occurrence table with the taxonomic data table and writing to csv
 Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>%
   
   mutate(

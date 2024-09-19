@@ -1,0 +1,35 @@
+---
+title: "Links within this Notebook"
+---
+
+To the dataset on ScienceBase: <https://doi.org/10.5066/F7TH8KXD>
+
+To the GitHub repo: <https://github.com/kylieh10/gomx_sediment_macrofauna>
+
+## Introduction:
+
+Open Science information (and lessons): <https://nasa.github.io/Transform-to-Open-Science/os101-modules/>
+
+FAIR principles: <https://www.go-fair.org/fair-principles/>
+
+OBIS website: <https://obis.org/>
+
+OBIS manual: <https://manual.obis.org/>
+
+GBIF website: <https://www.gbif.org/>
+
+GBIF IPT manual: <https://ipt.gbif.org/manual/en/ipt/latest/>
+
+Darwin Core (DwC) website: <https://dwc.tdwg.org/>
+
+EML guide: <https://eml.ecoinformatics.org/>
+
+## Working with the Data:
+
+DwC Quick Reference Guide (for vocabulary): <https://dwc.tdwg.org/terms/>
+
+GBIF DwC extension vocabularies: <https://rs.gbif.org/extensions.html>
+
+GitHub introduction: <https://docs.github.com/en/get-started/start-your-journey/hello-world>
+
+GitLab introduction: <https://docs.gitlab.com/ee/tutorials/learn_git.html>

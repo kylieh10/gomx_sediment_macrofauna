@@ -1,0 +1,228 @@
+---
+title: "Event Core Example Script"
+execute: 
+  eval: true
+---
+
+This is the script, in its entirety, to create the event core table from our example dataset:
+
+```{r}
+#| warning: false
+#| message: false
+#| output: false
+
+# Load libraries ----------------------------------------------------------
+
+library(dplyr)
+library(sbtools)
+library(stringr)
+
+# Read data from ScienceBase ----------------------------------------------
+# link to data: https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e
+
+sb_id <- '5a709594e4b0a9a2e9d88e4e'
+sbtools::item_get(sb_id = sb_id)
+
+sb_filenames <- item_list_files(sb_id = sb_id)
+
+BTA <-readr::read_csv(file = sb_filenames$url[1])
+Infauna <- readr::read_csv(file = sb_filenames$url[2])
+SedChem <- readr::read_csv(file = sb_filenames$url[3])
+```
+
+```{r}
+#| warning: false
+#| message: false
+
+# Core/Station Level Event Table (Parent Event) -------------------------------------------------
+
+# events represent unique cores (coreID)
+
+# create table of core min/max values to join later with events
+core_minmax <- Infauna %>%
+  bind_rows(SedChem) %>% 
+  
+  rename(
+    materialEntityID = CoreID,
+    locationID = Station,
+    decimalLatitude = Latitude,
+    decimalLongitude = Longitude,
+    eventRemarks = EnvironmentalGroup
+  ) %>%
+  
+  mutate(
+    eventDate = DateCollected %>%
+      as.Date("%m/%d/%Y"),
+    eventID = paste(Site, eventDate %>% as.character(), materialEntityID, 
+                    sep = "_") %>% stringr::str_remove_all(pattern = "-")) %>% 
+ 
+# finding min and max from each set of fractions for the min and max core depths
+  group_by(eventID) %>% 
+  summarise(Fraction = str_remove_all(Fraction, pattern= " cm") %>% 
+              stringr::str_split(pattern = "-") %>% 
+              unlist() %>% 
+              as.integer()) %>% 
+  
+  group_by(eventID) %>% 
+  summarise(maximumDistanceAboveSurfaceInMeters = max(Fraction) %>% 
+               as.numeric()/-100,
+             minimumDistanceAboveSurfaceInMeters = min(Fraction) %>% 
+               as.numeric()/-100) %>% 
+  distinct()
+
+# create event table without core min/max values
+SedChem <- SedChem %>%
+  mutate(
+    Gear = "Push core")
+
+Infauna_StationCore <- Infauna %>%
+  bind_rows(SedChem) %>% 
+  
+  rename(
+    materialEntityID = CoreID,
+    locationID = Station,
+    decimalLatitude = Latitude,
+    decimalLongitude = Longitude,
+    eventRemarks = EnvironmentalGroup
+  ) %>%
+
+  mutate(
+    locationRemarks = 
+      case_when(
+        Location == "Near" ~ paste("within 1 meter of", Coral),
+        Location == "Background" ~ paste("14 to 1000 meters away from", Coral)
+      ),
+    geodeticDatum = "WGS84",
+    eventDate = DateCollected %>%
+      as.Date("%m/%d/%Y"),
+    eventID = paste(Site, eventDate %>% as.character(), materialEntityID, sep =
+                      "_") %>% stringr::str_remove_all(pattern = "-"),
+    minimumDepthInMeters = Depth,
+    maximumDepthInMeters = Depth,
+    countryCode = "US",
+    locality = paste("BOEM Lease Block", Site),
+    higherGeography = paste("Gulf of Mexico", paste("BOEM Lease Block", Site),
+                            sep = " | ")
+  ) %>% 
+
+  select(
+    eventID,
+    eventDate,
+    materialEntityID,
+    locationID,
+    decimalLatitude,
+    decimalLongitude,
+    higherGeography,
+    locality,
+    geodeticDatum,
+    countryCode,
+    minimumDepthInMeters,
+    maximumDepthInMeters,
+    locationRemarks,
+    Gear
+  ) %>%
+
+# join min/max table and event table
+  distinct() %>% 
+  left_join(., core_minmax) %>% 
+  
+  mutate(
+    samplingProtocol = paste(Gear, ",", maximumDistanceAboveSurfaceInMeters, "m
+                             long")
+    ) %>% 
+  
+  select(everything(),
+         -Gear)
+```
+
+```{r}
+# Sample Level Event Table (child events) -------------------------------------------------
+
+Infauna_Sample <- Infauna %>% 
+
+  rename(
+    materialEntityID = SampleID,
+    locationID = Station,
+    decimalLatitude = Latitude,
+    decimalLongitude = Longitude
+  ) %>%
+  
+  mutate(
+    locationRemarks = paste(Location, "coral"),
+    geodeticDatum = "WGS84",
+    eventDate = DateCollected %>% 
+      as.Date("%m/%d/%Y"),
+    parentEventID = paste(Site, eventDate %>% as.character(), CoreID, 
+                          sep = "_") %>% 
+        stringr::str_remove_all(pattern = "-"),
+    eventID = paste(Site, eventDate %>% as.character(), materialEntityID, sep =
+                      "_") %>%
+        stringr::str_remove_all(pattern = "-"),
+    minimumDepthInMeters = Depth,
+    maximumDepthInMeters = Depth,
+    countryCode = "US",
+    locality = paste("BOEM Lease Block", Site),
+    higherGeography = paste("Gulf of Mexico",
+                            paste("BOEM Lease Block", Site), sep = " | "),
+    samplingProtocol = paste(Gear, "fraction"),
+    Fraction=str_extract(Fraction, pattern= ".*\\d"),
+    maximumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 2) %>% as.integer()/-100,
+    minimumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 1) %>% as.integer()/-100
+      ) %>% 
+  
+  select(
+    everything(),
+    -c(Analysis,
+       EnvironmentalGroup,
+       TSN,
+       AphiaID,
+       Abundance,
+       TaxaName)
+  ) %>% 
+  distinct()
+```
+
+```{r}
+#| warning: false
+#| message: false
+
+# Bind tables and write out to csv 
+  
+Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>% 
+  
+  select(
+    eventID,
+    parentEventID,
+    eventDate,
+    locationID,
+    decimalLatitude,
+    decimalLongitude,
+    higherGeography,
+    locality,
+    geodeticDatum,
+    countryCode,
+    minimumDepthInMeters,
+    maximumDepthInMeters,
+    samplingProtocol,
+    locationRemarks,
+    minimumDistanceAboveSurfaceInMeters,
+    maximumDistanceAboveSurfaceInMeters,
+    materialEntityID
+  ) %>% 
+  distinct() %>% 
+  
+  mutate(
+    minimumDistanceAboveSurfaceInMeters = sprintf("%.2f", minimumDistanceAboveSurfaceInMeters),
+    maximumDistanceAboveSurfaceInMeters = sprintf("%.2f", maximumDistanceAboveSurfaceInMeters)
+  )
+
+Infauna_Event %>% 
+  write.csv(
+    paste0("data/gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"),
+    na = "",
+    fileEncoding = "UTF-8", 
+    row.names = FALSE
+  )
+
+print(Infauna_Event)
+```
