@@ -12,7 +12,7 @@ project:
     - uploading_page.qmd
     - EML_metadata_page.qmd
     - publishing_page.qmd
-    - use_stats_page.qmd
+    #- use_stats_page.qmd
     - event_core_page.qmd
     - occ_ext_page.qmd
     - eMoF_ext_page.qmd
@@ -56,8 +56,8 @@ website:
         contents: 
           - href: publishing_page.qmd
             text: Publishing to GBIF and OBIS
-          - href: use_stats_page.qmd
-            text: Dataset Use Statistics
+          #- href: use_stats_page.qmd
+           # text: Dataset Use Statistics
       - section: "Executable Example Scripts"
         contents: 
           - href: event_core_page.qmd
