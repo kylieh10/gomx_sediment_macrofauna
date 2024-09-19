@@ -18,6 +18,19 @@ BTA <-readr::read_csv(file = sb_filenames$url[1])
 Infauna <- readr::read_csv(file = sb_filenames$url[2])
 SedChem <- readr::read_csv(file = sb_filenames$url[3])
 
+
+# Revise AphiaID ----------------------------------------------------------
+
+# Manually add AphiaID for Caridea
+# Although NA in original data, it exists in WoRMS as an infraorder
+
+Infauna <- Infauna %>% 
+  mutate(AphiaID = case_when(TaxaName == "Caridea" ~ 106674,
+                             TRUE ~ AphiaID)
+  )
+
+###############
+
 # Occurrence Table ----------  
 
 Infauna_Occurrence <- Infauna %>% 
