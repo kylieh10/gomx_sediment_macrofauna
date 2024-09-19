@@ -53,7 +53,14 @@ website:
             text: Publishing to GBIF and OBIS
           - href: use_stats_page.qmd
             text: Dataset Use Statistics
-
+      - section: "Executable Example Scripts"
+        contents: 
+          - href: event_core_page.qmd
+            text: Event Core Example Script
+          - href: occ_ext_page.qmd
+            text: Occurrence Extension Example Script
+          - href: eMoF_ext_page.qmd
+            text: eMoF Extension Example Script
 
 
       

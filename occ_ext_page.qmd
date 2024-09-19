@@ -1,0 +1,141 @@
+---
+title: "Occurrence Extension Example Script"
+execute: 
+  eval: true
+---
+
+This is the script, in its entirety, to create the occurrence extension table from our example dataset:
+
+```{r}
+#| warning: false
+#| message: false
+
+# Load libraries ----------------------------------------------------------
+
+library(dplyr)
+library(sbtools)
+library(stringr)
+library(worrms)
+
+# Read data from ScienceBase ----------------------------------------------
+# link to data: https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e
+
+sb_id <- '5a709594e4b0a9a2e9d88e4e'
+sbtools::item_get(sb_id = sb_id)
+
+sb_filenames <- item_list_files(sb_id = sb_id)
+
+BTA <-readr::read_csv(file = sb_filenames$url[1])
+Infauna <- readr::read_csv(file = sb_filenames$url[2])
+SedChem <- readr::read_csv(file = sb_filenames$url[3])
+
+
+# Revise AphiaID ----------------------------------------------------------
+
+# Manually add AphiaID for Caridea
+# Although NA in original data, it exists in WoRMS as an infraorder
+
+Infauna <- Infauna %>% 
+  mutate(AphiaID = case_when(TaxaName == "Caridea" ~ 106674,
+                             TRUE ~ AphiaID)
+  )
+
+###############
+
+# Occurrence Table ----------  
+
+Infauna_Occurrence <- Infauna %>% 
+  
+  rename(
+    materialEntityID = SampleID
+  ) %>% 
+  
+  # filter out events without any observed occurrences
+  filter(
+    !TaxaName == "No individuals"
+  ) %>% 
+  
+  mutate(
+    eventDate = DateCollected %>% 
+      as.Date("%m/%d/%Y"),
+    eventID = paste(Site, eventDate %>% as.character(), materialEntityID,
+                    sep = "_") %>% str_remove_all(pattern = "-"),
+    occurrenceStatus = "present",
+    basisOfRecord = "HumanObservation",
+    verbatimIdentification = TaxaName,
+    individualCount = Abundance,
+    associatedTaxa = paste("livesNear:", Coral),
+    taxonRank = NA,
+    locality = paste("BOEM Lease Block", Site),
+    higherGeography = paste("Gulf of Mexico",
+                            paste("BOEM Lease Block",
+                                  Site), sep = " | "),
+    occurrenceRemarks = case_when(Location == "Near" ~ paste("within 1 meter of", Coral),
+                                  Location == "Background" ~ paste("14 to 1000 meters away from", Coral)
+    )
+  ) %>% 
+  
+  # grouping by sample so occurrences are numbered if they are from the same sample
+  group_by(materialEntityID) %>% 
+    mutate(
+       occurrenceID = paste(materialEntityID, row_number(), sep = "_")
+      ) %>% 
+  ungroup() %>% 
+  
+select(
+  eventID,
+  occurrenceID,
+  eventDate,
+  verbatimIdentification,
+  occurrenceStatus,
+  basisOfRecord,
+  individualCount,
+  associatedTaxa,
+  occurrenceRemarks,
+  AphiaID,
+  TSN,
+  locality,
+  higherGeography
+)
+
+# pulling taxonomic information from worms
+myAphiaID <- Infauna$AphiaID %>% na.omit() %>% unique()
+
+myAphiaID <- lapply(myAphiaID, function(x) wm_record(id = x)) %>% 
+  data.table::rbindlist()
+
+uniqueAphiaSelectColumns <- select(.data = myAphiaID,
+scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaID
+) %>%
+  rename(
+    scientificName = scientificname,
+    taxonRank = rank,
+    scientificNameID = lsid
+  )
+
+# joining the occurrence table with the taxonomic data table and writing to csv
+Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>%
+  
+  mutate(
+    TSN = paste("urn:lsid:itis.gov:itis_tsn:", TSN),
+    scientificNameID = paste(scientificNameID, TSN, sep = ", "),
+    countryCode = "US"
+  ) %>% 
+  
+  subset(select = -c(AphiaID,TSN)) %>% 
+  select(eventID,
+         occurrenceID,
+         eventDate,
+         scientificName,
+         scientificNameID,
+         everything())
+
+Occurrence_Ext %>% 
+  write.csv(paste0("data/gomx_sediment_macrofauna_occurrence_", Sys.Date(), ".csv"),
+            na = "",
+            fileEncoding = "UTF-8", 
+            row.names = FALSE
+  )
+
+print(Occurrence_Ext)
+```
