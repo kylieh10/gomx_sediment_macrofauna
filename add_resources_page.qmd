@@ -2,7 +2,9 @@
 title: "Additional Resources"
 ---
 
-OBIS training course information: <https://oceanexpert.org/event/3983>
+OBIS training course information (note: other iterations of this course may be available at a later date): <https://oceanexpert.org/event/3983>
+
+PDF of OBIS training course (without assignments and quizzes): <https://oceanexpert.org/event/3983#documents>
 
 Marine Biological Data Mobilization Workshop: <https://ioos.github.io/bio_mobilization_workshop/>
 
