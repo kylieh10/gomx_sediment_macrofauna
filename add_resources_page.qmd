@@ -2,6 +2,7 @@
 title: "Additional Resources"
 ---
 
+OBIS training course information: <https://oceanexpert.org/event/3983>
 
 Marine Biological Data Mobilization Workshop: <https://ioos.github.io/bio_mobilization_workshop/>
 
