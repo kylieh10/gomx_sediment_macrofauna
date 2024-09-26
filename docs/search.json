@@ -231,7 +231,7 @@
     "href": "add_resources_page.html",
     "title": "Additional Resources",
     "section": "",
-    "text": "Marine Biological Data Mobilization Workshop: https://ioos.github.io/bio_mobilization_workshop/\ntidyverse core packages and cheatsheets: https://tidyverse.tidyverse.org/index.html\nWoRMS taxon matching tool: https://www.marinespecies.org/aphia.php?p=match\nIntroduction to the worrms package: http://cran.nexr.com/web/packages/worrms/vignettes/worrms_vignette.html\nGuide on obistools package for QAQC: https://github.com/iobis/obistools/blob/master/README.md",
+    "text": "OBIS training course information (note: other iterations of this course may be available at a later date): https://oceanexpert.org/event/3983\nPDF of OBIS training course (without assignments and quizzes): https://oceanexpert.org/event/3983#documents\nMarine Biological Data Mobilization Workshop: https://ioos.github.io/bio_mobilization_workshop/\ntidyverse core packages and cheatsheets: https://tidyverse.tidyverse.org/index.html\nWoRMS taxon matching tool: https://www.marinespecies.org/aphia.php?p=match\nIntroduction to the worrms package: http://cran.nexr.com/web/packages/worrms/vignettes/worrms_vignette.html\nGuide on obistools package for QAQC: https://github.com/iobis/obistools/blob/master/README.md",
     "crumbs": [
       "Links and Resources",
       "Additional Resources"
