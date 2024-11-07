@@ -29,7 +29,6 @@ Infauna <- Infauna %>%
                              TRUE ~ AphiaID)
   )
 
-###############
 
 # Occurrence Table ----------  
 

@@ -1,17 +1,3 @@
----
-title: "Event Core Example Script"
-execute: 
-  eval: true
----
-
-This is the script, in its entirety, to create the event core table from our example dataset:
-
-You can also download the entire script here: [notebook_event.R](scripts/notebook_event.R)
-
-```{r}
-#| echo: true
-#| eval: false
-
 # Load libraries ----------------------------------------------------------
 
 library(dplyr)
@@ -204,6 +190,3 @@ Infauna_Event %>%
     fileEncoding = "UTF-8", 
     row.names = FALSE
   )
-
-
-```

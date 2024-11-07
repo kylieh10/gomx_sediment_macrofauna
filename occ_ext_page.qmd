@@ -7,9 +7,8 @@ execute:
 This is the script, in its entirety, to create the occurrence extension table from our example dataset:
 
 ```{r}
-#| warning: false
-#| message: false
-#| output: false
+#| echo: true
+#| eval: false
 
 # Load libraries ----------------------------------------------------------
 
@@ -29,9 +28,8 @@ sb_filenames <- item_list_files(sb_id = sb_id)
 BTA <-readr::read_csv(file = sb_filenames$url[1])
 Infauna <- readr::read_csv(file = sb_filenames$url[2])
 SedChem <- readr::read_csv(file = sb_filenames$url[3])
-```
 
-```{r}
+
 # Revise AphiaID ----------------------------------------------------------
 
 # Manually add AphiaID for Caridea
@@ -41,9 +39,7 @@ Infauna <- Infauna %>%
   mutate(AphiaID = case_when(TaxaName == "Caridea" ~ 106674,
                              TRUE ~ AphiaID)
   )
-```
 
-```{r}
 # Occurrence Table ----------  
 
 Infauna_Occurrence <- Infauna %>% 
@@ -51,12 +47,9 @@ Infauna_Occurrence <- Infauna %>%
   rename(
     materialEntityID = SampleID
   ) %>% 
-  
-  # filter out events without any observed occurrences
   filter(
     !TaxaName == "No individuals"
   ) %>% 
-  
   mutate(
     eventDate = DateCollected %>% 
       as.Date("%m/%d/%Y"),
@@ -77,10 +70,10 @@ Infauna_Occurrence <- Infauna %>%
     )
   ) %>% 
   
-  # grouping by sample so occurrences are numbered if they are from the same sample
   group_by(materialEntityID) %>% 
     mutate(
        occurrenceID = paste(materialEntityID, row_number(), sep = "_")
+       #find alternative to row number here if possible
       ) %>% 
   ungroup() %>% 
   
@@ -100,7 +93,6 @@ select(
   higherGeography
 )
 
-# pulling taxonomic information from worms
 myAphiaID <- Infauna$AphiaID %>% na.omit() %>% unique()
 
 myAphiaID <- lapply(myAphiaID, function(x) wm_record(id = x)) %>% 
@@ -114,18 +106,14 @@ scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaI
     taxonRank = rank,
     scientificNameID = lsid
   )
-```
 
-```{r}
-# Joining the occurrence table with the taxonomic data table and writing to csv
+
 Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>%
-  
   mutate(
     TSN = paste("urn:lsid:itis.gov:itis_tsn:", TSN),
     scientificNameID = paste(scientificNameID, TSN, sep = ", "),
     countryCode = "US"
   ) %>% 
-  
   subset(select = -c(AphiaID,TSN)) %>% 
   select(eventID,
          occurrenceID,
@@ -140,6 +128,4 @@ Occurrence_Ext %>%
             fileEncoding = "UTF-8", 
             row.names = FALSE
   )
-
-print(Occurrence_Ext)
 ```

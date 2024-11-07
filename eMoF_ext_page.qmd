@@ -7,9 +7,9 @@ execute:
 This is the script, in its entirety, to create the extended measurement or facts (eMoF) extension table from our example dataset:
 
 ```{r}
-#| warning: false
-#| message: false
-#| output: false
+#| echo: true
+#| eval: false
+
 # Load libraries ----------------------------------------------------------
 
 library(dplyr)
@@ -18,7 +18,7 @@ library(stringr)
 library(tidyr)
 
 # Read data from ScienceBase ----------------------------------------------
-# link to data: <https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e>
+# link to data: https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e
 
 sb_id <- '5a709594e4b0a9a2e9d88e4e'
 sbtools::item_get(sb_id = sb_id)
@@ -29,15 +29,7 @@ BTA <-readr::read_csv(file = sb_filenames$url[1])
 Infauna <- readr::read_csv(file = sb_filenames$url[2])
 SedChem <- readr::read_csv(file = sb_filenames$url[3])
 
-```
-
-```{r}
-#| warning: false
-#| message: false
-
 # eMoF table ------------------
-
-# adjust SedChem variables before binding
 
 SedChem <- SedChem %>% 
   rename(
@@ -46,8 +38,7 @@ SedChem <- SedChem %>%
   mutate(
     CoreDiameter = 6.35
   )
-
-# binding SedChem with Infauna table and adding columns
+       
 Infauna_emof <- Infauna %>% 
   bind_rows(SedChem) %>%
   rename(
@@ -67,9 +58,8 @@ Infauna_emof <- Infauna %>%
     "Proportion by dry weight of particles (<63um) in the sediment" = as.character(Mud),
     "Proportion by dry weight of particles (>2000um) in the sediment" = as.character(Gravel),
     "Thickness (transverse) of core" = as.character(round(CoreDiameter, digits = 2))
-    ) %>% 
-# Pivoting from Wide to Long Format
-
+  ) %>% 
+  
   pivot_longer(
     cols = c("Thickness (transverse) of core", 
              "Depth (spatial coordinate) minimum relative to bed surface in the bed", 
@@ -82,60 +72,35 @@ Infauna_emof <- Infauna %>%
     values_to = "measurementValue",
     values_drop_na = TRUE
   ) %>% 
-
-# Adding and Defining Additional Columns
+  
   mutate(
-    measurementTypeID = case_when(
-      measurementType == "Thickness (transverse) of core" ~
-        "http://vocab.nerc.ac.uk/collection/P01/current/COREWDTH/",
-      measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~
-        "http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/",
-      measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~
-        "http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/",
-      measurementType == "Proportion by dry weight of particles (63-2000um) in the sediment" ~
-        "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL048/",
-      measurementType == "Proportion by dry weight of particles (<63um) in the sediment" ~
-        "http://vocab.nerc.ac.uk/collection/P01/current/PRSD0249/",
-      measurementType == "Proportion by dry weight of particles (>2000um) in the sediment" ~
-        "http://vocab.nerc.ac.uk/collection/P01/current/PRSD0274/"
+    measurementTypeID = case_when(measurementType == "Thickness (transverse) of core" ~ "http://vocab.nerc.ac.uk/collection/P01/current/COREWDTH/",
+                                  measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/",
+                                  measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MINCDIST/",
+                                  measurementType == "Proportion by dry weight of particles (63-2000um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRPCL048/",
+                                  measurementType == "Proportion by dry weight of particles (<63um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P01/current/PRSD0249/",
+                                  measurementType == "Proportion by dry weight of particles (>2000um) in the sediment" ~ "	http://vocab.nerc.ac.uk/collection/P01/current/PRSD0274/"
     ),
-    
-    measurementUnit = case_when(
-      measurementType == "Thickness (transverse) of core" ~ "Centimetres",
-      measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "Centimetres",
-      measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "Centimetres",
-      measurementType == "Proportion by dry weight of particles (63-2000um) in the sediment" ~ "Percent",
-      measurementType == "Proportion by dry weight of particles (<63um) in the sediment" ~ "Percent",
-      measurementType == "Proportion by dry weight of particles (>2000um) in the sediment" ~ "Percent"
+    measurementUnit = case_when(measurementType == "Thickness (transverse) of core" ~ "Centimetres",
+                                measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "Centimetres",
+                                measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "Centimetres",
+                                measurementType == "Proportion by dry weight of particles (63-2000um) in the sediment" ~ "Percent",
+                                measurementType == "Proportion by dry weight of particles (<63um) in the sediment" ~ "Percent",
+                                measurementType == "Proportion by dry weight of particles (>2000um) in the sediment" ~ "Percent"
     ),
-    
-    measurementUnitID = case_when(
-      measurementType == "Thickness (transverse) of core" ~
-        "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
-      measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~
-        "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
-      measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~
-        "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
-      measurementType == "Proportion by dry weight of particles (63-2000um) in the sediment" ~
-        "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
-      measurementType == "Proportion by dry weight of particles (<63um) in the sediment" ~
-        "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
-      measurementType == "Proportion by dry weight of particles (>2000um) in the sediment" ~
-        "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
-    ),
-    
-    measurementRemarks = case_when(
-      measurementType == 'Thickness (transverse) of core' ~ paste("Verbatim Label:", "CoreDiameter"),
-      measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ 
-        paste("Verbatim Label:", 'lower value of "Fraction'),
-      measurementType == 'Depth (spatial coordinate) maximum relative to bed surface in the bed' ~ 
-        paste("Verbatim Label:", 'upper value of "Fraction'),
-      measurementType == 'Proportion by dry weight of particles (63-2000um) in the sediment' ~ 
-        paste("Verbatim Label:", 'Sand'),
-      measurementType == 'Proportion by dry weight of particles (<63um) in the sediment' ~ 
-        paste("Verbatim Label:", 'Mud'),
-      measurementType == "Proportion by dry weight of particles (>2000um) in the sediment" ~ 
-        paste("Verbatim Label:", "Gravel")
+    measurementUnitID = case_when(measurementType == "Thickness (transverse) of core" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
+                                  measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
+                                  measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P06/current/ULCM/",
+                                  measurementType == "Proportion by dry weight of particles (63-2000um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
+                                  measurementType == "Proportion by dry weight of particles (<63um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/",
+                                  measurementType == "Proportion by dry weight of particles (>2000um) in the sediment" ~ "http://vocab.nerc.ac.uk/collection/P06/current/UPCT/"
+    ), 
+    measurementRemarks = case_when(measurementType == 'Thickness (transverse) of core' ~ paste("Verbatim Label:", "CoreDiameter"),
+                                   measurementType == "Depth (spatial coordinate) minimum relative to bed surface in the bed" ~ paste("Verbatim Label:", 'lower value of "Fraction'),
+                                   measurementType == 'Depth (spatial coordinate) maximum relative to bed surface in the bed' ~ paste("Verbatim Label:", 'upper value of "Fraction'),
+                                   measurementType == 'Proportion by dry weight of particles (63-2000um) in the sediment' ~ paste("Verbatim Label:", 'Sand'),
+                                   measurementType == 'Proportion by dry weight of particles (<63um) in the sediment' ~ paste("Verbatim Label:", 'Mud'),
+                                   measurementType == "Proportion by dry weight of particles (>2000um) in the sediment" ~ paste("Verbatim Label:", "Gravel")
     )
   ) %>% 
   
@@ -151,13 +116,10 @@ Infauna_emof <- Infauna %>%
   
   distinct()
 
-# write out to csv
 Infauna_emof %>% 
   write.csv(paste0("data/gomx_sediment_macrofauna_emof_", Sys.Date(), ".csv"),
             na = "",
             fileEncoding = "UTF-8", 
             row.names = FALSE
   )
-
-print(Infauna_emof)                           
 ```
