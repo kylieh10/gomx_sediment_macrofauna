@@ -6,6 +6,8 @@ execute:
 
 This is the script, in its entirety, to create the occurrence extension table from our example dataset:
 
+You can also download the entire script here: [notebook_occurrence.R](scripts/notebook_occurrence.R)
+
 ```{r}
 #| echo: true
 #| eval: false
