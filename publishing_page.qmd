@@ -6,9 +6,13 @@ title: Publishing to GBIF and OBIS
 
 To make our data available through GBIF and OBIS, we have to upload it through GBIF's Integrated Publishing Toolkit (IPT), which can be the most complex part of data mabilization. The IPT makes a `DwC-A file`, similar to how Excel makes `csv` files, which is how the data is shared with GBIF and OBIS. There is a video of how to use the IPT that will be available soon from the US node manager.  In the meantime, familiarize yourself with the [IPT manual](https://ipt.gbif.org/manual/en/ipt/latest/) and feel free to schedule time with the US node staff (sformel@usgs.gov) when you are ready to publish.
 
+![An example of GBIF IPT upload page with data tables and Darwin Core vocabulary mappings, License [CC0](https://creativecommons.org/publicdomain/zero/1.0/)](images/IPT_upload_page.png){fig-alt="screenshot showing the GBIF IPT page with event core and extension tables uploaded and their vocabulary mappings"}
+
 # Creating EML Metadata
 
 Creating EML metadata can feel complicated, but it doesn't need to be. In this case we were found the simplest thing to do was to manually copy values from the ScienceBase metadata into the metadata editor that is included in the IPT.  However, the EML can also be created through other tools, or created programatically and uploaded to the IPT. For guidance on creating EML metadata, reference the [GBIF IPT User Manual](https://ipt.gbif.org/manual/en/ipt/latest/gbif-metadata-profile#metadata-publishing-solutions). For any further questions, reach out to GBIF or OBIS teams for assistance.
+
+![An example of the metadata form filler page, License [CC0](https://creativecommons.org/publicdomain/zero/1.0/)](images/IPT_Metadata_Filler.png){fig-alt="screenshot showing one of the GBIF IPT metadata form filler pages and its required fields"}
 
 # Final Steps
 
