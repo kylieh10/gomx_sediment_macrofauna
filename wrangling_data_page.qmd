@@ -45,7 +45,7 @@ After loading the data, we will have to transform the data to align with DarwinC
 
 ## Renaming Columns
 
-Some column names may directly correlate with the definitions of some DwC terms (a 1:1 relationship), so we only have to rename them. To preserve the original data, we will create a new table from `Infauna` to do the manipulations. Then, we will use `rename(newName = oldName)` to assign new column names.
+Some column names may directly correlate with the definitions of some DwC terms (a 1:1 relationship), so we only have to rename them. To preserve the original data, we will create a new table from `Infauna` to do the manipulations. Then, we will use `rename(newName = oldName)` to assign new column names [(function reference page)](https://dplyr.tidyverse.org/reference/rename.html).
 
 ```{r}
 Infauna_StationCore <- Infauna %>%
@@ -65,7 +65,7 @@ Infauna_StationCore <- Infauna %>%
 
 Some renaming might be slightly more complex, requiring manipulation of a column's format or content to fit the DwC standard. For these tasks, we will use the `mutate` function.
 
-In this case, the column may be in the wrong format, like `DateCollected` which needs to be adjusted before being assigned to `eventDate`. Others, like `eventID` or `higherGeography`, are concatenations of other columns (many:1 relationships) and new information, which can be combined with `paste`. `Mutate` is also used to create new columns, like `geodeticDatum`, which was not included in the original dataset.
+In this case, the column may be in the wrong format, like `DateCollected` which needs to be adjusted before being assigned to `eventDate`. Others, like `eventID` or `higherGeography`, are concatenations of other columns (many:1 relationships) and new information, which can be combined with `paste`. `Mutate` is also used to create new columns, like `geodeticDatum`, which was not included in the original dataset [(function reference page)](https://dplyr.tidyverse.org/reference/mutate.html).
 
 ```{r}
 
@@ -237,7 +237,7 @@ Infauna_emof <- Infauna %>%
 
 ### Joins
 
-Joins are useful if data from multiple tables need to be included in the final table, like when we make a new table with WoRMS data, which is covered in the next section. `left_join` will join table `x` to table `y` by values in the specified columns, so our function will join the tables `Infauna_Occurrence` and `uniqueAphiaSelectColumns` by matching `AphiaID` from both.
+Joins are useful if data from multiple tables need to be included in the final table, like when we make a new table with WoRMS data, which is covered in the next section. `left_join` will join table `x` to table `y` by values in the specified columns, so our function will join the tables `Infauna_Occurrence` and `uniqueAphiaSelectColumns` by matching `AphiaID` from both [(function reference page)](https://dplyr.tidyverse.org/reference/mutate-joins.html).
 
 After combining these tables and mutating our final iteration of `scientificNameID`, we have finished our `occurrence` table!
 
@@ -307,7 +307,7 @@ Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>%
     samplingProtocol,
     locationRemarks,
     minimumDistanceAboveSurfaceInMeters,
-    maximumDistancesAboveSurfaceInMeters,
+    maximumDistanceAboveSurfaceInMeters,
     materialEntityID
   ) %>% 
   distinct()

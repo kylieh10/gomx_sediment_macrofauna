@@ -6,6 +6,6 @@ The intended user of this notebook is a person who has been tasked with publishi
 
 - Basic knowledge of R is needed, but you do not need to be an expert. 
 - Basic knowledge of the Darwin Core, and Ecological Metadata Language (EML) standards is useful, but you do not need to be an expert. 
-- Knowing how to use Git, and either USGS Gitlab or Github, will help the user version control the evolution of their approach to data mobilization, but if you have never used Git before, there is a section included that points you toward some good lessons.
+- Knowing how to use Git, and either USGS Gitlab or Github, will help the user version control the evolution of their approach to data mobilization, but if you have never used Git before, there is a [section](links_page.qmd) included that points you toward some good lessons.
 
 Finally, this notebook will be most useful if it can be built on through repeated use. The code underlying this notebook can be forked and developed into a new notebook for subsequent dataset mobilizations.
