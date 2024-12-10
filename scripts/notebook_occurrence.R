@@ -2,6 +2,7 @@
 # Load libraries ----------------------------------------------------------
 
 library(dplyr)
+library(tidyr)
 library(sbtools)
 library(stringr)
 library(worrms)
@@ -97,14 +98,14 @@ scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaI
     scientificNameID = lsid
   )
 
-
+# used ifelse to keep TSN as NA, rather than as a string with NA, switched from mutate to unite to exclude NAs in new column
 Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>%
   mutate(
-    TSN = paste("urn:lsid:itis.gov:itis_tsn:", TSN),
-    scientificNameID = paste(scientificNameID, TSN, sep = ", "),
+    TSN = ifelse(is.na(TSN), NA, paste0("urn:lsid:itis.gov:itis_tsn:", TSN)),
     countryCode = "US"
   ) %>% 
-  subset(select = -c(AphiaID,TSN)) %>% 
+  unite(., col = "scientificNameID", scientificNameID, TSN, na.rm = TRUE, sep = ", ") %>% 
+  subset(select = -c(AphiaID)) %>%
   select(eventID,
          occurrenceID,
          eventDate,
