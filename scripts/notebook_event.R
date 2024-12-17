@@ -17,11 +17,10 @@ Infauna <- readr::read_csv(file = sb_filenames$url[2])
 SedChem <- readr::read_csv(file = sb_filenames$url[3])
 
 
-# Core/Station Level Event Table -------------------------------------------------
+# Core Level Event Table -------------------------------------------------
+# these events represent unique cores (according to the coreID provided by the researchers)
 
-#events representing unique cores (coreID)
-
-#create table of core min/max values to join later with events
+# create table with the core samples' min/max values to join later with events
 core_minmax <- Infauna %>%
   bind_rows(SedChem) %>% 
   
@@ -32,15 +31,17 @@ core_minmax <- Infauna %>%
     decimalLongitude = Longitude,
     eventRemarks = EnvironmentalGroup
   ) %>%
-  
+# For eventID, I created a unique ID for each coring event by combining several other fields
   mutate(
     eventDate = DateCollected %>%
       as.Date("%m/%d/%Y"),
     eventID = paste(Site, eventDate %>% as.character(), materialEntityID, 
                     sep = "_") %>% stringr::str_remove_all(pattern = "-")) %>% 
+# Fractions (in the original data) represent the depth of the core samples relative to the sea floor
+# We use `group_by` so that we can pull the min/max values of fraction for min/max depths of each core
   group_by(eventID) %>% 
   summarise(Fraction = str_remove_all(Fraction, pattern= " cm") %>% 
-              stringr::str_split(pattern = "-") %>% 
+              str_split(pattern = "-") %>% 
               unlist() %>% 
               as.integer()) %>% 
   group_by(eventID) %>% 
@@ -98,9 +99,10 @@ Infauna_StationCore <- Infauna %>%
     locationRemarks,
     Gear
   ) %>%
-
+# joining the event table and the table with the min/max core depths
   distinct() %>% 
   left_join(., core_minmax) %>% 
+  
   mutate(
     samplingProtocol = paste(Gear, ",", maximumDistanceAboveSurfaceInMeters, "m long")
   ) %>% 
@@ -110,7 +112,7 @@ Infauna_StationCore <- Infauna %>%
 
 
 # Sample Level Event Table -------------------------------------------------
-
+# Here we are making an event table for the samples taken within each core, which are child events
 Infauna_Sample <- Infauna %>% 
 
   rename(
@@ -119,7 +121,7 @@ Infauna_Sample <- Infauna %>%
     decimalLatitude = Latitude,
     decimalLongitude = Longitude
   ) %>%
-  
+# the eventID from the previous table is now the parentEventID, and a new eventID is made for the samples
   mutate(
     locationRemarks = paste(Location, "coral"),
     geodeticDatum = "WGS84",
@@ -137,7 +139,8 @@ Infauna_Sample <- Infauna %>%
                             paste("BOEM Lease Block", 
                                   Site), sep = " | "),
     samplingProtocol = paste(Gear, "fraction"),
-    Fraction=str_extract(Fraction, pattern= ".*\\d"),
+# Because we want the depths of core samples, we don't group by core 
+    Fraction = str_extract(Fraction, pattern= ".*\\d"),
     maximumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 2) %>% 
       as.integer()/-100,
     minimumDistanceAboveSurfaceInMeters = str_split_i(Fraction, pattern = "-", i = 1) %>% 

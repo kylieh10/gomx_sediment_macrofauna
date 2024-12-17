@@ -1,4 +1,4 @@
----
+git ---
 title: Publishing to GBIF and OBIS
 ---
 
@@ -17,3 +17,6 @@ Creating EML metadata can feel complicated, but it doesn't need to be. In this c
 # Final Steps
 
 There is a video of how to use the IPT that will be available soon from the US node manager.  In the meantime, familiarize yourself with the [IPT manual](https://ipt.gbif.org/manual/en/ipt/latest/) and feel free to schedule time with the US node staff (sformel@usgs.gov) when you are ready to publish.
+
+Here are the links for our finalized datasets published through [OBIS](https://obis.org/dataset/8eafe8eb-6215-4de8-b38d-aef644768e6f) and [GBIF](https://www.gbif.org/dataset/f41e070d-14ed-4386-b3f1-9b89b584eb92/metrics)!
+

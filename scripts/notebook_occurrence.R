@@ -38,9 +38,11 @@ Infauna_Occurrence <- Infauna %>%
   rename(
     materialEntityID = SampleID
   ) %>% 
+  # We have to filter out samples with no individuals since they don't have any occurrences
   filter(
     !TaxaName == "No individuals"
   ) %>% 
+  # For eventID, I used the same combination of variables that's in `notebook_event`
   mutate(
     eventDate = DateCollected %>% 
       as.Date("%m/%d/%Y"),
@@ -60,11 +62,11 @@ Infauna_Occurrence <- Infauna %>%
                                   Location == "Background" ~ paste("14 to 1000 meters away from", Coral)
     )
   ) %>% 
-  
+# Here we group by materialEntityID to allow us to use row numbers to more easily create unique occurrenceIDs
+# In this scenario, we can use row numbers because this is a static dataset, however this is likely not appropriate for continuously growing datasets 
   group_by(materialEntityID) %>% 
     mutate(
        occurrenceID = paste(materialEntityID, row_number(), sep = "_")
-       #find alternative to row number here if possible
       ) %>% 
   ungroup() %>% 
   
@@ -84,6 +86,10 @@ select(
   higherGeography
 )
 
+
+# Pulling AphiaIDs and adding them to the main table ----------------------
+
+# Here we pull AphiaIDs from WoRMS, using `wm_records` then `lapply` to circumvent limitations on the number of input values
 myAphiaID <- Infauna$AphiaID %>% na.omit() %>% unique()
 
 myAphiaID <- lapply(myAphiaID, function(x) wm_record(id = x)) %>% 
@@ -98,8 +104,9 @@ scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaI
     scientificNameID = lsid
   )
 
-# used ifelse to keep TSN as NA, rather than as a string with NA, switched from mutate to unite to exclude NAs in new column
+# Joining the AphiaID and taxanomic table to our occurrence table by the common term "AphiaID"
 Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>%
+# We tell it to only add the TSN to the scientificNameID if there is a TSN provided
   mutate(
     TSN = ifelse(is.na(TSN), NA, paste0("urn:lsid:itis.gov:itis_tsn:", TSN)),
     countryCode = "US"
@@ -112,6 +119,9 @@ Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c
          scientificName,
          scientificNameID,
          everything())
+
+
+# Exporting the table as a .csv to upload to the IPT ----------------------
 
 Occurrence_Ext %>% 
   write.csv(paste0("data/gomx_sediment_macrofauna_occurrence_", Sys.Date(), ".csv"),

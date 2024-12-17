@@ -6,6 +6,8 @@ title: Why Are We Doing This?
 
 This notebook provides a general workflow for mobilizing data from the USGS lab of [Amanda Demopoulos](https://www.usgs.gov/staff-profiles/amanda-demopoulos/) to [OBIS](https://obis.org/) and [GBIF](https://www.gbif.org/). Using a [dataset that was previously published through ScienceBase](https://www.sciencebase.gov/catalog/item/5a709594e4b0a9a2e9d88e4e), we walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.
 
+This notebook is primarily intended to walk through how to produce tables that follow the Darwin Core standard, not creating the DwC-A file itself. However, in the final sections, we briefly go over the process of creating a DwC-A file through the IPT and publishing this file to OBIS and GBIF.
+
 # Open Science, OBIS, and GBIF
 
 ## Open Science and FAIR Data
