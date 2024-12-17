@@ -206,9 +206,16 @@ Infauna_Event <- bind_rows(Infauna_StationCore, Infauna_Sample) %>%
 
 # Exporting the table as a .csv to upload to the IPT ----------------------
 
+# checks if data directory exists and if not, creates it
+if(!dir.exists("../data")){
+  
+  dir.create("data")
+}
+
+# exports the table
 Infauna_Event %>% 
   write.csv(
-    paste0("data/gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"),
+    paste0(here::here("data", "gomx_sediment_macrofauna_event_"), Sys.Date(), ".csv"),
     na = "",
     fileEncoding = "UTF-8", 
     row.names = FALSE

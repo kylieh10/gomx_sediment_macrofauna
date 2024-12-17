@@ -33,6 +33,7 @@ SedChem <- readr::read_csv(file = sb_filenames$url[3])
 
 # eMoF table ------------------
 
+# Wrangle SedChem
 SedChem <- SedChem %>% 
   rename(
     SampleID = CoreID
@@ -40,13 +41,15 @@ SedChem <- SedChem %>%
   mutate(
     CoreDiameter = 6.35
   )
-       
+
+# Combine Infauna and SedChem  
 Infauna_emof <- Infauna %>% 
   bind_rows(SedChem) %>%
   rename(
     materialEntityID = SampleID,
   ) %>% 
   
+  # Wrangle SedChem into standardized terms that can be found in the NERC Vocabulary Server
   mutate(
     eventDate = DateCollected %>%
       as.Date("%m/%d/%Y"),
@@ -62,6 +65,7 @@ Infauna_emof <- Infauna %>%
     "Thickness (transverse) of core" = as.character(round(CoreDiameter, digits = 2))
   ) %>% 
   
+  # Change from wide to long format
   pivot_longer(
     cols = c("Thickness (transverse) of core", 
              "Depth (spatial coordinate) minimum relative to bed surface in the bed", 
@@ -75,6 +79,7 @@ Infauna_emof <- Infauna %>%
     values_drop_na = TRUE
   ) %>% 
   
+  # Wrangle DwC terms to align with eMoF structure
   mutate(
     measurementTypeID = case_when(measurementType == "Thickness (transverse) of core" ~ "http://vocab.nerc.ac.uk/collection/P01/current/COREWDTH/",
                                   measurementType == "Depth (spatial coordinate) maximum relative to bed surface in the bed" ~ "http://vocab.nerc.ac.uk/collection/P01/current/MAXCDIST/",
@@ -106,6 +111,7 @@ Infauna_emof <- Infauna %>%
     )
   ) %>% 
   
+  # Select columns we want included in the output
   select(
     eventID,
     measurementType,
@@ -118,10 +124,22 @@ Infauna_emof <- Infauna %>%
   
   distinct()
 
+
+# Exporting the table as a .csv to upload to the IPT ----------------------
+
+# checks if data directory exists and if not, creates it
+if(!dir.exists("../data")){
+  
+  dir.create("data")
+}
+
+# exports the table
 Infauna_emof %>% 
-  write.csv(paste0("data/gomx_sediment_macrofauna_emof_", Sys.Date(), ".csv"),
-            na = "",
-            fileEncoding = "UTF-8", 
-            row.names = FALSE
-  )
+  write.csv(
+    paste0(here::here("data", "gomx_sediment_macrofauna_emof_"), Sys.Date(), ".csv"),
+    na = "",
+    fileEncoding = "UTF-8", 
+    row.names = FALSE
+  )       
+                                
 ```

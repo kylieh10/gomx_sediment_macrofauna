@@ -114,11 +114,18 @@ Infauna_emof <- Infauna %>%
 
 # Exporting the table as a .csv to upload to the IPT ----------------------
 
+# checks if data directory exists and if not, creates it
+if(!dir.exists("../data")){
+  
+  dir.create("data")
+}
+
+# exports the table
 Infauna_emof %>% 
-  write.csv(paste0("data/gomx_sediment_macrofauna_emof_", Sys.Date(), ".csv"),
-            na = "",
-            fileEncoding = "UTF-8", 
-            row.names = FALSE
-  )
-                                 
+  write.csv(
+    paste0(here::here("data", "gomx_sediment_macrofauna_emof_"), Sys.Date(), ".csv"),
+    na = "",
+    fileEncoding = "UTF-8", 
+    row.names = FALSE
+  )       
                                 

@@ -140,13 +140,17 @@ Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c
 
 # Exporting the table as a .csv to upload to the IPT ----------------------
 
+# checks if data directory exists and if not, creates it
+if(!dir.exists("../data")){
+  
+  dir.create("data")
+}
+
+# exports the table
 Occurrence_Ext %>% 
-  write.csv(paste0("data/gomx_sediment_macrofauna_occurrence_", Sys.Date(), ".csv"),
-            na = "",
-            fileEncoding = "UTF-8", 
-            row.names = FALSE
+  write.csv(
+    paste0(here::here("data", "gomx_sediment_macrofauna_occurrence_"), Sys.Date(), ".csv"),
+    na = "",
+    fileEncoding = "UTF-8", 
+    row.names = FALSE
   )
- 
-  
-  
-  
