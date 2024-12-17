@@ -70,7 +70,7 @@
     "href": "purpose_page.html",
     "title": "Why Are We Doing This?",
     "section": "",
-    "text": "This notebook provides a general workflow for mobilizing data from the USGS lab of Amanda Demopoulos to OBIS and GBIF. Using a dataset that was previously published through ScienceBase, we walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.",
+    "text": "This notebook provides a general workflow for mobilizing data from the USGS lab of Amanda Demopoulos to OBIS and GBIF. Using a dataset that was previously published through ScienceBase, we walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.\nThis notebook is primarily intended to walk through how to produce tables that follow the Darwin Core standard, not creating the DwC-A file itself. However, in the final sections, we briefly go over the process of creating a DwC-A file through the IPT and publishing this file to OBIS and GBIF.",
     "crumbs": [
       "Background",
       "Why are we doing this?"
@@ -81,7 +81,7 @@
     "href": "purpose_page.html#introduction",
     "title": "Why Are We Doing This?",
     "section": "",
-    "text": "This notebook provides a general workflow for mobilizing data from the USGS lab of Amanda Demopoulos to OBIS and GBIF. Using a dataset that was previously published through ScienceBase, we walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.",
+    "text": "This notebook provides a general workflow for mobilizing data from the USGS lab of Amanda Demopoulos to OBIS and GBIF. Using a dataset that was previously published through ScienceBase, we walk through some brief contextual information; understanding, wrangling, and reconfiguring the data; adding metadata; and the publishing process.\nThis notebook is primarily intended to walk through how to produce tables that follow the Darwin Core standard, not creating the DwC-A file itself. However, in the final sections, we briefly go over the process of creating a DwC-A file through the IPT and publishing this file to OBIS and GBIF.",
     "crumbs": [
       "Background",
       "Why are we doing this?"
@@ -136,7 +136,7 @@
     "href": "purpose_page.html#darwin-core-archive",
     "title": "Why Are We Doing This?",
     "section": "Darwin Core Archive",
-    "text": "Darwin Core Archive\nThe Darwin Core Archive (DwC-A) is the fundamental unit of Darwin Core. It is a zip file, comprised of csv files containing the tables describing biodiversity occurrence. These tables follow a star schema (see below). The EML is included as an xml file containing metadata that describes the entire dataset. The csv files reference each other using unique identifiers, akin to keys in a SQL database. For more information, see the OBIS manual and the GBIF IPT manual.\n\n\n\nSchematic of a Darwin Core Archive, sourced from Wieczorek J, Blissett M, Braak K & Podolskiy M (2024) The GBIF Integrated Publishing Toolkit User Manual, version 3.0. Copenhagen: GBIF Secretariat. https://ipt.gbif.org/manual/en/ipt/3.0/ CC BY 4.0\n\n\nThis notebook is primarily intended to walk through how to produce tables that follow the Darwin Core standard, with final sections about the process of creating a DwC-A through the IPT and publishing this file to OBIS and GBIF.",
+    "text": "Darwin Core Archive\nThe Darwin Core Archive (DwC-A) is the fundamental unit of Darwin Core. It is a zip file, comprised of csv files containing the tables describing biodiversity occurrence. These tables follow a star schema (see below). The EML is included as an xml file containing metadata that describes the entire dataset. The csv files reference each other using unique identifiers, akin to keys in a SQL database. For more information, see the OBIS manual and the GBIF IPT manual.\n\n\n\nSchematic of a Darwin Core Archive, sourced from Wieczorek J, Blissett M, Braak K & Podolskiy M (2024) The GBIF Integrated Publishing Toolkit User Manual, version 3.0. Copenhagen: GBIF Secretariat. https://ipt.gbif.org/manual/en/ipt/3.0/ CC BY 4.0",
     "crumbs": [
       "Background",
       "Why are we doing this?"
