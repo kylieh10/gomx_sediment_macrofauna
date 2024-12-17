@@ -348,9 +348,14 @@ Then to export as a `csv` file, we will use `write.csv`. In in this case, we nam
 ```{r}
 #| eval: false
 
+if(!dir.exists("../data")){
+  
+  dir.create("data")
+}
+
 Infauna_Event %>% 
   write.csv(
-    paste0("data/gomx_sediment_macrofauna_event_", Sys.Date(), ".csv"),
+    paste0(here::here("data", "gomx_sediment_macrofauna_event_"), Sys.Date(), ".csv"),
     na = "",
     fileEncoding = "UTF-8", 
     row.names = FALSE
