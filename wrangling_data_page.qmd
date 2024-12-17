@@ -104,13 +104,14 @@ library(dplyr)
 library(flextable)
 #library(gt)
 
-example_df <- data.frame(species = c("Tilia americana",
-                                     "Pinus strobus"),
-                         site_01 = sample(0:5, size = 2),
-                         site_02 = sample(0:5, size = 2),
-                         site_03 = sample(0:5, size = 2))
+example_df <- data.frame(Measurement = c("Temperature_C",
+                                     "Salinity_ppt"),
+                         site_01 = c(sample(1:4, size = 1), sample(33:38, size = 1)),
+                         site_02 = c(sample(1:4, size = 1), sample(33:38, size = 1)),
+                         site_03 = c(sample(1:4, size = 1), sample(33:38, size = 1))
+                         )
 
-long_example <- tidyr::pivot_longer(data = example_df, cols = site_01:site_03, names_to = "site", values_to = "count")
+long_example <- tidyr::pivot_longer(data = example_df, cols = site_01:site_03, names_to = "site", values_to = "value")
 
 # flextable is awesome, but captions aren't working yet: <https://github.com/quarto-dev/quarto-cli/issues/1556
 # for now, just add print lines and maybe switch back in the future
@@ -134,13 +135,14 @@ library(dplyr)
 library(flextable)
 #library(gt)
 
-example_df <- data.frame(species = c("Tilia americana",
-                                     "Pinus strobus"),
-                         site_01 = sample(0:5, size = 2),
-                         site_02 = sample(0:5, size = 2),
-                         site_03 = sample(0:5, size = 2))
+example_df <- data.frame(Measurement = c("Temperature_C",
+                                     "Salinity_ppt"),
+                         site_01 = c(sample(1:4, size = 1), sample(33:38, size = 1)),
+                         site_02 = c(sample(1:4, size = 1), sample(33:38, size = 1)),
+                         site_03 = c(sample(1:4, size = 1), sample(33:38, size = 1))
+                         )
 
-long_example <- tidyr::pivot_longer(data = example_df, cols = site_01:site_03, names_to = "site", values_to = "count")
+long_example <- tidyr::pivot_longer(data = example_df, cols = site_01:site_03, names_to = "site", values_to = "value")
 
 # flextable is awesome, but captions aren't working yet: <https://github.com/quarto-dev/quarto-cli/issues/1556
 # for now, just add print lines and maybe switch back in the future
@@ -160,7 +162,34 @@ flextable(long_example) %>%
 
 This is done using the `pivot_longer` function. We will specify what columns to include in the pivot with `cols = c(columnsToBeIncluded)`. All column names included in the `cols` function will now be in the new column `measurementType` using `names_to` and the old columns' values in the new column `measurementValue` using `values_to`. Other columns for identifiers will also need to be added for the eMoF table and can be found in the guides mentioned in the Data Modeling page.
 
-We use pivot to wrangle the eMoF table, and the pertinent chunk of code looks something like this:
+Using the example table above, the result would look like this:
+
+```{r}
+#| echo: false
+#| warning: false
+
+
+library(dplyr)
+library(flextable)
+
+example_df <- data.frame(Measurement = c("Temperature_C",
+                                     "Salinity_ppt"),
+                         site_01 = c(sample(1:4, size = 1), sample(33:38, size = 1)),
+                         site_02 = c(sample(1:4, size = 1), sample(33:38, size = 1)),
+                         site_03 = c(sample(1:4, size = 1), sample(33:38, size = 1))
+                         )
+
+long_example <- tidyr::pivot_longer(data = example_df, 
+                                    cols = site_01:site_03, 
+                                    names_to = "eventID", 
+                                    values_to = "measurementValue",
+                                    values_drop_na = TRUE
+    ) %>% 
+  rename(measurementType = Measurement) %>% 
+  select(eventID, everything())
+```
+
+Below we use pivot to wrangle our actual data into the eMoF table, and the pertinent chunk of code looks something like this:
 
 ```{r}
 #| eval: false
