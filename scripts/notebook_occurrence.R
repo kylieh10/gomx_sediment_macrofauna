@@ -123,18 +123,18 @@ uniqueAphiaSelectColumns <- select(
 # Joining the AphiaID and taxanomic table to our occurrence table by the common term "AphiaID"
 Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>%
 
-  # We tell it to only add the TSN to the scientificNameID if there is a TSN provided
+  # We tell it to only add the TSN to taxonRemarks if there is a TSN provided
   mutate(
-    TSN = ifelse(is.na(TSN), NA, paste0("urn:lsid:itis.gov:itis_tsn:", TSN)),
+    taxonRemarks = ifelse(is.na(TSN), NA, paste0("urn:lsid:itis.gov:itis_tsn:", TSN)),
     countryCode = "US"
   ) %>% 
-  unite(., col = "scientificNameID", scientificNameID, TSN, na.rm = TRUE, sep = ", ") %>% 
   subset(select = -c(AphiaID)) %>%
   select(eventID,
          occurrenceID,
          eventDate,
          scientificName,
          scientificNameID,
+         taxonRemarks,
          everything())
 
 
