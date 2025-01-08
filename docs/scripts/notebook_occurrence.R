@@ -2,6 +2,7 @@
 # Load libraries ----------------------------------------------------------
 
 library(dplyr)
+library(tidyr)
 library(sbtools)
 library(stringr)
 library(worrms)
@@ -33,13 +34,17 @@ Infauna <- Infauna %>%
 # Occurrence Table ----------  
 
 Infauna_Occurrence <- Infauna %>% 
-  
+ 
+  # Rename columns
   rename(
     materialEntityID = SampleID
   ) %>% 
-  filter(
-    !TaxaName == "No individuals"
-  ) %>% 
+  
+  # We have to filter out samples with no individuals since they don't have any occurrences
+  filter(!TaxaName == "No individuals") %>% 
+  
+  # Use mutate to wrangle and create new columns
+  # For eventID, I used the same combination of variables that's in `notebook_event`
   mutate(
     eventDate = DateCollected %>% 
       as.Date("%m/%d/%Y"),
@@ -60,65 +65,92 @@ Infauna_Occurrence <- Infauna %>%
     )
   ) %>% 
   
+  # Here we group by materialEntityID to allow us to use row numbers to more easily create unique occurrenceIDs
+  # In this scenario, we can use row numbers because this is a static dataset, however this is likely not appropriate for continuously growing datasets 
   group_by(materialEntityID) %>% 
     mutate(
        occurrenceID = paste(materialEntityID, row_number(), sep = "_")
-       #find alternative to row number here if possible
       ) %>% 
   ungroup() %>% 
   
-select(
-  eventID,
-  occurrenceID,
-  eventDate,
-  verbatimIdentification,
-  occurrenceStatus,
-  basisOfRecord,
-  individualCount,
-  associatedTaxa,
-  occurrenceRemarks,
-  AphiaID,
-  TSN,
-  locality,
-  higherGeography
-)
+  # Select columns we want included in the output
+  select(
+    eventID,
+    occurrenceID,
+    eventDate,
+    verbatimIdentification,
+    occurrenceStatus,
+    basisOfRecord,
+    individualCount,
+    associatedTaxa,
+    occurrenceRemarks,
+    AphiaID,
+    TSN,
+    locality,
+    higherGeography
+  )
 
+
+# Pulling AphiaIDs and adding them to the main table ----------------------
+
+# Here we pull AphiaIDs from WoRMS, using `wm_records` then `lapply` to circumvent limitations on the number of input values
 myAphiaID <- Infauna$AphiaID %>% na.omit() %>% unique()
 
 myAphiaID <- lapply(myAphiaID, function(x) wm_record(id = x)) %>% 
   data.table::rbindlist()
 
-uniqueAphiaSelectColumns <- select(.data = myAphiaID,
-scientificname, rank, kingdom, phylum, class, order, family, genus, lsid, AphiaID
+# Create taxanomic table to joing with occurrence table
+uniqueAphiaSelectColumns <- select(
+  .data = myAphiaID,
+  scientificname,
+  rank,
+  kingdom,
+  phylum,
+  class,
+  order,
+  family,
+  genus,
+  lsid,
+  AphiaID
 ) %>%
+  
   rename(
     scientificName = scientificname,
     taxonRank = rank,
     scientificNameID = lsid
   )
 
-
+# Joining the AphiaID and taxanomic table to our occurrence table by the common term "AphiaID"
 Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>%
+
+  # We tell it to only add the TSN to taxonRemarks if there is a TSN provided
   mutate(
-    TSN = paste("urn:lsid:itis.gov:itis_tsn:", TSN),
-    scientificNameID = paste(scientificNameID, TSN, sep = ", "),
+    taxonRemarks = ifelse(is.na(TSN), NA, paste0("urn:lsid:itis.gov:itis_tsn:", TSN)),
     countryCode = "US"
   ) %>% 
-  subset(select = -c(AphiaID,TSN)) %>% 
+  subset(select = -c(AphiaID)) %>%
   select(eventID,
          occurrenceID,
          eventDate,
          scientificName,
          scientificNameID,
+         taxonRemarks,
          everything())
 
+
+# Exporting the table as a .csv to upload to the IPT ----------------------
+
+# checks if data directory exists and if not, creates it
+if(!dir.exists("../data")){
+  
+  dir.create("data")
+}
+
+# exports the table
 Occurrence_Ext %>% 
-  write.csv(paste0("data/gomx_sediment_macrofauna_occurrence_", Sys.Date(), ".csv"),
-            na = "",
-            fileEncoding = "UTF-8", 
-            row.names = FALSE
+  write.csv(
+    paste0(here::here("data", "gomx_sediment_macrofauna_occurrence_"), Sys.Date(), ".csv"),
+    na = "",
+    fileEncoding = "UTF-8", 
+    row.names = FALSE
   )
- 
-  
-  
-  

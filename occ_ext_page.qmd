@@ -8,6 +8,12 @@ This is the script, in its entirety, to create the occurrence extension table fr
 
 You can also download the entire script here: [notebook_occurrence.R](scripts/notebook_occurrence.R)
 
+::: callout-tip
+## Portability
+
+We used the `renv` package to make this script more portable. More information on this package and how it works can be found [here](https://rstudio.github.io/renv/articles/renv.html). 
+:::
+
 ```{r}
 #| echo: true
 #| eval: false
