@@ -6,7 +6,7 @@ execute:
 
 This is the script, in its entirety, to create the event core table from our example dataset:
 
-You can also download the entire script here: [notebook_event.R](scripts/notebook_event.R)
+You can also download the entire script here: [notebook_event.R](../scripts/notebook_event.R)
 
 ::: callout-tip
 ## Portability

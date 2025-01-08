@@ -6,7 +6,7 @@ execute:
 
 This is the script, in its entirety, to create the extended measurement or facts (eMoF) extension table from our example dataset:
 
-You can also download the entire script here: [notebook_eMoF.R](scripts/notebook_eMoF.R)
+You can also download the entire script here: [notebook_eMoF.R](../scripts/notebook_eMoF.R)
 
 ::: callout-tip
 ## Portability

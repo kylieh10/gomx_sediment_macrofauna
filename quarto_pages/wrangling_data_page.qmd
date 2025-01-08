@@ -272,11 +272,10 @@ After combining these tables and mutating our final iteration of `scientificName
 
 ```{r}
 #| eval: false
-# in this case, TSN was provided because it was listed in the original dataset, however it is not required to have both AphiaID and TSN
+# in this case, TSN was included as taxonRemark because it was listed in the original dataset, however it is not required to have both AphiaID and TSN
 Occurrence_Ext <- left_join(Infauna_Occurrence, uniqueAphiaSelectColumns, by = c("AphiaID" = "AphiaID")) %>% 
   mutate(
-    TSN = paste("urn:lsid:itis.gov:itis_tsn:", TSN),
-    scientificNameID = paste(scientificNameID, TSN, sep = ", ")
+    taxonRemarks = ifelse(is.na(TSN), NA, paste0("urn:lsid:itis.gov:itis_tsn:", TSN))
   )
 
 ```
