@@ -25,7 +25,7 @@ format:
     css: styles.css
     
 website:
-  title: "DRAFT, UNDER DEVELOPMENT: An elegant guide to mobilizing data to OBIS & GBIF for the discerning member of the Demopoulos lab."
+  title: "An elegant guide to mobilizing data to OBIS & GBIF for the discerning member of the Demopoulos lab."
   navbar: 
     tools:
       - icon: github

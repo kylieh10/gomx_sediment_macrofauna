@@ -4,10 +4,10 @@ date: today
 author:
   - name: "Kylie Hollis"
     orcid: "0009-0006-4061-8077"
-    email: "khollis@usgs.gov"
+    email: "kylieh10@live.com"
   - name: "Stephen Formel"
     orcid: "0000-0001-7418-1244"
-    email: "sformel@usgs.gov"
+    email: "steve@formeldataservices.com"
 ---
 
 ::: {style="text-align: center;font-size: 1.35em"}
