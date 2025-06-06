@@ -7,7 +7,7 @@ This repository is to clean and standardize data on macrofaunal composition and 
 
  - Published to GBIF: https://www.gbif.org/dataset/f41e070d-14ed-4386-b3f1-9b89b584eb92/metrics
 
-To see a rendered version of the current working notebook go to: [https://kylieh10.github.io/gomx_sediment_macrofauna/quarto_pages/index](https://kylieh10.github.io/gomx_sediment_macrofauna/quarto_pages/index)
+To see a rendered version of the current working notebook go to: [https://kylieh10.github.io/gomx_sediment_macrofauna/index](https://kylieh10.github.io/gomx_sediment_macrofauna/quarto_pages/index)
 
 # Navigating the repository and files
 
